@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title><?php pageTitle(); ?> | <?php siteName(); ?></title>
+    <link rel="stylesheet" href="/stylesheet/app.css">
   </head>
   <body>
     <div class="wrap">
