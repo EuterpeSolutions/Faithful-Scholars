@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Faithful Scholars - SC Accountability Association</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" />
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') { num = parseFloat(val);
+        if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert('The following error(s) occurred:\n'+errors);
+  document.MM_returnValue = (errors == '');
+}
+//-->
+  </script>
+</head>
+
+<body>
+  <form action="application_submit.php" method="post" id="compliance" onsubmit="MM_validateForm('last_name','','R','city','','R','email','','RisEmail','zip','','R','county','','R','start_date','','R','end_date','','R','primary_instructor','','R','student_1','','R','student_1_age','','R','student_1_birthdate','','R');return document.MM_returnValue"><br />
+    <fieldset>
+      <legend> Family Information </legend>
+      <table width="750" border="0">
+        <tr>
+          <td><label for="last_name">Last Name </label></td>
+          <td><input type="text" name="last_name" id="last_name" tabindex="1"/></td>
+          <td><label for="new_fs">New to Faithful Scholars?</label></td>
+          <td><select name="new_fs" id="new_fs" tabindex="8">
+            <option value="yes" selected="selected">Yes</option>
+            <option value="no">No</option>
+            </select></td>
+          </tr>
+        <tr>
+          <td><label for="Father2">Father</label>
+            's Name          </td>
+          <td><input type="text" name="father" id="father" tabindex="2"/></td>
+          <td><label for="phone2">Phone</label></td>
+          <td><input type="text" name="phone" id="phone2" tabindex="9"/></td>
+          </tr>
+        <tr>
+          <td><label for="mother">Mother's Name</label></td>
+          <td><input type="text" name="mother" id="mother" tabindex="3"/></td>
+          <td><label>Cell Phone (Mom)</label></td>
+          <td><input type="text" name="cell_phone_mom" id="cell_phone_mom" tabindex="10"/></td>
+          </tr>
+        <tr>
+          <td><label for="address">Address</label></td>
+          <td><input type="text" name="address" id="address" tabindex="4" /></td>
+          <td><label>Cell Phone (Dad)</label></td>
+          <td><input name="cell_phone_dad" type="text" id="cell_phone_dad" tabindex="11" /></td>
+          </tr>
+        <tr>
+          <td><label for="city">City</label></td>
+          <td><input type="text" name="city" id="city" tabindex="5"/></td>
+          <td><label>Email Address</label></td>
+          <td><input name="email" type="text" id="email" tabindex="12" /></td>
+          </tr>
+        <tr>
+          <td><label for="zip">Zip</label></td>
+          <td><input type="text" name="zip" id="zip" tabindex="6" /></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          </tr>
+        <tr>
+          <td><label for="county">County</label></td>
+          <td><input type="text" name="county" id="county" tabindex="7" /></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          </tr>
+        
+        </table>
+  </fieldset><br />
+    <fieldset>
+      <legend> Homeschool Information
+        </legend>
+      <table width="750" border="0">
+        <tr>
+          <td><label for="start_date"> School  Start Date <span data-tip="You can start / end your K-8 school year at any point.  You just need to make sure you cover 180 school days."  class="help"> [?] </span></label></td>
+          <td><input name="start_date" type="text" id="start_date" tabindex="13" /></td>
+          <td><label>New to Homeschooling?</label></td>
+          <td><select name="new_hs" id="new_hs" tabindex="19">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+            </select></td>
+          </tr>
+        <tr>
+          <td><label for="end_date">End of Year Date</label></td>
+          <td><input name="end_date" type="text" id="end_date" tabindex="14" /></td>
+          <td><label>Years of homeschooling</label></td>
+          <td><input name="years_homeschooling" type="text" id="years_homeschooling" tabindex="20" size="5" maxlength="5" /></td>
+          </tr>
+        <tr>
+          <td><label for="primary_instructor">Primary Instructor</label></td>
+          <td><input name="primary_instructor" type="text" id="primary_instructor" tabindex="15" /></td>
+          <td>&nbsp;</td>
+          <td>&nbsp;</td>
+          </tr>
+        <tr>
+          <td><label for="instructor_education">Level of Education <span data-tip="You must have a high school education or equivalency or greater."  class="help"> [?] </span></label></td>
+          <td><select name="instructor_education" id="instructor_education" tabindex="16">
+            <option value="HS_Diploma">High School Diploma</option>
+            <option value="GED">GED</option>
+            <option value="College">College</option>
+            </select></td>
+          <td><label>Removing child from SC Public School?</label></td>
+          <td><select name="removing_ps" id="removing_ps" tabindex="21">
+            <option value="no" selected="selected">No</option>
+            <option value="yes">Yes</option>
+            </select></td>
+          </tr>
+        <tr>
+          <td><label for="referred_by">Referred By</label></td>
+          <td><input name="referred_by" type="text" id="referred_by" tabindex="17" /></td>
+          <td><label>If yes, school name:</label></td>
+          <td><input name="school_name" type="text" id="school_name" tabindex="22" /></td>
+          </tr>
+        <tr>
+          <td><label for="school_district"><a href="http://ed.sc.gov/schools" target="_blank">School District</a></label></td>
+          <td><input name="school_district" type="text" id="school_district" tabindex="18" /></td>
+          <td><label>If yes, <a href="http://ed.sc.gov/schools" target="_blank">school fax #</a>: <span data-tip="Required if expediting your application."  class="help"> [?] </span></label></td>
+          <td><input name="school_fax" type="text" id="school_fax" tabindex="23" /></td>
+          </tr>
+        
+        </table>
+      </fieldset><br />
+    <fieldset>
+      <legend> Student Information </legend>
+      <table width="750" border="0" align="center" cellpadding="3" cellspacing="0">
+        <tr>
+          <td>Student Name</td>
+          <td>Grade</td>
+          <td>Age</td>
+          <td>Birthdate (M / D / Y)</td>
+          <td>Brief Curriculum Description <span data-tip="Example: Classical Conversations core, Singapore Math, Rosetta Stone French."  class="help"> [?] </span></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_1" id="student_1" /></td>
+          <td><input name="student_1_grade" type="text" id="student_1_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_1_age" type="text" id="student_1_age" size="5" maxlength="5" /></td>
+          <td><input name="student_1_birthdate" type="text" id="student_1_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student1" type="text" id="curriculum_student1" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_2" id="student_2" /></td>
+          <td><input name="student_2_grade" type="text" id="student_2_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_2_age" type="text" id="student_2_age" size="5" maxlength="5" /></td>
+          <td><input name="student_2_birthdate" type="text" id="student_2_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student2" type="text" id="curriculum_student2" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_3" id="student_3" /></td>
+          <td><input name="student_3_grade" type="text" id="student_3_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_3_age" type="text" id="student_3_age" size="5" maxlength="5" /></td>
+          <td><input name="student_3_birthdate" type="text" id="student_3_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student3" type="text" id="curriculum_student3" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_4" id="student_4" /></td>
+          <td><input name="student_4_grade" type="text" id="student_4_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_4_age" type="text" id="student_4_age" size="5" maxlength="5" /></td>
+          <td><input name="student_4_birthdate" type="text" id="student_4_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student4" type="text" id="curriculum_student4" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_5" id="student_5" /></td>
+          <td><input name="student_5_grade" type="text" id="student_5_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_5_age" type="text" id="student_5_age" size="5" maxlength="5" /></td>
+          <td><input name="student_5_birthdate" type="text" id="student_5_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student5" type="text" id="curriculum_student5" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_6" id="student_6" /></td>
+          <td><input name="student_6_grade" type="text" id="student_6_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_6_age" type="text" id="student_6_age" size="5" maxlength="5" /></td>
+          <td><input name="student_6_birthdate" type="text" id="student_6_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student6" type="text" id="curriculum_student6" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_7" id="student_7" /></td>
+          <td><input name="student_7_grade" type="text" id="student_7_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_7_age" type="text" id="student_7_age" size="5" maxlength="5" /></td>
+          <td><input name="student_7_birthdate" type="text" id="student_7_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student7" type="text" id="curriculum_student7" size="35" /></td>
+          </tr>
+        <tr>
+          <td><input type="text" name="student_8" id="student_8" /></td>
+          <td><input name="student_8_grade" type="text" id="student_8_grade" size="5" maxlength="5" /></td>
+          <td><input name="student_8_age" type="text" id="student_8_age" size="5" maxlength="5" /></td>
+          <td><input name="student_8_birthdate" type="text" id="student_8_birthdate" size="15" maxlength="15" /></td>
+          <td><input name="curriculum_student8" type="text" id="curriculum_student8" size="35" /></td>
+          </tr>
+        </table>
+      </fieldset><br />
+    <fieldset>
+      <legend> Membership Information </legend>
+      <p><strong>Type of Membership: </strong></p>
+      <ul>
+        <p> <input name="type" id="type" value="Kindergarten-Only" type="radio" /> 
+          Kindergarten only membership $25/year</p>
+        <p>
+          <input name="type" id="type2" value="Single-Student" type="radio" />
+          Single-student family membership $35/year</p>
+        <p> <input name="type" id="type" value="Multi-Student" type="radio" />
+          Multi-student
+          family membership $60/year<br />
+          </p>
+        </ul>
+      <p><strong>Additions to your membership: </strong></p>
+      <ul>
+        <p>
+          <select name="hs_students" id="hs_students">
+            <option value="0">0</option>
+            <option value="75">1</option>
+            <option value="150">2</option>
+            <option value="225">3</option>
+            <option value="300">4</option>
+            <option value="375">5</option>
+            </select>
+          High school student - $75/student *&nbsp;</p>
+        <p>* high school package includes: &nbsp;annual transcript, formal college  accepted transcript upon graduation, diploma, DMV permission letter,  secondary school recommendation, workshop, &amp; email support<br />
+        </p>
+        
+        <p> <input name="card" id="card" value="3" type="checkbox" />Replacement
+          membership card $3 &nbsp;(if previous card has been lost) </p>
+        <p> <input name="schea" id="schea" value="15" type="checkbox" /> <a href="http://www.schomeeducatorsassociation.org/" target="_blank">SCHEA</a>
+          discounted membership &nbsp;$15&nbsp;</p>
+        <p> <input name="enchanted" id="enchanted" value="10" type="checkbox" /> 
+        <a href="http://www.enchantedlearning.com/" target="_blank">Enchanted Learning</a> discounted membership&nbsp;$10</p>
+        
+        <p> <input name="expedite" id="expedite" value="20" type="checkbox" />
+          Expedited (24 hour turn-around) Application&nbsp;&nbsp;&nbsp;&nbsp; <strong>$20* <br />
+            <br />
+          *Standard applications take 3 to 30 days to fully process your paperwork  including mailouts.&nbsp; You are legal to homeschool as of the completion  of submitting/paying for your application.&nbsp;</strong></p>
+        
+        <p>&nbsp;</p>
+  </ul>
+      <h2><strong><u>INITIAL APPLICABLE BOXES FOR APPLICATION  PROCESS TO BE COMPLETED</u></strong><strong>:</strong>&nbsp;&nbsp;&nbsp; </h2>
+      <p>
+        <input name="certify_curriculum" type="text" id="certify_curriculum" size="5" maxlength="5" />
+        I have included each child&rsquo;s curriculum plan for this year.</p>
+      <p>
+        <input name="certify_diploma" type="text" id="certify_diploma" size="5" maxlength="5" />
+        &nbsp;I have &nbsp;a copy of my diploma or certificate on file at  home.</p>
+      <p>
+        <input name="certify_hs_transcript" type="text" id="certify_hs_transcript" size="5" maxlength="5" />
+        (if applicable)&nbsp; I have sent/faxed a copy of my <em><strong>high school</strong></em> students transcripts. </p>
+      <p>
+        <input name="certify_hs_gpa" type="text" id="certify_hs_gpa" size="5" maxlength="5" />
+        (if applicable) I understand that I am expected to submit my <em><strong>high school</strong></em> student&rsquo;s grades by June 10th or he/she may be ineligible for the SC Palmetto Fellows, Life, and Hope scholarships.</p>
+      <p>
+        <input name="certify_laws" type="text" id="certify_laws" size="5" maxlength="5" />
+        I have read and understood the homeschool  laws of <a href="http://www.faithfulscholars.com/information/legal-requirements/" target="_blank">SC section 59-65-47</a> and agree to abide by them, maintaining and make  available all&nbsp;legally required home school records for review  by a member of Faithful Scholars and/or the State Board of Education.</p>
+      <p>
+        <input name="certify_bylaws" type="text" id="certify_bylaws" size="5" maxlength="5" />
+        I have read, and agree to comply with all of  the <a href="http://www.faithfulscholars.com/by-laws-and-member-expectations/" target="_blank">Bylaws and Expectations</a> as set forth by Faithful Scholars.</p>
+      <p><br />
+        </p>
+      </fieldset>
+    <div text-align="center">
+      <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; <input name="Submit" value="Submit Application Form" type="submit" /> </p>
+      </div>
+    <p>.</p>
+</form>
+
+</body>
+</html>

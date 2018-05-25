@@ -1,0 +1,122 @@
+html {
+	font-size: 87.5%;
+}
+body {
+	font-size: 14px;
+	font-size: 1rem;
+	font-family: Helvetica, Arial, sans-serif;
+	text-rendering: optimizeLegibility;
+	color: #444;
+}
+body.custom-font-enabled {
+	font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+a {
+	outline: none;
+	color: #21759b;
+}
+a:hover {
+	color: #0f3647;
+}
+
+
+/* Form fields, general styles first */
+fieldset
+{
+	border: 1px solid #666;
+}
+fieldset p {
+	padding:2px 20px;
+	text-align:left;
+	line-height:1.6em;
+}
+
+legend
+{
+	
+	padding: 2px 6px;
+} 
+input
+{
+	color: #000000;
+	border: 1px solid #663300;
+}
+button,
+input,
+select,
+textarea {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	font-family: inherit;
+	padding: 6px;
+	padding: 0.428571429rem;
+}
+button,
+input {
+	line-height: normal;
+}
+textarea {
+	font-size: 100%;
+	overflow: auto;
+	vertical-align: top;
+}
+
+/*====================================================
+CSS Tooltips by Adam Whitcroft
+https://github.com/AdamWhitcroft/CSS.Tooltips
+====================================================*/
+/*==================================================*/
+/* $Tooltips */
+/*==================================================*/
+[data-tip] {
+position:relative;
+cursor:help;
+}
+[data-tip]:before {
+content:'';
+/* hides the tooltip when not hovered */
+display:none;
+border:5px solid #1a1a1a;
+/* 4 border technique to create the arrow */
+border-top-color:#1a1a1a;
+border-right-color:transparent;
+border-bottom-color:transparent;
+border-left-color:transparent;
+position:absolute;
+top:-7px;
+left:10px;
+z-index:8;
+font-size:0;
+line-height:0;
+width:0;
+height:0;
+}
+[data-tip]:after {
+	display: none;
+	content: attr(data-tip);
+	position: absolute;
+	top: -35px;
+	left: 0px;
+	padding: 5px 8px;
+	color: #333;
+	z-index: 9;
+	font-size: 0.75em;
+	height: 18px;
+	line-height: 18px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	white-space: nowrap;
+	word-wrap: normal;
+	background-color: #EDEDED;
+	border: 1px solid #CCC;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+display:block;
+}
+
+
+.help {
+	color: #00C;
+}

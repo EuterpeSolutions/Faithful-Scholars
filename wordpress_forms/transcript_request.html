@@ -1,0 +1,703 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Faithful Scholars - SC Accountability Association</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" />
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') { num = parseFloat(val);
+        if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert('The following error(s) occurred:\n'+errors);
+  document.MM_returnValue = (errors == '');
+}
+//-->
+  </script>
+</head>
+
+<body>
+
+<div id="container">
+	<div id="header">
+	 <p align="center">&nbsp;</p>
+  </div>
+<div id="content">
+  <h1>Transcript Request Form - High School</h1>
+  <p>Current members, please enter current year course information only, EXCEPT rising seniors who must enter junior year information plus projected senior year course names. </p>
+  <p>New members, please enter all high school course information to date. </p>
+  <form action="transcript_request_submit.php" method="post" id="compliance" >
+    <p>&nbsp;</p>
+    <p> Student's Full Name:
+      <input name="student_name" id="student_name" size="25" maxlength="30" type="text" /> </p>
+    <p>Parent's Full Name:
+      <input name="membership" id="membership" size="25" type="text" /></p>
+    <p>Parent's Email Address:
+      <input name="parent_email" id="parent_email" size="25" type="text" />
+    </p>
+    <p>Parent's Phone Number
+      <input name="parent_phone" id="parent_phone" size="25" type="text" />
+    </p>
+    <p>Note that it takes a minimum of three weeks to process for college or scholarship applications.   If there is an application deadline or rush, please <a href="mailto:katie@faithfulscholars.com">email me</a> and maintain a steady contact until transcript is received. 48-hour Expedite Option, $50.      </p>
+    <p>All transcripts will be emailed to you as a .pdf copy, except for those requested for college or scholarship applications. EXCEPTION: Final senior year transcripts will be mailed out with diplomas. </p>
+    <blockquote>
+        <p>
+            <input name="official_transcript" type="checkbox" id="official_transcript" value="yes" />
+            I will have a senior next year. I will submit current grades and planned courses for the senior year.        </p>
+        </blockquote>
+        <blockquote>
+          <blockquote>
+        <p><strong>8th Grade Information - OPTIONAL (for classes counted as high school credit):</strong> <a href="eighth_grade_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">Help?</a></p>
+        </blockquote>
+</blockquote>
+    <table width="600" border="0" align="center" cellpadding="4" cellspacing="0">
+      <tr>
+        <td width="55" bgcolor="#E7E7E7">&nbsp;</td>
+        <td width="282" bgcolor="#E7E7E7"><strong>8th Grade Course Name:</strong></td>
+        <td width="107" bgcolor="#E7E7E7"><strong>Class Weight <a href="class_weight_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td width="49" bgcolor="#E7E7E7"><strong>Credit Hours <a href="credit_hours_help.html"   onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td width="65" bgcolor="#E7E7E7"><strong>Numerical Grade <br />
+          (ex. 93)</strong></td>
+        </tr>
+      <tr>
+        <td>Class 1</td>
+        <td><input name="eight_course_name_1" type="text" id="eight_course_name_1" size="40" /></td>
+        <td><select name="eight_weight_1" id="eight_weight_1"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eight_credit_hours_1" type="text" id="eight_credit_hours_1" size="5" maxlength="5" /></td>
+        <td><input name="eight_grade_1" type="text" id="eight_grade_1" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Class 2</td>
+        <td bgcolor="#E7E7E7"><input name="eight_course_name_2" type="text" id="eight_course_name_2" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="eight_weight_2" id="eight_weight_2"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="eight_credit_hours_2" type="text" id="eight_credit_hours_2" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="eight_grade_2" type="text" id="eight_grade_2" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Class 3</td>
+        <td><input name="eight_course_name_3" type="text" id="eight_course_name_3" size="40" /></td>
+        <td><select name="eight_weight_3" id="eight_weight_3"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eight_credit_hours_3" type="text" id="eight_credit_hours_3" size="5" maxlength="5" /></td>
+        <td><input name="eight_grade_3" type="text" id="eight_grade_3" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Class 4</td>
+        <td bgcolor="#E7E7E7"><input name="eight_course_name_4" type="text" id="eight_course_name_4" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="eight_weight_4" id="eight_weight_4"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="eight_credit_hours_4" type="text" id="eight_credit_hours_4" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="eight_grade_4" type="text" id="eight_grade_4" size="5" maxlength="5" /></td>
+        </tr>
+      </table>
+    <br />
+    <table width="600" border="0" align="center">
+      <tr>
+        <td>Additional Information / Comments</td>
+        <td><label for="eight_comments"></label>
+          <textarea name="eight_comments" id="eight_comments" cols="50" rows="3"></textarea></td>
+        </tr>
+      </table>
+    <p>&nbsp;</p>
+    <blockquote>
+      <blockquote>
+        <p><strong>9th Grade information:</strong></p>
+        </blockquote>
+      </blockquote>
+    <table width="607" border="0" align="center" cellpadding="4" cellspacing="0">
+      <tr>
+        <td width="62" bgcolor="#E7E7E7">&nbsp;</td>
+        <td width="282" bgcolor="#E7E7E7"><strong>9th Grade Course Name:</strong></td>
+        <td width="107" bgcolor="#E7E7E7"><strong>Class Weight <a href="class_weight_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td width="48" bgcolor="#E7E7E7"><strong>Credit Hours <a href="credit_hours_help.html"   onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td width="68" bgcolor="#E7E7E7"><strong>Numerical Grade <br />
+          (ex. 93)</strong></td>
+        </tr>
+      <tr>
+        <td>Math</td>
+        <td>
+          <input name="nine_course_name_1" type="text" id="nine_course_name_1" size="40" /></td>
+        <td>
+          <select name="nine_weight_1" id="nine_weight_1"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+            <option value="H">Honors</option>
+            <option value="AP">AP</option>
+            <option value="DC">Dual Credit</option>
+          </select></td>
+        <td>
+          <input name="nine_credit_hours_1" type="text" id="credit_hours_1" size="5" maxlength="5" /></td>
+        <td>
+          <input name="nine_grade_1" type="text" id="grade_1" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">English</td>
+        <td bgcolor="#E7E7E7"><input name="nine_course_name_2" type="text" id="nine_course_name_3" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="nine_weight_2" id="nine_weight_2"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="nine_credit_hours_2" type="text" id="credit_hours_2" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="nine_grade_2" type="text" id="grade_2" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Science</td>
+        <td><input name="nine_course_name_3" type="text" id="nine_course_name_3" size="40" /></td>
+        <td><select name="nine_weight_3" id="nine_weight_3"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="nine_credit_hours_3" type="text" id="credit_hours_3" size="5" maxlength="5" /></td>
+        <td><input name="nine_grade_3" type="text" id="grade_3" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Social Studies</td>
+        <td bgcolor="#E7E7E7"><input name="nine_course_name_4" type="text" id="nine_course_name_4" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="nine_weight_4" id="nine_weight_4"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="nine_credit_hours_4" type="text" id="credit_hours_4" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="nine_grade_4" type="text" id="grade_4" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="nine_course_name_5" type="text" id="nine_course_name_5" size="40" /></td>
+        <td><select name="nine_weight_5" id="nine_weight_5"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="nine_credit_hours_5" type="text" id="credit_hours_5" size="5" maxlength="5" /></td>
+        <td><input name="nine_grade_5" type="text" id="grade_5" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Elective</td>
+        <td bgcolor="#E7E7E7"><input name="nine_course_name_6" type="text" id="nine_course_name_6" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="nine_weight_6" id="9_weight_6"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="nine_credit_hours_6" type="text" id="nine_credit_hours_6" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="nine_grade_6" type="text" id="grade_6" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="nine_course_name_7" type="text" id="nine_course_name_7" size="40" /></td>
+        <td><select name="nine_weight_7" id="nine_weight_7"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="nine_credit_hours_7" type="text" id="nine_credit_hours_7" size="5" maxlength="5" /></td>
+        <td><input name="nine_grade_7" type="text" id="grade_7" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Elective</td>
+        <td bgcolor="#E7E7E7"><input name="nine_course_name_8" type="text" id="nine_course_name_8" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="nine_weight_8" id="nine_weight_8"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="nine_credit_hours_8" type="text" id="nine_credit_hours_8" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="nine_grade_8" type="text" id="grade_8" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="nine_course_name_9" type="text" id="nine_course_name_9" size="40" /></td>
+        <td><select name="nine_weight_9" id="nine_weight_9"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="nine_credit_hours_9" type="text" id="credit_hours_9" size="5" maxlength="5" /></td>
+        <td><input name="nine_grade_9" type="text" id="grade_10" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Elective</td>
+        <td bgcolor="#E7E7E7"><input name="nine_course_name_10" type="text" id="nine_course_name_10" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="nine_weight_10" id="nine_weight_10"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="nine_credit_hours_10" type="text" id="credit_hours_11" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="nine_grade_10" type="text" id="grade_11" size="5" maxlength="5" /></td>
+        </tr>
+      </table>
+    <br />
+    <table width="600" border="0" align="center">
+      <tr>
+        <td>Additional Information / Comments</td>
+        <td><label for="8comments"></label>
+          <textarea name="nine_comments" id="nine_comments" cols="50" rows="3"></textarea></td>
+        </tr>
+  </table>
+    <p>&nbsp;</p>
+    <blockquote>
+      <blockquote>
+        <p><strong>10th Grade information:</strong></p>
+        </blockquote>
+      </blockquote>
+    <table width="600" border="0" align="center" cellpadding="4" cellspacing="0">
+      <tr>
+        <td bgcolor="#E7E7E7">&nbsp;</td>
+        <td bgcolor="#E7E7E7"><strong>10th Grade Course Name:</strong></td>
+        <td bgcolor="#E7E7E7"><strong>Class Weight <a href="class_weight_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td bgcolor="#E7E7E7"><strong>Credit Hours <a href="credit_hours_help.html"   onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td bgcolor="#E7E7E7"><strong>Numerical Grade</strong></td>
+        </tr>
+      <tr>
+        <td>Math</td>
+        <td>
+          <input name="ten_course_name_1" type="text" id="ten_course_name_1" size="40" /></td>
+        <td>
+          <select name="ten_weight_1" id="ten_weight_1"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+            <option value="H">Honors</option>
+            <option value="AP">AP</option>
+            <option value="DC">Dual Credit</option>
+          </select></td>
+        <td>
+          <input name="ten_credit_hours_1" type="text" id="ten_credit_hours_1" size="5" maxlength="5" /></td>
+        <td>
+          <input name="ten_grade_1" type="text" id="ten_grade_1" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">English</td>
+        <td bgcolor="#E7E7E7"><input name="ten_course_name_2" type="text" id="ten_course_name_2" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="ten_weight_2" id="ten_weight_2"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="ten_credit_hours_2" type="text" id="ten_credit_hours_2" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="ten_grade_2" type="text" id="ten_grade_2" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Science</td>
+        <td><input name="ten_course_name_3" type="text" id="ten_course_name_3" size="40" /></td>
+        <td><select name="ten_weight_3" id="ten_weight_3"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_3" type="text" id="ten_credit_hours_3" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_3" type="text" id="ten_grade_3" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td bgcolor="#E7E7E7">Social Studies</td>
+        <td bgcolor="#E7E7E7"><input name="ten_course_name_4" type="text" id="ten_course_name_4" size="40" /></td>
+        <td bgcolor="#E7E7E7"><select name="ten_weight_4" id="ten_weight_4"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td bgcolor="#E7E7E7"><input name="ten_credit_hours_4" type="text" id="ten_credit_hours_4" size="5" maxlength="5" /></td>
+        <td bgcolor="#E7E7E7"><input name="ten_grade_4" type="text" id="ten_grade_4" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="ten_course_name_5" type="text" id="ten_course_name_5" size="40" /></td>
+        <td><select name="ten_weight_5" id="ten_weight_5"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_5" type="text" id="ten_credit_hours_5" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_5" type="text" id="ten_grade_5" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="ten_course_name_6" type="text" id="ten_course_name_6" size="40" /></td>
+        <td><select name="ten_weight_6" id="ten_weight_6"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_6" type="text" id="ten_credit_hours_6" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_6" type="text" id="ten_grade_6" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="ten_course_name_7" type="text" id="ten_course_name_7" size="40" /></td>
+        <td><select name="ten_weight_7" id="ten_weight_7"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_7" type="text" id="ten_credit_hours_7" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_7" type="text" id="ten_grade_7" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="ten_course_name_8" type="text" id="ten_course_name_8" size="40" /></td>
+        <td><select name="ten_weight_8" id="ten_weight_8"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_8" type="text" id="ten_credit_hours_8" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_8" type="text" id="ten_grade_8" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="ten_course_name_9" type="text" id="ten_course_name_9" size="40" /></td>
+        <td><select name="ten_weight_9" id="ten_weight_9"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_9" type="text" id="ten_credit_hours_9" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_9" type="text" id="ten_grade_9" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="ten_course_name_10" type="text" id="ten_course_name_10" size="40" /></td>
+        <td><select name="ten_weight_10" id="ten_weight_10"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="ten_credit_hours_10" type="text" id="ten_credit_hours_10" size="5" maxlength="5" /></td>
+        <td><input name="ten_grade_10" type="text" id="ten_grade_10" size="5" maxlength="5" /></td>
+        </tr>
+      </table>
+    <br />
+    <table width="600" border="0" align="center">
+      <tr>
+        <td>Additional Information / Comments</td>
+        <td><label for="ten_comments"></label>
+          <textarea name="ten_comments" id="ten_comments" cols="50" rows="3"></textarea></td>
+        </tr>
+      </table>
+    <blockquote>
+      <blockquote>
+        <p><strong>11th Grade information:</strong><br />
+          <br />
+          <strong>RISING SENIORS! PLEASE also fill out planned 12th Grade Courses </strong></p>
+        </blockquote>
+      </blockquote>
+    <table width="600" border="0" align="center" cellpadding="4" cellspacing="0">
+      <tr bgcolor="#E7E7E7">
+        <td>&nbsp;</td>
+        <td><strong>11th Grade Course Name:</strong></td>
+        <td><strong>Class Weight <a href="class_weight_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td><strong>Credit Hours <a href="credit_hours_help.html"   onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td><strong>Numerical Grade</strong></td>
+        </tr>
+      <tr>
+        <td>Math</td>
+        <td>
+          <input name="eleven_course_name_1" type="text" id="eleven_course_name_1" size="40" /></td>
+        <td>
+          <select name="eleven_weight_1" id="eleven_weight_1"> <option value="" selected="selected"></option>
+  <option value="CP">College Prep</option>
+            <option value="H">Honors</option>
+            <option value="AP">AP</option>
+            <option value="DC">Dual Credit</option>
+          </select></td>
+        <td>
+          <input name="eleven_credit_hours_1" type="text" id="eleven_credit_hours_1" size="5" maxlength="5" /></td>
+        <td>
+          <input name="eleven_grade_1" type="text" id="eleven_grade_1" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>English</td>
+        <td><input name="eleven_course_name_2" type="text" id="eleven_course_name_2" size="40" /></td>
+        <td><select name="eleven_weight_2" id="eleven_weight_2"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_2" type="text" id="eleven_credit_hours_2" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_2" type="text" id="eleven_grade_2" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Science</td>
+        <td><input name="eleven_course_name_3" type="text" id="eleven_course_name_3" size="40" /></td>
+        <td><select name="eleven_weight_3" id="eleven_weight_3"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_3" type="text" id="eleven_credit_hours_3" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_3" type="text" id="eleven_grade_3" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Social Studies</td>
+        <td><input name="eleven_course_name_4" type="text" id="eleven_course_name_4" size="40" /></td>
+        <td><select name="eleven_weight_4" id="eleven_weight_4"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_4" type="text" id="eleven_credit_hours_4" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_4" type="text" id="eleven_grade_4" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="eleven_course_name_5" type="text" id="eleven_course_name_5" size="40" /></td>
+        <td><select name="eleven_weight_5" id="eleven_weight_5"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_5" type="text" id="eleven_credit_hours_5" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_5" type="text" id="eleven_grade_5" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="eleven_course_name_6" type="text" id="eleven_course_name_6" size="40" /></td>
+        <td><select name="eleven_weight_6" id="eleven_weight_6"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_6" type="text" id="eleven_credit_hours_6" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_6" type="text" id="eleven_grade_6" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="eleven_course_name_7" type="text" id="eleven_course_name_7" size="40" /></td>
+        <td><select name="eleven_weight_7" id="eleven_weight_7"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_7" type="text" id="eleven_credit_hours_7" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_7" type="text" id="eleven_grade_7" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="eleven_course_name_8" type="text" id="eleven_course_name_8" size="40" /></td>
+        <td><select name="eleven_weight_8" id="eleven_weight_8"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_8" type="text" id="eleven_credit_hours_8" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_8" type="text" id="eleven_grade_8" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="eleven_course_name_9" type="text" id="eleven_course_name_9" size="40" /></td>
+        <td><select name="eleven_weight_9" id="eleven_weight_9"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_9" type="text" id="eleven_credit_hours_9" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_9" type="text" id="eleven_grade_9" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="eleven_course_name_10" type="text" id="eleven_course_name_10" size="40" /></td>
+        <td><select name="eleven_weight_10" id="eleven_weight_10"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="eleven_credit_hours_10" type="text" id="eleven_credit_hours_10" size="5" maxlength="5" /></td>
+        <td><input name="eleven_grade_10" type="text" id="eleven_grade_10" size="5" maxlength="5" /></td>
+        </tr>
+      </table>
+    <br />
+    <table width="600" border="0" align="center">
+      <tr>
+        <td>Additional Information / Comments</td>
+        <td><label for="eleven_comments"></label>
+          <textarea name="eleven_comments" id="eleven_comments" cols="50" rows="3"></textarea></td>
+        </tr>
+      </table>
+    <blockquote>
+      <blockquote>
+        <p><strong>12th Grade information:</strong> Fill this out with planned courses for rising seniors</p>
+        </blockquote>
+      </blockquote>
+    <table width="600" border="0" align="center" cellpadding="4" cellspacing="0">
+      <tr bgcolor="#E7E7E7">
+        <td>&nbsp;</td>
+        <td><strong>12th Grade Course Name:</strong></td>
+        <td><strong>Class Weight <a href="class_weight_help.html"  onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td><strong>Credit Hours <a href="credit_hours_help.html"   onclick="window.open (this.href, 'child', 'height=400,width=400,scrollbars'); return false">?</a></strong></td>
+        <td><strong>Numerical Grade</strong></td>
+        </tr>
+      <tr>
+        <td>Math</td>
+        <td>
+          <input name="twelve_course_name_1" type="text" id="twelve_course_name_1" size="40" /></td>
+        <td>
+          <select name="twelve_weight_1" id="twelve_weight_1"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+            <option value="H">Honors</option>
+            <option value="AP">AP</option>
+            <option value="DC">Dual Credit</option>
+          </select></td>
+        <td>
+          <input name="twelve_credit_hours_1" type="text" id="twelve_credit_hours_1" size="5" maxlength="5" /></td>
+        <td>
+          <input name="twelve_grade_1" type="text" id="twelve_grade_1" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>English</td>
+        <td><input name="twelve_course_name_2" type="text" id="twelve_course_name_2" size="40" /></td>
+        <td><select name="twelve_weight_2" id="twelve_weight_2"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_2" type="text" id="twelve_credit_hours_2" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_2" type="text" id="twelve_grade_2" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Science</td>
+        <td><input name="twelve_course_name_3" type="text" id="twelve_course_name_3" size="40" /></td>
+        <td><select name="twelve_weight_3" id="twelve_weight_3"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_3" type="text" id="twelve_credit_hours_3" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_3" type="text" id="twelve_grade_3" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Social Studies</td>
+        <td><input name="twelve_course_name_4" type="text" id="twelve_course_name_4" size="40" /></td>
+        <td><select name="twelve_weight_4" id="twelve_weight_4"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_4" type="text" id="twelve_credit_hours_4" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_4" type="text" id="twelve_grade_4" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="twelve_course_name_5" type="text" id="twelve_course_name_5" size="40" /></td>
+        <td><select name="twelve_weight_5" id="twelve_weight_5"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_5" type="text" id="twelve_credit_hours_5" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_5" type="text" id="twelve_grade_5" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="twelve_course_name_6" type="text" id="twelve_course_name_6" size="40" /></td>
+        <td><select name="twelve_weight_6" id="twelve_weight_6"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_6" type="text" id="twelve_credit_hours_6" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_6" type="text" id="twelve_grade_6" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="twelve_course_name_7" type="text" id="twelve_course_name_7" size="40" /></td>
+        <td><select name="twelve_weight_7" id="twelve_weight_7"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_7" type="text" id="twelve_credit_hours_7" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_7" type="text" id="twelve_grade_7" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="twelve_course_name_8" type="text" id="twelve_course_name_8" size="40" /></td>
+        <td><select name="twelve_weight_8" id="twelve_weight_8"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_8" type="text" id="twelve_credit_hours_8" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_8" type="text" id="twelve_grade_8" size="5" maxlength="5" /></td>
+        </tr>
+      <tr>
+        <td>Elective</td>
+        <td><input name="twelve_course_name_9" type="text" id="twelve_course_name_9" size="40" /></td>
+        <td><select name="twelve_weight_9" id="twelve_weight_9"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_9" type="text" id="twelve_credit_hours_9" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_9" type="text" id="twelve_grade_9" size="5" maxlength="5" /></td>
+        </tr>
+      <tr bgcolor="#E7E7E7">
+        <td>Elective</td>
+        <td><input name="twelve_course_name_10" type="text" id="twelve_course_name_10" size="40" /></td>
+        <td><select name="twelve_weight_10" id="twelve_weight_10"> <option value="" selected="selected"></option> <option value="CP">College Prep</option>
+          <option value="H">Honors</option>
+          <option value="AP">AP</option>
+          <option value="DC">Dual Credit</option>
+          </select></td>
+        <td><input name="twelve_credit_hours_10" type="text" id="twelve_credit_hours_10" size="5" maxlength="5" /></td>
+        <td><input name="twelve_grade_10" type="text" id="twelve_grade_10" size="5" maxlength="5" /></td>
+        </tr>
+      </table>
+    <br />
+    <table width="600" border="0" align="center">
+      <tr>
+        <td>Additional Information / Comments</td>
+        <td><label for="8comments"></label>
+          <textarea name="twelve_comments" id="twelve_comments" cols="50" rows="3"></textarea></td>
+        </tr>
+      </table>
+    <p></p>
+    <div align="center">
+
+      <table width="175" border="0" align="center">
+        <tr>
+          <td width="169"><input name="Submit" value="Submit Transcript" type="submit" /></td>
+          </tr>
+        </table>
+      <p>&nbsp;</p>
+      </div>
+    <p>&nbsp;</p>
+</form>
+  <p>&nbsp; </p>
+</div>
+</div>
+<script type="text/javascript">
+_uacct = "UA-2104275-2";
+urchinTracker();
+    </script>
+</body>
+</html>

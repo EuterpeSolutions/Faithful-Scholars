@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Faithful Scholars - SC Accountability Association</title>
+
+<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
+<link rel="stylesheet" href="stylesheet.css" type="text/css" />
+<script type="text/JavaScript">
+<!--
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_validateForm() { //v4.0
+  var i,p,q,nm,test,num,min,max,errors='',args=MM_validateForm.arguments;
+  for (i=0; i<(args.length-2); i+=3) { test=args[i+2]; val=MM_findObj(args[i]);
+    if (val) { nm=val.name; if ((val=val.value)!="") {
+      if (test.indexOf('isEmail')!=-1) { p=val.indexOf('@');
+        if (p<1 || p==(val.length-1)) errors+='- '+nm+' must contain an e-mail address.\n';
+      } else if (test!='R') { num = parseFloat(val);
+        if (isNaN(val)) errors+='- '+nm+' must contain a number.\n';
+        if (test.indexOf('inRange') != -1) { p=test.indexOf(':');
+          min=test.substring(8,p); max=test.substring(p+1);
+          if (num<min || max<num) errors+='- '+nm+' must contain a number between '+min+' and '+max+'.\n';
+    } } } else if (test.charAt(0) == 'R') errors += '- '+nm+' is required.\n'; }
+  } if (errors) alert('The following error(s) occurred:\n'+errors);
+  document.MM_returnValue = (errors == '');
+}
+//-->
+  </script>
+</head>
+
+<body>
+
+<div id="container">
+	<div id="header">
+	 <p align="center">&nbsp;</p>
+  </div>
+<div id="content">
+  <p>Please complete the following information to renew your membership
+    : </p>
+  <form action="renewal_submit.php" method="post" id="compliance" onsubmit="MM_validateForm('last_name','','R','curriculum_plan','','R','laws','','R','bylaws','','R','curriculum','','R');return document.MM_returnValue">
+    <p>&nbsp;</p>
+    <fieldset>
+      <legend> Family Information </legend>
+      <table border="0" cellpadding="5">
+        <tr>
+          <td>Last Name:</td>
+          <td><input name="last_name" id="last_name" size="20" maxlength="30" type="text" /></td>
+
+        </tr>
+        <tr>
+          <td>First Name:</td>
+          <td><input name="first_name" id="first_name" size="20" maxlength="30" type="text" /></td></tr>
+          <tr>
+          <td>Spouse:</td>
+          <td><input name="spouse" id="spouse" size="20" maxlength="30" type="text" /></td>
+        </tr>
+        <tr>
+          <td>E-mail: </td>
+          <td><input name="email" id="email" size="14" maxlength="30" type="text" /></td>
+
+        </tr>
+        <tr>
+          <td>Phone: </td>
+          <td><input name="phone" id="phone" size="14" maxlength="30" type="text" /></td>
+
+        </tr>
+        <tr>
+          <td>Address:</td>
+          <td ><input name="address" id="address" size="45" type="text" /></td>
+
+        </tr>
+        <tr>
+          <td>City: </td>
+          <td><input name="city" id="city" size="20" type="text" /></td></tr>
+          <tr>
+          <td>&nbsp; Zip:</td>
+          <td><input name="zip" id="zip" size="14" type="text" /></td>
+        </tr>
+        <tr>
+          <td>County:</td>
+          <td><select name="county" id="county">
+            <option value='Abbeville'>Abbeville</option>
+            <option value='Aiken'>Aiken</option>
+            <option value='Allendale'>Allendale</option>
+            <option value='Anderson'>Anderson</option>
+            <option value='Bamberg'>Bamberg</option>
+            <option value='Barnwell'>Barnwell</option>
+            <option value='Beaufort'>Beaufort</option>
+            <option value='Berkeley'>Berkeley</option>
+            <option value='Calhoun'>Calhoun</option>
+            <option value='Charleston'>Charleston</option>
+            <option value='Cherokee'>Cherokee</option>
+            <option value='Chester'>Chester</option>
+            <option value='Chesterfield'>Chesterfield</option>
+            <option value='Clarendon'>Clarendon</option>
+            <option value='Colleton'>Colleton</option>
+            <option value='Darlington'>Darlington</option>
+            <option value='Dillon'>Dillon</option>
+            <option value='Dorchester'>Dorchester</option>
+            <option value='Edgefield'>Edgefield</option>
+            <option value='Fairfield'>Fairfield</option>
+            <option value='Florence'>Florence</option>
+            <option value='Georgetown'>Georgetown</option>
+            <option value='Greenville'>Greenville</option>
+            <option value='Greenwood'>Greenwood</option>
+            <option value='Hampton'>Hampton</option>
+            <option value='Horry'>Horry</option>
+            <option value='Jasper'>Jasper</option>
+            <option value='Kershaw'>Kershaw</option>
+            <option value='Lancaster'>Lancaster</option>
+            <option value='Laurens'>Laurens</option>
+            <option value='Lee'>Lee</option>
+            <option value='Lexington'>Lexington</option>
+            <option value='Marion'>Marion</option>
+            <option value='Marlboro'>Marlboro</option>
+            <option value='McCormick'>McCormick</option>
+            <option value='Newberry'>Newberry</option>
+            <option value='Oconee'>Oconee</option>
+            <option value='Orangeburg'>Orangeburg</option>
+            <option value='Pickens'>Pickens</option>
+            <option value='Richland'>Richland</option>
+            <option value='Saluda'>Saluda</option>
+            <option value='Spartanburg'>Spartanburg</option>
+            <option value='Sumter'>Sumter</option>
+            <option value='Union'>Union</option>
+            <option value='Williamsburg'>Williamsburg</option>
+            <option value='York '>York </option>
+          </select></td></tr>
+          <tr>
+          <td>School District:<br />
+            (<a href="http://ed.sc.gov/schools/" target="_blank">Look it up</a>)</td>
+          <td><select name="district" id="district">
+            <option value='Abbeville 60'>Abbeville 60</option>
+            <option value='Aiken 01'>Aiken 01</option>
+            <option value='Allendale 01'>Allendale 01</option>
+            <option value='Anderson 01'>Anderson 01</option>
+            <option value='Anderson 02'>Anderson 02</option>
+            <option value='Anderson 03'>Anderson 03</option>
+            <option value='Anderson 04'>Anderson 04</option>
+            <option value='Anderson 05'>Anderson 05</option>
+            <option value='Bamberg 01'>Bamberg 01</option>
+            <option value='Bamberg 02'>Bamberg 02</option>
+            <option value='Barnwell 19'>Barnwell 19</option>
+            <option value='Barnwell 29'>Barnwell 29</option>
+            <option value='Barnwell 45'>Barnwell 45</option>
+            <option value='Beaufort 01'>Beaufort 01</option>
+            <option value='Berkeley 01'>Berkeley 01</option>
+            <option value='Calhoun 01'>Calhoun 01</option>
+            <option value='Charleston 01'>Charleston 01</option>
+            <option value='Cherokee 01'>Cherokee 01</option>
+            <option value='Chester 01'>Chester 01</option>
+            <option value='Chesterfield 01'>Chesterfield 01</option>
+            <option value='Clarendon 01'>Clarendon 01</option>
+            <option value='Clarendon 02'>Clarendon 02</option>
+            <option value='Clarendon 03'>Clarendon 03</option>
+            <option value='Colleton 01'>Colleton 01</option>
+            <option value='Darlington 01'>Darlington 01</option>
+            <option value='Dillon 03'>Dillon 03</option>
+            <option value='Dillon 04'>Dillon 04</option>
+            <option value='Dorchester 02'>Dorchester 02</option>
+            <option value='Dorchester 04'>Dorchester 04</option>
+            <option value='Edgefield 01'>Edgefield 01</option>
+            <option value='Fairfield 01'>Fairfield 01</option>
+            <option value='Florence 01'>Florence 01</option>
+            <option value='Florence 02'>Florence 02</option>
+            <option value='Florence 03'>Florence 03</option>
+            <option value='Florence 04'>Florence 04</option>
+            <option value='Florence 05'>Florence 05</option>
+            <option value='Georgetown 01'>Georgetown 01</option>
+            <option value='Greenville 01'>Greenville 01</option>
+            <option value='Greenwood 50'>Greenwood 50</option>
+            <option value='Greenwood 51'>Greenwood 51</option>
+            <option value='Greenwood 52'>Greenwood 52</option>
+            <option value='Hampton 01'>Hampton 01</option>
+            <option value='Hampton 02'>Hampton 02</option>
+            <option value='Horry 01'>Horry 01</option>
+            <option value='Jasper 01'>Jasper 01</option>
+            <option value='Kershaw 01'>Kershaw 01</option>
+            <option value='Lancaster 01'>Lancaster 01</option>
+            <option value='Laurens 55'>Laurens 55</option>
+            <option value='Laurens 56'>Laurens 56</option>
+            <option value='Lee 01'>Lee 01</option>
+            <option value='Lexington 01'>Lexington 01</option>
+            <option value='Lexington 02'>Lexington 02</option>
+            <option value='Lexington 03'>Lexington 03</option>
+            <option value='Lexington 04'>Lexington 04</option>
+            <option value='Lexington 05'>Lexington 05</option>
+            <option value='Marion 10'>Marion 10</option>
+            <option value='Marlboro 01'>Marlboro 01</option>
+            <option value='McCormick 01'>McCormick 01</option>
+            <option value='Newberry 01'>Newberry 01</option>
+            <option value='Oconee 01'>Oconee 01</option>
+            <option value='Orangeburg 03'>Orangeburg 03</option>
+            <option value='Orangeburg 04'>Orangeburg 04</option>
+            <option value='Orangeburg 05'>Orangeburg 05</option>
+            <option value='Pickens 01'>Pickens 01</option>
+            <option value='Richland 01'>Richland 01</option>
+            <option value='Richland 02'>Richland 02</option>
+            <option value='Saluda 01'>Saluda 01</option>
+            <option value='Spartanburg 01'>Spartanburg 01</option>
+            <option value='Spartanburg 02'>Spartanburg 02</option>
+            <option value='Spartanburg 03'>Spartanburg 03</option>
+            <option value='Spartanburg 04'>Spartanburg 04</option>
+            <option value='Spartanburg 05'>Spartanburg 05</option>
+            <option value='Spartanburg 06'>Spartanburg 06</option>
+            <option value='Spartanburg 07'>Spartanburg 07</option>
+            <option value='Sumter 01'>Sumter 01</option>
+            <option value='Union 01'>Union 01</option>
+            <option value='Williamsburg 01'>Williamsburg 01</option>
+            <option value='York 01'>York 01</option>
+            <option value='York 02'>York 02</option>
+            <option value='York 03'>York 03</option>
+            <option value='York 04 '>York 04 </option>
+          </select></td>
+        </tr>
+
+    </table>
+
+      <p>Please list any add'l changes to your current information:</p>
+      <p> <textarea name="changes" cols="60" rows="2" id="changes"> </textarea></p>
+      <p>Please list <strong>first and last name of all children</strong> you will be homeschooling:</p>
+      <p>Child 1:
+        <input name="child1" id="child1" size="25" type="text" placeholder="first and last" />
+        &nbsp; &nbsp; Grade:
+      <input name="grade1" id="grade1" size="5" maxlength="5" type="text" />
+        &nbsp; &nbsp; Birthdate:
+      <input name="birthdate1" id="birthdate1" size="10" type="text" />
+      <br />
+      Child 2:
+      <input name="child2" id="child2" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade2" id="grade2" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate2" id="birthdate2" size="10" type="text" />
+<br />
+Child 3:
+<input name="child3" id="child3" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade3" id="grade3" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+  <input name="birthdate3" id="birthdate3" size="10" type="text" />
+<br />
+Child 4:
+<input name="child4" id="child4" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade4" id="grade4" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate4" id="birthdate4" size="10" type="text" />
+<br />
+Child 5:
+<input name="child5" id="child5" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade5" id="grade5" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate5" id="birthdate5" size="10" type="text" />
+<br />
+Child 6:
+<input name="child6" id="child6" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade6" id="grade6" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate6" id="birthdate6" size="10" type="text" />
+<br />
+Child 7:
+<input name="child7" id="child7" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade7" id="grade7" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate7" id="birthdate7" size="10" type="text" />
+<br />
+Child 8:
+<input name="child8" id="child8" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade8" id="grade8" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate8" id="birthdate8" size="10" type="text" />
+<br />
+Child 9:
+<input name="child9" id="child9" size="25" type="text" />
+  &nbsp; &nbsp; Grade:
+<input name="grade9" id="grade9" size="5" maxlength="5" type="text" />
+  &nbsp; &nbsp; Birthdate:
+<input name="birthdate9" id="birthdate9" size="10" type="text" />
+      </p>
+      <p>Please include a brief description of your planned core curriculum
+        for this year: </p>
+      <p> <textarea name="curriculum" cols="60" rows="10" id="curriculum"> </textarea>
+        </p>
+      </fieldset>
+    <p>&nbsp;</p>
+    <fieldset>
+      <legend> Terms of Agreement</legend>
+      <p><strong>Please initial the following boxes to show your compliance
+        with them: </strong></p>
+      <p> <input name="curriculum_plan" id="curriculum_plan" size="4" maxlength="5" type="text" /> I have included our curriculum plan for
+        this year.</p>
+      <p> <input name="laws" id="laws" size="4" maxlength="5" type="text" />
+        I
+        have read and understood the <a href="http://www.faithfulscholars.com/information/legal-requirements/" target="_blank">homeschool
+          laws of SC </a>section 59-65-47 and agree to abide by them,
+        maintaining and make available all&nbsp; legally required home school
+        records for review by the director of Faithful Scholars and/or the
+        State Board of Education. </p>
+      <p> <input name="bylaws" id="bylaws" size="4" maxlength="5" type="text" /> I have read, and agree to comply with all of the <a href="http://www.faithfulscholars.com/by-laws-and-member-expectations/" target="_blank">Bylaws and Expectations</a> as set
+        forth by Faithful Scholars.</p>
+      <p>&nbsp;</p>
+      </fieldset>
+  <p>&nbsp;</p>
+    <fieldset>
+      <legend> Membership Information </legend>
+      <p><strong>Type of Membership: </strong></p>
+      <ul>
+        <p> <input name="type" id="type" value="kindergarten_only" type="radio" />
+          Kindergarten only membership $25/year</p>
+        <p>
+          <input name="type" id="type2" value="Single_Student" type="radio" />
+          Single-student family membership $35/year</p>
+        <p> <input name="type" id="type" value="Multi-Student" type="radio" />
+          Multi-student
+          family membership $60/year<br />
+          </p>
+        </ul>
+      <p><strong>Additions to your membership: </strong></p>
+      <ul>
+        <p>
+          <select name="hs_students" id="hs_students">
+            <option value="0">0</option>
+            <option value="75">1</option>
+            <option value="150">2</option>
+            <option value="225">3</option>
+            <option value="300">4</option>
+
+            </select>
+          High school student --
+  &nbsp;$75/student *&nbsp;&nbsp;<br />
+  * high school package includes: &nbsp;annual transcript, formal college  accepted transcript upon graduation, diploma, DMV permission letter,  secondary school recommendation, workshop, &amp; email support</p>
+        <p>&nbsp;</p>
+        <p> <input name="card" id="card" value="3" type="checkbox" />
+          Replacement
+          membership or student membership card $3 </p>
+        <p> <input name="schea" id="schea" value="15" type="checkbox" /> <a href="http://www.schomeeducatorsassociation.org/" target="_blank">SCHEA</a>
+          discounted membership &nbsp;$15&nbsp;</p>
+        <p> <input name="enchanted" id="enchanted" value="7" type="checkbox" /> <a href="http://www.enchantedlearning.com/" target="_blank">Enchanted Learning</a> discounted membership&nbsp;$7 </p>
+
+        <p> <input name="expedite" id="expedite" value="20" type="checkbox" />Expedite
+          my Application Please&nbsp;&nbsp;&nbsp;&nbsp; $20 (24 hr. turn
+          around)    </p>
+        </ul>
+      <ul>
+        <p>Membership Documents:<br />
+          <label>
+            &nbsp; &nbsp; &nbsp;<input type="radio" name="membership_documents" value="email" id="membership_documents_0" />
+            Email all membership documents as .pdf*</label>
+          <br />
+          <label>
+            &nbsp; &nbsp; &nbsp;<input type="radio" name="membership_documents" value="mail" id="membership_documents_1" />
+            Mail all membership documents</label>
+          <br />
+        </p>
+        <p></p>
+        </ul>
+      </fieldset>
+    <div text-align="center">
+      <p> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  &nbsp; &nbsp; &nbsp; <input name="Submit" value="Submit Renewal  Form" type="submit" /> </p>
+      </div>
+    <p>&nbsp;</p>
+</form>
+  <p>&nbsp;</p>
+  <div id="footer">  </div>
+</div>
+</div>
+<script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+</script>
+<script type="text/javascript">
+_uacct = "UA-2104275-2";
+urchinTracker();
+</script>
+</body>
+</html>
