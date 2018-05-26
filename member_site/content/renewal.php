@@ -10,23 +10,23 @@
             </div>
             <div class="form-group">
               <label for="spouse">Spouse:</label>
-              <input type="spouse" class="form-control" id="spouse" placeholder="Enter name">
+              <input type="spouse" class="form-control" name="spouse" id="spouse" placeholder="Enter name">
             </div>
             <div class="form-group">
               <label for="phone">Phone:</label>
-              <input type="phone" class="form-control" id="phone" placeholder="Enter name">
+              <input type="phone" class="form-control" name="phone" id="phone" placeholder="Enter name">
             </div>
             <div class="form-group">
               <label for="address">Address:</label>
-              <input type="address" class="form-control" id="address" placeholder="Enter address">
+              <input type="address" class="form-control" name="address" id="address" placeholder="Enter address">
             </div>
             <div class="form-group">
               <label for="zip">Zipcode:</label>
-              <input type="zip" class="form-control" id="zip" placeholder="Enter zipcode">
+              <input type="zip" class="form-control" name="zipcode" id="zip" placeholder="Enter zipcode">
             </div>
             <div class="form-group">
               <label for="district">School District: (<a href="http://ed.sc.gov/schools/" target="_blank">Look it up</a>)</label>
-              <select class="form-control" id="district">
+              <select class="form-control" name="district" id="district">
                 <option value='Abbeville 60'>Abbeville 60</option>
                 <option value='Aiken 01'>Aiken 01</option>
                 <option value='Allendale 01'>Allendale 01</option>
@@ -118,16 +118,16 @@
             </div>
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input type="email" class="form-control" id="email" placeholder="Enter name">
+              <input type="email" class="form-control" name="email" id="email" placeholder="Enter name">
             </div>
             <div class="form-group"><label for=""></label><br><br><label for=""></label></div>
             <div class="form-group">
               <label for="city">City:</label>
-              <input type="city" class="form-control" id="city" placeholder="Enter city">
+              <input type="city" class="form-control" name="city" id="city" placeholder="Enter city">
             </div>
             <div class="form-group">
               <label for="county">County:</label>
-              <select class="form-control" id="county">
+              <select class="form-control" name="county" id="county">
                 <option value='Abbeville'>Abbeville</option>
                 <option value='Aiken'>Aiken</option>
                 <option value='Allendale'>Allendale</option>
@@ -182,7 +182,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Please list any additional changes to your current information:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" name="extra_information" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
           </div>
         </div>
@@ -195,14 +195,14 @@
             <?php echo childInput('grade')?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('Birthday')?>
+            <?php echo childInput('birthday')?>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Please include a brief description of your planned core curriculum for this year:</label>
-              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" name="curriculum_desc" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
           </div>
         </div>
