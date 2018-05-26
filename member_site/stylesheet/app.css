@@ -45,10 +45,64 @@ body {
   width: 50%;
   margin-left: auto !important;
   margin-right: auto !important;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
 }
 
 /* Title of the page */
 .pageTitle {
   text-align: center;
   margin-bottom: 50px;
+}
+
+/* Dashboard circle buttons */
+.circle {
+  width: 220px;
+  height: 220px;
+  box-shadow: 3px 6px 6px rgba(0, 0, 0, 0.16);
+  background-color: #70815e;
+  border-radius: 50%;
+  behavior: url(PIE.htc); /* For IE support */
+  color: white;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  line-height: 220px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-group {
+  background-repeat: no-repeat;
+  background-size:contain;
+  padding-left: 150px;
+  padding-right: 150px;
+  padding-bottom: 175px;
+  padding-top: 75px;
+}
+/* Documents section of the dashboard */
+.documents {
+  background-image: url('/assets/document-background.png');
+}
+/* Documents section of the dashboard */
+.endofyear {
+  background-image: url('/assets/end-year-background.png');
+}
+/* Documents section of the dashboard */
+.transcripts {
+  background-image: url('/assets/transcript-background.png');
+}
+
+
+
+/* General Use Classes*/
+.left {
+  text-align: left;
+}
+.center {
+  text-align: center;
+}
+.right {
+  text-align: right;
+}
+.undecorated:hover{
+  text-decoration: none;
 }
