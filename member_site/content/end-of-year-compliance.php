@@ -51,14 +51,22 @@
         <div class="row">
           <div class="col-sm-10">
             <div class="form-check">
+<<<<<<< HEAD
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="1">
+=======
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="before june 10">
+>>>>>>> e41ae34c7c22c608ebceb4aa76e04b7a28c5b75b
               <label class="form-check-label" for="gridRadios1">
                 I have submitted my student's transcript worksheet by/before June 10th.
               </label>
             </div>
             <br>
             <div class="form-check">
+<<<<<<< HEAD
               <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="0">
+=======
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="after june 10">
+>>>>>>> e41ae34c7c22c608ebceb4aa76e04b7a28c5b75b
               <label class="form-check-label" for="gridRadios2">
                 I choose not to submit my student's transcript worksheet
                 by/before June 10th and understand that it may affect his/her eligibility for scholarships.
@@ -75,11 +83,19 @@
           target="_top">dual enrollment information page</a></label>
           <div class="controls radio-group">
             <label class="radio">
+<<<<<<< HEAD
               <input type="radio" value="1" id="yes" name="options">
               Yes
             </label>
             <label class="radio">
               <input type="radio" value="0" id="no" name="options">
+=======
+              <input type="radio" value="plans to take dual enrollment" id="yes" name="options">
+              Yes
+            </label>
+            <label class="radio">
+              <input type="radio" value="does not plan to take dual enrollment" id="no" name="options">
+>>>>>>> e41ae34c7c22c608ebceb4aa76e04b7a28c5b75b
               No
             </label>
           </div>
