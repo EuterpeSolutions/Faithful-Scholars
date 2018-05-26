@@ -1,46 +1,46 @@
-<form class="form-horizontal" action="/pdfgen.php">
+<form class="form-horizontal" action="content/end-of-year-compliance-action.php" method="post">
   <fieldset>
     <legend> End of Year Compliance </legend>
     <h4>Please initial each box to certify your compliance with the following:</h4>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial1"> I, the primary parent/guardian-instructor
+        <input size=5 type="initial" id="initial1" required> I, the primary parent/guardian-instructor
         hold at least a high school diploma or GED.
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial2"> Student(s) has/have attended
+        <input size=5 type="initial" id="initial2" required> Student(s) has/have attended
         a minimum of 180 days of school which are recorded.
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial3">  I have maintained a plan
+        <input size=5 type="initial" id="initial3" required>  I have maintained a plan
         book, journal <b>or</b> diary, <b><i>AND</i></b>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial4"> maintained a portfolio of
+        <input size=5 type="initial" id="initial4" required > maintained a portfolio of
         academic work for each student, <b><i>AND</i></b>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial5">  I have completed, and have
+        <input size=5 type="initial" id="initial5" required>  I have completed, and have
         on file, a semi-annual progress report, <b><i>AND</i></b>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial6">  I have completed, and have
+        <input size=5 type="initial" id="initial6" required>  I have completed, and have
         on file, an end-of-year progress report, <b><i>AND</i></b>
       </div>
     </div>
     <div class="form-group">
       <div>
-        <input size=5 type="initial" id="initial7"> I have taught reading,
+        <input size=5 type="initial" id="initial7" required> I have taught reading,
         writing, math, science and social studies, including composition
         and literature in grades 7 through 12, to my students.
       </div>
@@ -51,14 +51,14 @@
         <div class="row">
           <div class="col-sm-10">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="beforejune10">
+              <input class="form-check-input" type="radio" name="radio" id="gridRadios1" value="before june 10">
               <label class="form-check-label" for="gridRadios1">
                 I have submitted my student's transcript worksheet by/before June 10th.
               </label>
             </div>
             <br>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="afterjune10">
+              <input class="form-check-input" type="radio" name="radio" id="gridRadios2" value="after june 10">
               <label class="form-check-label" for="gridRadios2">
                 I choose not to submit my student's transcript worksheet
                 by/before June 10th and understand that it may affect his/her eligibility for scholarships.
@@ -75,11 +75,11 @@
           target="_top">dual enrollment information page</a></label>
           <div class="controls radio-group">
             <label class="radio">
-              <input type="radio" value="yes" id="yes" name="optionsRadios">
+              <input type="radio" value="plans to take dual enrollment" id="yes" name="radio">
               Yes
             </label>
             <label class="radio">
-              <input type="radio" value="no" id="no" name="optionsRadios">
+              <input type="radio" value="does not plan to take dual enrollment" id="no" name="radio">
               No
             </label>
           </div>
@@ -92,39 +92,39 @@
         <br>
         <br>
         <div class="form-group">
-          <label for="email">Full name:</label>
-          <input type="email" class="form-control" id="name" placeholder="Enter name" name="name">
+          <label for="name">Full name:</label>
+          <input type="name" class="form-control" id="name" placeholder="Enter name" name="name" required>
         </div>
         <div class="form-group">
           <label for="email">Email Address:</label>
-          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
         </div>
         <div class="form-group">
-          <label for="email">Phone:</label>
-          <input type="email" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+          <label for="phone">Phone:</label>
+          <input type="name" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required>
         </div>
         <div class="control-group">
           <label class="control-label">I will be:</label>
           <div class="controls radio-group">
             <label class="radio form-inline">
-              <input type="radio" value="renewtoday" id="renewtoday" name="optionsRadios">
+              <input type="radio" value="renew today" id="renewtoday" name="radio">
               Renewing with Faithful Scholars today
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="renewlater" id="renewlater" name="optionsRadios">
+              <input type="radio" value="renew later" id="renewlater" name="radio">
               Renewing with Faithful Scholars later
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="schoolname" id="schoolname" name="optionsRadios">
+              <input type="radio" value="school name" id="schoolname" name="radio">
               Entering traditional school - Name of School:
             </label>
             <input type="school" class="form-control" id="school" placeholder="Enter school name" name="school">
             <label class="radio form-inline">
-              <input type="radio" value="change" id="change" name="optionsRadios">
+              <input type="radio" value="change" id="changing accountability associations" name="radio">
               Changing accountability associations
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="move" id="move" name="optionsRadios">
+              <input type="radio" value="moving out of state" id="move" name="radio">
               Moving out of state
             </label>
           </div>
@@ -132,7 +132,7 @@
       </fieldset>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" class="btn btn-default">Submit</button>
+          <button type="submit" name="submit" class="btn btn-default">Submit</button>
         </div>
       </div>
     </fieldset>
