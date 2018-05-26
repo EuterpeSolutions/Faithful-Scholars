@@ -51,14 +51,14 @@
         <div class="row">
           <div class="col-sm-10">
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="gridRadios1" value="before june 10">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="before june 10">
               <label class="form-check-label" for="gridRadios1">
                 I have submitted my student's transcript worksheet by/before June 10th.
               </label>
             </div>
             <br>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio" id="gridRadios2" value="after june 10">
+              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="after june 10">
               <label class="form-check-label" for="gridRadios2">
                 I choose not to submit my student's transcript worksheet
                 by/before June 10th and understand that it may affect his/her eligibility for scholarships.
@@ -75,11 +75,11 @@
           target="_top">dual enrollment information page</a></label>
           <div class="controls radio-group">
             <label class="radio">
-              <input type="radio" value="plans to take dual enrollment" id="yes" name="radio">
+              <input type="radio" value="plans to take dual enrollment" id="yes" name="options">
               Yes
             </label>
             <label class="radio">
-              <input type="radio" value="does not plan to take dual enrollment" id="no" name="radio">
+              <input type="radio" value="does not plan to take dual enrollment" id="no" name="options">
               No
             </label>
           </div>
@@ -107,24 +107,24 @@
           <label class="control-label">I will be:</label>
           <div class="controls radio-group">
             <label class="radio form-inline">
-              <input type="radio" value="renew today" id="renewtoday" name="radio">
+              <input type="radio" value="renew today" id="renewtoday" name="optionsRadios">
               Renewing with Faithful Scholars today
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="renew later" id="renewlater" name="radio">
+              <input type="radio" value="renew later" id="renewlater" name="optionsRadios">
               Renewing with Faithful Scholars later
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="school name" id="schoolname" name="radio">
+              <input type="radio" value="school name" id="schoolname" name="optionsRadios">
               Entering traditional school - Name of School:
             </label>
             <input type="school" class="form-control" id="school" placeholder="Enter school name" name="school">
             <label class="radio form-inline">
-              <input type="radio" value="change" id="changing accountability associations" name="radio">
+              <input type="radio" value="change" id="changing accountability associations" name="optionsRadios">
               Changing accountability associations
             </label>
             <label class="radio form-inline">
-              <input type="radio" value="moving out of state" id="move" name="radio">
+              <input type="radio" value="moving out of state" id="move" name="optionsRadios">
               Moving out of state
             </label>
           </div>
@@ -132,7 +132,7 @@
       </fieldset>
       <div class="form-group">
         <div class="col-sm-offset-2 col-sm-10">
-          <button type="submit" name="submit" class="btn btn-default">Submit</button>
+          <input class="btn btn-default" type="submit" name="submit" value="submit" />
         </div>
       </div>
     </fieldset>
