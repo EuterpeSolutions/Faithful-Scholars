@@ -14,7 +14,7 @@ if(mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 };
 
-$sql = 'INSERT INTO family(last_name, first_name)VALUES (' . $last_name . ', $first_name)';
+$sql = "INSERT INTO family(last_name, first_name)VALUES('$last_name', '$first_name')";
 
 if ($con->query($sql) === TRUE) {
   echo "New record created";

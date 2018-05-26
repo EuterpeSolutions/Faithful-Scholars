@@ -1,7 +1,6 @@
-<form class="form-horizontal" type="post" action="/content/renewal_submit.php">
+<form class="form-horizontal" method="post" action="content/renewal-action.php">
   <fieldset>
     <legend> Membership Renewal </legend>
-    <fieldset>
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -208,14 +207,14 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <button type="submit" class="btn btn-info">Submit</button>
-            </div>
+    </fieldset>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input class="btn btn-default" type="submit" name="submit" value="submit" />
           </div>
         </div>
       </div>
-    </fieldset>
+    </div>
   </form>
