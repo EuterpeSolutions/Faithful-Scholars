@@ -10,8 +10,8 @@
   </head>
   <body>
     <div class="row outer-row">
-      <div class="col-md-3"></div>
-      <div class="col-md-6">
+      <div class="col-md-1"></div>
+      <div class="col-md-10">
         <img class="logoimg" src="/assets/faithfulscholarslogo.png" alt="">
         <header>
           <nav class="menu">
@@ -24,7 +24,7 @@
         </article>
         <footer><small>&copy;<?php echo date('Y'); ?> <?php siteName(); ?>.</small></footer>
       </div>
-      <div class="col-md-3"></div>
+      <div class="col-md-1"></div>
     </div>
   </body>
 </html>
