@@ -5,8 +5,8 @@
     $config = [
       'name' => 'Simple PHP Website',
       'nav_menu' => [
-        '' => 'Home',
-        'test' => 'Test',
+        '' => 'Dashboard',
+        'update-family-information' => 'Update Family Information'
       ],
       'template_path' => 'template',
       'content_path' => 'content',
