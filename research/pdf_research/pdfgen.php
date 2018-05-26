@@ -1,5 +1,17 @@
 <?php
 require "fpdf.php";
+$servername = "localhost";
+$username = "root";
+$password = "password";
+$dbname = "testdata";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
 
 class myPDF extends FPDF {
   function header() {
@@ -16,9 +28,38 @@ class myPDF extends FPDF {
     $this->SetFont('Arial','',8);
     $this->Cell(0,10,'Page ' .$this->PageNo. '/{nb}',0,0,'C');
   }
+
+  function headerTable() {
+    $this->SetFont('Times','B',12);
+    $this->Cell(20,10,'ID',1,0,'C');
+    $this->Cell(40,10,'Name',1,0,'C');
+    $this->Cell(40,10,'Year',1,0,'C');
+    $this->Ln();
+  }
+
+  function viewTable($conn) {
+    $this->SetFont('Times','',12);
+    $sql = "SELECT ID,Name,Year FROM testtable";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        $this->Cell(20,10,$row["ID"],1,0,'L');
+        $this->Cell(40,10,$row["Name"],1,0,'L');
+        $this->Cell(40,10,$row["Year"],1,0,'L');
+        $this->Ln();
+      }
+    } else {
+      echo "0 results";
+    }
+  }
 }
 $pdf = new myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('L','A4',0);
+$pdf->headerTable();
+$pdf->viewTable($conn);
 $pdf->Output();
+
+$conn->close();
 ?>
