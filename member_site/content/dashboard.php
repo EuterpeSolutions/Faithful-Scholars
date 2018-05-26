@@ -36,7 +36,7 @@
       <h3>End of Year Forms</h3>
       <div class="row">
         <div class="col-md-4">
-          <a class="undecorated" href="/?page=membership-letter">
+          <a class="undecorated" href="/?page=renewal">
             <div class="circle center">
               Renewal
             </div>
