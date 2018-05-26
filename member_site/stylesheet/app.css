@@ -1,0 +1,54 @@
+/* Body which defines the background image */
+body {
+  background-image: url('/assets/background-image.jpeg');
+  background-repeat: repeat;
+  background-size: contain;
+}
+
+
+/* Faithful Scholars Logo */
+.logoimg {
+  width: 350px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+}
+
+/* Navigation Menu */
+.menu {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000000;
+  margin-left: 10px;
+}
+
+.menu a:hover {
+  text-decoration: none;
+  color: #000000;
+  border-bottom: 2px solid grey;
+}
+
+/* Outer most boostrap row which contains
+   the nav, content, and footer */
+.outer-row {
+  margin-top: 75px;
+  background-color: #FFFFFF;
+  width: 50%;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Title of the page */
+.pageTitle {
+  text-align: center;
+  margin-bottom: 50px;
+}

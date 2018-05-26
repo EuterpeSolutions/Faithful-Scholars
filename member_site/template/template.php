@@ -9,21 +9,22 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js" integrity="sha384-u/bQvRA/1bobcXlcEYpsEdFVK/vJs3+T+nXLsBYJthmdBuavHvAW6UsmqO2Gd/F9" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="wrap">
-      <header>
-        <h2><?php siteName(); ?></h2>
-        <nav class="menu">
-          <?php navMenu(); ?>
-        </nav>
-      </header>
-
-
-      <article>
-        <h3><?php pageTitle(); ?></h3>
-        <?php pageContent(); ?>
-      </article>
+    <div class="row outer-row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <img class="logoimg" src="/assets/faithfulscholarslogo.png" alt="">
+        <header>
+          <nav class="menu">
+            <?php navMenu(); ?>
+          </nav>
+        </header>
+        <article>
+          <h3 class="pageTitle"><?php pageTitle(); ?></h3>
+          <?php pageContent(); ?>
+        </article>
+        <footer><small>&copy;<?php echo date('Y'); ?> <?php siteName(); ?>.</small></footer>
+      </div>
+      <div class="col-md-3"></div>
     </div>
-
-    <footer><small>&copy;<?php echo date('Y'); ?> <?php siteName(); ?>.</small></footer>
   </body>
 </html>

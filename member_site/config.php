@@ -3,7 +3,7 @@
   function config($key = '')
   {
     $config = [
-      'name' => 'Simple PHP Website',
+      'name' => 'Faithful Scholars',
       'nav_menu' => [
         '' => 'Dashboard',
         'update-family-information' => 'Update Family Information'
