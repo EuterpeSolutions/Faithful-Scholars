@@ -15,9 +15,9 @@ $initial_7 = $_POST['initial7'];
 
 //submission
 if (isset($_POST['submit'])) {
-  if(isset($_POST['submission']))
+  if(isset($_POST['submitted_worksheet']))
   {
-    $submitted_worksheet = $_POST['submission'];  //  Displaying Selected Value
+    $submitted_worksheet = $_POST['submitted_worksheet'];  //  Displaying Selected Value
   }
 }
 
