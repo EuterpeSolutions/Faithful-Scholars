@@ -75,7 +75,7 @@
           target="_top">dual enrollment information page</a></label>
           <div class="controls radio-group">
             <label class="radio">
-              <input type="radio" value="1" id="yes" name="dual-enrollment">
+              <input type="radio" value="1" id="yes" name="dual_enrollment">
               Yes
             </label>
             <label class="radio">

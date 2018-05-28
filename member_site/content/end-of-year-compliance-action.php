@@ -23,9 +23,9 @@ if (isset($_POST['submit'])) {
 
 //dual enrollment
 if (isset($_POST['submit'])) {
-  if(isset($_POST['dual-enrollment']))
+  if(isset($_POST['dual_enrollment']))
   {
-    $dual_enrollment = $_POST['dual-enrollment'];  //  Displaying Selected Value
+    $dual_enrollment = $_POST['dual_enrollment'];  //  Displaying Selected Value
   }
 }
 
