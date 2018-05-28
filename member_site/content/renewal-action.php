@@ -47,13 +47,24 @@ if(mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 };
 
-$sql = "INSERT INTO family (first_name, last_name, phone, email, county, zip, city, address) 
+$sql = "INSERT INTO family (first_name, last_name, phone, email, county, zip, city, address)
                     VALUES('$first_name', '$last_name', '$phone', '$email', '$county', '$zipcode', '$city', '$address')";
 
+$insert_id = 0;
 if ($con->query($sql) === TRUE) {
   echo "New record created";
+  $insert_id = mysqli_insert_id($con);
+  echo $insert_id;
 } else {
   echo "Error: " . $sql . "<br>" . $con->error;
 }
 
+$sql_student = "INSERT INTO student (family_id, name, grade, birthday)
+                VALUES ('$insert_id','$child1','$grade1','$birthdate1')";
+
+if ($con->query($sql_student) === TRUE) {
+  echo "New record created";
+} else {
+  echo "Error: " . $sql . "<br>" . $con->error;
+}
 ?>

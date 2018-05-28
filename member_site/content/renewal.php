@@ -123,11 +123,11 @@
             <div class="form-group"><label for=""></label><br><br><label for=""></label></div>
             <div class="form-group">
               <label for="city">City:</label>
-              <input type="city" class="form-control" name="city" id="city" placeholder="Enter city">
+              <input type="city" class="form-control" name="city" id="city" placeholder="Enter city" >
             </div>
             <div class="form-group">
               <label for="county">County:</label>
-              <select class="form-control" name="county" id="county">
+              <select class="form-control" name="county" id="county" required>
                 <option value='Abbeville'>Abbeville</option>
                 <option value='Aiken'>Aiken</option>
                 <option value='Allendale'>Allendale</option>
@@ -182,7 +182,7 @@
           <div class="col-md-12">
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Please list any additional changes to your current information:</label>
-              <textarea class="form-control" name="extra_information" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea class="form-control" name="extra_information" id="exampleFormControlTextarea1" rows="3" ></textarea>
             </div>
           </div>
         </div>
@@ -206,13 +206,70 @@
             </div>
           </div>
         </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+                Please initial the following boxes to show your compliance with them:
+            </div>
+            <div class="form-group">
+              <div>
+                <input size=5 type="initial" id="initial1" required> I have included our curriculum plan for this year.
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <input size=5 type="initial" id="initial5" required> I have read and understood the homeschool laws of SC section 59-65-47 and agree to abide by them, maintaining and make available all legally required home school records for review by the director of Faithful Scholars and/or the State Board of Education.
+              </div>
+            </div>
+            <div class="form-group">
+              <div>
+                <input size=5 type="initial" id="initial6" required> I have read, and agree to comply with all of the Bylaws and Expectations as set forth by Faithful Scholars.
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="membership_type">Type of Membership:</label>
+              <div class="radio">
+                <label><input type="radio" name="optradio">Kindergarten only membership $25/year</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">Single-student family membership $35/year</label>
+              </div>
+              <div class="radio">
+                <label><input type="radio" name="optradio">Multi-student family membership $60/year</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Additions to your membership</label>
+              <select class="form-control" name="county" id="county">
+                <option value='0'>0</option>
+                <option value='1'>1</option>
+                <option value='2'>2</option>
+                <option value='3'>3</option>
+                <option value='4'>4</option>
+              </select>
+              <label>* high school package includes: annual transcript, formal college accepted transcript upon graduation, diploma, DMV permission letter, secondary school recommendation, workshop, & email support
+            </div>
+            <div class="form-group">
+              <label class="checkbox-inline"><input type="checkbox" value="">Replacement membership or student membership card $3</label><br>
+              <label class="checkbox-inline"><input type="checkbox" value="">SCHEA discounted membership $15</label><br>
+              <label class="checkbox-inline"><input type="checkbox" value="">Enchanted Learning discounted membership $7</label><br>
+              <label class="checkbox-inline"><input type="checkbox" value="">Expedite my Application Please $20 (24 hour turn around)</label><br>
+            </div>
+          </div>
+        </div>
       </div>
     </fieldset>
     <div class="row">
       <div class="col-md-12">
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <input class="btn btn-default" type="submit" name="submit" value="submit" />
+            <input class="btn btn-success" type="submit" name="submit" value="Submit" />
           </div>
         </div>
       </div>
