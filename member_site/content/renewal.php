@@ -1,4 +1,4 @@
-<form class="form-horizontal" method="post" action="content/renewal-action.php">
+<form class="form-horizontal" method="post" action="?page=renewal-action">
   <fieldset>
     <legend> Membership Renewal </legend>
       <div class="container">

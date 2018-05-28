@@ -81,20 +81,17 @@ $sql = "INSERT INTO family (first_name, last_name, phone, email, county, zip, ci
                     VALUES('$first_name', '$last_name', '$phone', '$email', '$county', '$zipcode', '$city', '$address')";
 $insert_id = 0;
 if ($con->query($sql) === TRUE) {
-  echo "New record created<br>";
   $insert_id = mysqli_insert_id($con);
-  echo $insert_id . "<br>";
 } else {
   echo "Error: " . $sql . "<br>" . $con->error . "<br>";
 }
 
 // Student Information
-for($i = 0; $i < 9; $i++){
+for($i = 1; $i < 9; $i++){
   if(${"child" . $i} != ''){
     $sql_student = "INSERT INTO student (family_id, name, grade, birthday)
                     VALUES ('$insert_id','${"child" . $i}','${"grade" . $i}','${"birthdate" . $i}')";
     if ($con->query($sql_student) === TRUE) {
-      echo "New record created <br>";
     } else {
       echo "Error: " . $sql . "<br>" . $con->error;
     }
@@ -104,73 +101,78 @@ for($i = 0; $i < 9; $i++){
 // Membership Information
 $type = (int)$optradio;
 $highschool = (int)$high_school_number;
-echo $highschool;
 $sql_membership = "INSERT INTO membership (family_id, type_id, highschool,
                    replacement_card, schea, enchanted_learning, expedited, initial_1, initial_5, initial_6)
                    VALUES ('$insert_id', '$type', '$highschool', '$replacement', '$schea', '$el', '$expedite', '$initial1', '$initial5', '$initial6')";
 if ($con->query($sql_membership) === TRUE) {
- echo "New record created<br>";
 } else {
  echo "Error: " . $sql_membership . "<br>" . $con->error . "<br>";
 }
+
+// Calculate membership fees
+// Base
+$total = 0;
+$type_full = "";
+$type_price = 0;
+// Membership Fee
+switch($type) {
+  case 1: // Kindergarten
+    $total += 25;
+    $type_full = "Kindergarten only membership";
+    $type_price = 25;
+    break;
+  case 2: // Single-student
+    $total += 35;
+    $type_full = "Single-student family membership";
+    $type_price = 35;
+    break;
+  case 3: // Multi-student
+    $total += 60;
+    $type_full = "Multi-student family membership";
+    $type_price = 60;
+    break;
+}
+
+// Number of high school students
+$total += ($highschool * 75);
+
+// Additions
+if($replacement == "1"){
+  $total += 3;
+}
+if($schea == "1"){
+  $total += 15;
+}
+if($el == "1"){
+  $total += 7;
+}
+if($expedite == "1"){
+  $total += 20;
+}
 ?>
+<br><br><br><br><br><br>
+<h2 class="center">Thank you for renewing your membership! </h2>
+<p class="center"> <?php echo $first_name; ?> <?php echo $last_name?>,  <?php echo $type_full?></p>
+<br><br><br><br><br><br>
+Please pay for your membership via the Paypal button below, or by mailing a check to Faithful Scholars, 1761 Ballard Ln, Fort Mill, SC 29715.  Note that if you are mailing a check, your membership renewal will not be considered complete until your check clears.  <br />
+<br>
+<h3 class="center">Amount Due: $<?php echo $total?></h3>
+<form class="center" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> <!-- Identify your business so that you can collect the payments. --> <input type="hidden" name="business" value="katie@faithfulscholars.com"> <!-- Specify a Buy Now button. --> <input type="hidden" name="cmd" value="_xclick"> <!-- Specify details about the item that buyers will purchase. --> <input type="hidden" name="item_name" value="Faithful Scholars Membership Fees - <? echo $last_name ?>, <? echo $type_full?>" > <input type="hidden" name="amount" value="<? echo $total ?>"> <input type="hidden" name="currency_code" value="USD"> <!-- Display the payment button. --> <input type="image" name="submit" border="0" src="http://www.faithfulscholars.com/images/paynow.jpg" alt="Faithful Scholars Checkout"> <img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" > </form>
+<br>
+<p>You have chosen to receive your membership information by <? echo $membership_documents?>.    </p>
+<p><strong>Type of membership:</strong> <?php echo $type_full ?> - $<?php echo $type_price?></p>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>Faithful Scholars - SC Accountability Association</title>
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1" />
-<link rel="stylesheet" href="stylesheet.css" type="text/css" />
-</head>
+<?php
+  if($highschool > 0 || $schea == "1" || $el == "1" || $expedite == "1"){
+    echo "<p><strong>Additions to your membership: </strong> </p><ul>";
+    if($replacement == "1"){ echo "<p> Replacement Membership Card - $3";}
+    if($highschool > 0){ echo "<p> High school students  &nbsp; - $" . ($highschool * 75) . "</p>";}
+    if($schea == "1"){ echo "<p><a href=\"http://www.schomeeducatorsassociation.org/\" target=\"_blank\">SCHEA</a> discounted membership - $15</p>";}
+    if($el == "1"){ echo "<p><a href=\"http://www.enchantedlearning.com/\" target=\"_blank\">Enchanted Learning</a> discounted membership&nbsp;- $7</p>";}
+    if($expedite == "1"){echo "<p>Expedited renewal - $20</p>";}
+    echo "</ul>";
+  }
 
-<body>
-
-<div id="container">
-	<div id="header">
-	 <p align="center">&nbsp;</p>
-  </div>
-<div id="content">
-
-    <canvas id="display" width="1px" height="1px" tabindex="1"> </canvas>
-    <h2>Thank you for renewing your membership! </h2>
-    <p> <?php echo $first_name; ?> <?php echo $last_name?>,  <?php echo $membership?></p>
-    Please pay for your membership via the Paypal button below, or by mailing a check to Faithful Scholars, 1761 Ballard Ln, Fort Mill, SC 29715.  Note that if you are mailing a check, your membership renewal will not be considered complete until your check clears.  <br />
-    <table align="center">
-    <tr>
-    <td>
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top"> <!-- Identify your business so that you can collect the payments. --> <input type="hidden" name="business" value="katie@faithfulscholars.com"> <!-- Specify a Buy Now button. --> <input type="hidden" name="cmd" value="_xclick"> <!-- Specify details about the item that buyers will purchase. --> <input type="hidden" name="item_name" value="Faithful Scholars Membership Fees - <? echo $last_name ?>, <? echo $membership?>" > <input type="hidden" name="amount" value="<? echo $total ?>"> <input type="hidden" name="currency_code" value="USD"> <!-- Display the payment button. --> <input type="image" name="submit" border="0" src="http://www.faithfulscholars.com/images/paynow.jpg" alt="Faithful Scholars Checkout"> <img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" > </form>
-</td>
-</tr>
-</table>
-    <p>Thank you for submitting your membership renewal form online!</p>
-    <p>You have chosen to receive your membership information by <? echo $membership_documents?>.    </p>
-    <p><strong>Type of membership:</strong> <? echo $type ?></p>
-    <p><strong>Additions to your membership: </strong> </p>
-    <ul>
-      <p> High school students  &nbsp; - $<? echo $hs_students ?></p>
-      <p>High school diploma - $<? echo $hs_diploma ?></p>
-      <p>Copy of official/compiled  4-year transcripts - $<? echo $hs_transcript ?> &nbsp;</p>
-      <p> Personal consultations - $<? echo $consultation ?></p>
-      <p><a href="http://www.schomeeducatorsassociation.org/" target="_blank">SCHEA</a> discounted membership - $<? echo $schea ?></p>
-      <p><a href="http://www.enchantedlearning.com/" target="_blank">Enchanted Learning</a> discounted membership&nbsp;- $<? echo $enchanted ?></p>
-      <p>Expedited renewal - $<? echo $expedite ?></p>
-      <p><strong>Prepaid Workshops: </strong></p>
-      <p>Workshop only: $<? echo $workshop ?></p>
-      <p>Retreat only -$ <? echo $retreat ?></p>
-      <p>Workshop and Retreat Combo -$ <? echo $combo ?></p>
-    </ul>
-    <p>To complete your renewal, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <p>If you would prefer to pay by check, please mail your check to Faithful Scholars, </p>
-    <p>If you have a high school student and need to submit your transcript information, you can do so with either the  <a href="transcript_input.html">Faithful Scholars Electronic Transcript Worksheet</a> or a <a href="transcriptform.pdf">Faithful Scholars Paper Transcript Worksheet.</a>
-    </p>
-    <div align="center">
-      <p></p>
-    </div>
+?>
+<p>If you have a high school student and need to submit your transcript information, you can do so with either the  <a href="transcript_input.html">Faithful Scholars Electronic Transcript Worksheet</a> or a <a href="transcriptform.pdf">Faithful Scholars Paper Transcript Worksheet.</a>
 </p>
-<p>&nbsp;</p>
-<div id="footer"></div>
-  </div>
-  </div>
-
-</body>
-</html>
