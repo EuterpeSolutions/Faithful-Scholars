@@ -235,13 +235,13 @@
             <div class="form-group">
               <label for="membership_type">Type of Membership:</label>
               <div class="radio">
-                <label><input type="radio" name="optradio">Kindergarten only membership $25/year</label>
+                <label><input type="radio" name="optradio" value="1">Kindergarten only membership $25/year</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio">Single-student family membership $35/year</label>
+                <label><input type="radio" name="optradio" value="2">Single-student family membership $35/year</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio">Multi-student family membership $60/year</label>
+                <label><input type="radio" name="optradio" value="3">Multi-student family membership $60/year</label>
               </div>
             </div>
           </div>
@@ -253,7 +253,7 @@
             <div class="form-group">
               <label>Number of High School Students:</label>
 
-              <select class="form-control" name="county" id="">
+              <select class="form-control" name="high_school_number" id="high_school_number">
                 <option value='0'>0</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>
@@ -263,10 +263,10 @@
               <label>* high school package includes: annual transcript, formal college accepted transcript upon graduation, diploma, DMV permission letter, secondary school recommendation, workshop, & email support
             </div>
             <div class="form-group">
-              <label class="checkbox-inline"><input type="checkbox" value="">Replacement membership or student membership card $3</label><br>
-              <label class="checkbox-inline"><input type="checkbox" value="">SCHEA discounted membership $15</label><br>
-              <label class="checkbox-inline"><input type="checkbox" value="">Enchanted Learning discounted membership $7</label><br>
-              <label class="checkbox-inline"><input type="checkbox" value="">Expedite my Application Please $20 (24 hour turn around)</label><br>
+              <label class="checkbox-inline"><input type="checkbox" name="replacement" value="1">Replacement membership or student membership card $3</label><br>
+              <label class="checkbox-inline"><input type="checkbox" name="schea" value="1">SCHEA discounted membership $15</label><br>
+              <label class="checkbox-inline"><input type="checkbox" name="el" value="1">Enchanted Learning discounted membership $7</label><br>
+              <label class="checkbox-inline"><input type="checkbox" name="expedite" value="1">Expedite my Application Please $20 (24 hour turn around)</label><br>
             </div>
           </div>
         </div>
