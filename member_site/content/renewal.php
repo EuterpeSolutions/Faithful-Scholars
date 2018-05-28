@@ -214,17 +214,17 @@
             </div>
             <div class="form-group">
               <div>
-                <input size=5 type="initial" id="initial1" required> I have included our curriculum plan for this year.
+                <input size=5 type="initial" name="initial1" id="initial1" required> I have included our curriculum plan for this year.
               </div>
             </div>
             <div class="form-group">
               <div>
-                <input size=5 type="initial" id="initial5" required> I have read and understood the homeschool laws of SC section 59-65-47 and agree to abide by them, maintaining and make available all legally required home school records for review by the director of Faithful Scholars and/or the State Board of Education.
+                <input size=5 type="initial" name="initial5" id="initial5" required> I have read and understood the homeschool laws of SC section 59-65-47 and agree to abide by them, maintaining and make available all legally required home school records for review by the director of Faithful Scholars and/or the State Board of Education.
               </div>
             </div>
             <div class="form-group">
               <div>
-                <input size=5 type="initial" id="initial6" required> I have read, and agree to comply with all of the Bylaws and Expectations as set forth by Faithful Scholars.
+                <input size=5 type="initial" name="initial6" id="initial6" required> I have read, and agree to comply with all of the Bylaws and Expectations as set forth by Faithful Scholars.
               </div>
             </div>
           </div>
@@ -244,9 +244,16 @@
                 <label><input type="radio" name="optradio">Multi-student family membership $60/year</label>
               </div>
             </div>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-12">
+            <label>Additions to your membership</label>
             <div class="form-group">
-              <label>Additions to your membership</label>
-              <select class="form-control" name="county" id="county">
+              <label>Number of High School Students:</label>
+
+              <select class="form-control" name="county" id="">
                 <option value='0'>0</option>
                 <option value='1'>1</option>
                 <option value='2'>2</option>

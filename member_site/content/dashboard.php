@@ -64,21 +64,21 @@
       <h3>Transcripts</h3>
       <div class="row">
         <div class="col-md-4">
-          <a class="undecorated" href="/?page=membership-letter">
+          <a class="undecorated" href="http://www.faithfulscholars.com/middle-school-transcript/">
             <div class="circle center">
               Middle School Transcript Input
             </div>
           </a>
         </div>
         <div class="col-md-4">
-          <a class="undecorated" href="/?page=membership-letter">
+          <a class="undecorated" href="http://www.faithfulscholars.com/high-school-transcript/">
             <div class="circle center">
               High School Transcript Input
             </div>
           </a>
         </div>
         <div class="col-md-4">
-          <a class="undecorated" href="/?page=membership-letter">
+          <a class="undecorated" href="http://www.faithfulscholars.com/request-a-transcript/">
             <div class="circle center">
               Request Mailed Transcript
             </div>
