@@ -26,3 +26,12 @@
 </form>
 </tr>
 </table>
+<form name="form2" method="post" action="resetpassword_requestform.php">
+  <td>
+    <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td><input type="submit" name="recoverpassword" value="Recover your Password"></td>
+    </tr>
+  </td>
+</form>
