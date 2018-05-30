@@ -26,7 +26,7 @@
 </form>
 </tr>
 </table>
-<form name="form2" method="post" action="resetpassword_form.php">
+<form name="form2" method="post" action="resetpassword_requestform.php">
   <td>
     <tr>
     <td>&nbsp;</td>

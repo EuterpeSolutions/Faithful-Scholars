@@ -1,6 +1,6 @@
 <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
-<form name="form1" method="post" action="resetpassword.php">
+<form name="form1" method="post" action="resetpasswordrequest.php">
 <td>
 <table width="100%" border="0" cellpadding="3" cellspacing="1" bgcolor="#FFFFFF">
 <tr>
@@ -12,15 +12,9 @@
 <td><input name="myemail" type="text" id="myemail"></td>
 </tr>
 <tr>
-  <tr>
-  <td>New Password</td>
-  <td>:</td>
-  <td><input name="mypassword" type="text" id="mypassword"></td>
-  </tr>
-  <tr>
 <td>&nbsp;</td>
 <td>&nbsp;</td>
-<td><input type="submit" name="Submit" value="Submit"></td>
+<td><input type="submit" name="Submit" value="Login"></td>
 </tr>
 </table>
 </td>
