@@ -8,7 +8,7 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <a class="undecorated" href="/?page=membership-letter">
+          <a class="undecorated" href="/content/membership-letter.php">
             <div class="circle center">
               Membership Letter
             </div>
