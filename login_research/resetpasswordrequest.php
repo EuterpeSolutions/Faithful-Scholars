@@ -12,12 +12,13 @@ if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
 }
-
+//Find user
 $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
 $result=mysqli_query($con, $sql);
+//Generate reset link
 if($result->num_rows != 0){
   $uniqidStr = md5(uniqid(mt_rand()));;
-  $resetPassLink = 'LINK TO RESET FORM'.$uniqidStr;
+  $resetPassLink = 'LINK TO RESET FORM SHOULD GO TO RESETPASWORD_FORM'.$uniqidStr;
 
   //setting up Email
   $to = $myemail;

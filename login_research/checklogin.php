@@ -13,7 +13,6 @@ if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
 }
-//mysqli_select_db($con, "$db_name")or die("cannot select DB");
 
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];
@@ -37,18 +36,12 @@ if($result->num_rows != 0){
 $site_salt="faithfulscholarsalt";
 $salted_hash = hash('sha256',$password.$site_salt.$p_salt);
 
-
-// Mysql_num_row is counting table row
-//$count=mysqli_num_rows($result);
-
-// If result matched $myusername and $mypassword, table row must be 1 row
-
-//if($count==1){
+//If pwds match
 if($p==$salted_hash){
 
 // Register $myusername, $mypassword and redirect to file "login_success.php"
-//session_register("myusername");
-//session_register("mypassword");
+session_register("myusername");
+session_register("mypassword");
 header("location:login_success.php");
 }
 else {
