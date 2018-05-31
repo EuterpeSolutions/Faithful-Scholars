@@ -90,6 +90,11 @@ body {
   background-image: url('/assets/transcript-background.png');
 }
 
+/* Admin Dashboard */
+.admin-search {
+  width: 100%;
+}
+
 /* General Use Classes*/
 .left {
   text-align: left;
