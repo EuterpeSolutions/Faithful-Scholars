@@ -38,10 +38,26 @@ function pageContent()
     }
 }
 
+// Displays child input boxes
+function childInput($name, $num_child = 9)
+{
+  $output = '';
+
+  for($i = 1; $i <= $num_child; $i++) {
+    $output .= '<div class="form-group">';
+    $output .= '<label for="'.$name.$i.'">'.ucfirst($name).' '.$i.':&nbsp</label>';
+    $output .= '<input id="'.$name.$i.'" name="'.$name.$i.'"class="form-control">';
+    $output .= '</div>';
+  }
+  return $output;
+}
+
+
 // Starts everything and displays the template
 function run()
 {
   include config('template_path').'/template.php';
 }
+
 
 ?>
