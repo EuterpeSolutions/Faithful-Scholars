@@ -203,7 +203,23 @@ VALUES
 /*!40000 ALTER TABLE `student` ENABLE KEYS */;
 UNLOCK TABLES;
 
+# Dump of table members
+# ------------------------------------------------------------
 
+CREATE TABLE `members` (
+  `id` int(4) NOT NULL,
+  `username` varchar(65) NOT NULL DEFAULT '',
+  `psalt` varchar(20) DEFAULT NULL,
+  `password` varchar(100) NOT NULL DEFAULT '',
+  `email` varchar(60) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+LOCK TABLES `student` WRITE;
+
+INSERT INTO `members` (`id`, `username`, `psalt`, `password`, `email`) VALUES
+(1, 'john', 's*vl%/?s8b*b4}b/w%w4', '75b4e8e5ecccdf843df41a32077707eb6b97981f5d3ab6c235f1158bf4950145', 'pmatt42@gmail.com');
+
+UNLOCK TABLES;
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
