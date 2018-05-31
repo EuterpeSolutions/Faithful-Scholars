@@ -37,6 +37,20 @@ function MM_validateForm() { //v4.0
 <body>
   <form action="application_submit.php" method="post" id="compliance" onsubmit="MM_validateForm('last_name','','R','city','','R','email','','RisEmail','zip','','R','county','','R','start_date','','R','end_date','','R','primary_instructor','','R','student_1','','R','student_1_age','','R','student_1_birthdate','','R');return document.MM_returnValue"><br />
     <fieldset>
+      <legend> Account Information </legend>
+      <table width="750" border="0">
+        <tr>
+          <td><label for="username"> Username </label></td>
+          <td><input type="text" name="username" id="username" /></td>
+          <td><label for="email"> Email </label></td>
+          <td><input type="text" name="email" id="email" /></td>
+          <td><label for="password"> Password </label></td>
+          <td><input type="text" name="password" id="password" /></td>
+        </tr>
+      </table>
+    </fieldset>
+  </br>
+  <fieldset>
       <legend> Family Information </legend>
       <table width="750" border="0">
         <tr>
@@ -85,7 +99,7 @@ function MM_validateForm() { //v4.0
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           </tr>
-        
+
         </table>
   </fieldset><br />
     <fieldset>
@@ -138,7 +152,7 @@ function MM_validateForm() { //v4.0
           <td><label>If yes, <a href="http://ed.sc.gov/schools" target="_blank">school fax #</a>: <span data-tip="Required if expediting your application."  class="help"> [?] </span></label></td>
           <td><input name="school_fax" type="text" id="school_fax" tabindex="23" /></td>
           </tr>
-        
+
         </table>
       </fieldset><br />
     <fieldset>
@@ -213,7 +227,7 @@ function MM_validateForm() { //v4.0
       <legend> Membership Information </legend>
       <p><strong>Type of Membership: </strong></p>
       <ul>
-        <p> <input name="type" id="type" value="Kindergarten-Only" type="radio" /> 
+        <p> <input name="type" id="type" value="Kindergarten-Only" type="radio" />
           Kindergarten only membership $25/year</p>
         <p>
           <input name="type" id="type2" value="Single-Student" type="radio" />
@@ -237,19 +251,19 @@ function MM_validateForm() { //v4.0
           High school student - $75/student *&nbsp;</p>
         <p>* high school package includes: &nbsp;annual transcript, formal college  accepted transcript upon graduation, diploma, DMV permission letter,  secondary school recommendation, workshop, &amp; email support<br />
         </p>
-        
+
         <p> <input name="card" id="card" value="3" type="checkbox" />Replacement
           membership card $3 &nbsp;(if previous card has been lost) </p>
         <p> <input name="schea" id="schea" value="15" type="checkbox" /> <a href="http://www.schomeeducatorsassociation.org/" target="_blank">SCHEA</a>
           discounted membership &nbsp;$15&nbsp;</p>
-        <p> <input name="enchanted" id="enchanted" value="10" type="checkbox" /> 
+        <p> <input name="enchanted" id="enchanted" value="10" type="checkbox" />
         <a href="http://www.enchantedlearning.com/" target="_blank">Enchanted Learning</a> discounted membership&nbsp;$10</p>
-        
+
         <p> <input name="expedite" id="expedite" value="20" type="checkbox" />
           Expedited (24 hour turn-around) Application&nbsp;&nbsp;&nbsp;&nbsp; <strong>$20* <br />
             <br />
           *Standard applications take 3 to 30 days to fully process your paperwork  including mailouts.&nbsp; You are legal to homeschool as of the completion  of submitting/paying for your application.&nbsp;</strong></p>
-        
+
         <p>&nbsp;</p>
   </ul>
       <h2><strong><u>INITIAL APPLICABLE BOXES FOR APPLICATION  PROCESS TO BE COMPLETED</u></strong><strong>:</strong>&nbsp;&nbsp;&nbsp; </h2>

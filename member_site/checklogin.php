@@ -18,7 +18,7 @@ if(!$con)
 $myusername=$_POST['myusername'];
 $mypassword=$_POST['mypassword'];
 
-// To protect MySQL injection (more detail about MySQL injection)
+// To protect MySQL injection
 $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysqli_real_escape_string($con, $myusername);
@@ -32,23 +32,23 @@ if($result->num_rows != 0){
       $p = $row["password"];
   }
 }
+else {
+  echo "The username or password was incorrect";
+}
 
 $site_salt="faithfulscholarsalt";
-$salted_hash = hash('sha256',$password.$site_salt.$p_salt);
+$salted_hash = hash('sha256',$mypassword.$site_salt.$p_salt);
 
 //If pwds match
 if($p==$salted_hash){
 
-// Register $myusername, $mypassword and redirect to file "login_success.php"
-session_register("myusername");
-session_register("mypassword");
-header("location:login_success.php");
+require 'config.php';
+require 'functions.php';
+run();
+
 }
 else {
-echo "Wrong Username or Password \n";
-echo $p;
-echo "<<<>>>";
-echo $salted_hash;
+  echo "The username or password was incorrect";
 }
 
 ob_end_flush();
