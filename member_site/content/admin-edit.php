@@ -1,3 +1,94 @@
 <?php
-  echo $_POST["edit"]
+  $last_name = $_POST["edit"];
+
+  $con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
+  if(mysqli_connect_errno()) {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  };
+  $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
+  $last_name = "";
+  $first_name = "";
+  $phone = "";
+  $email = "";
+  $address = "";
+  $zipcode = "";
+  $city = "";
+
+  if($result = mysqli_query($con, $sql)){
+    while($row = mysqli_fetch_array($result)){
+      $last_name = $row["last_name"];
+      $first_name = $row["first_name"];
+      $phone = $row["phone"];
+      $email = $row["email"];
+      $address = $row["address"];
+      $zipcode = $row["zip"];
+      $city = $row["city"];
+    }
+  }
 ?>
+<form class="form-horizontal" method="post" action="?page=admin">
+  <fieldset>
+    <legend> Membership Renewal </legend>
+      <div class="container">
+        <div class="row">
+          <input type="text" class="form-control" value="<?php echo $last_name;?>" name="original_last_name">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="last_name">Last Name:</label>
+              <input type="last_name" class="form-control" value="<?php echo htmlspecialchars($last_name)?>" name="last_name" id="last_name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone:</label>
+              <input type="phone" class="form-control" value="<?php echo htmlspecialchars($phone)?>"name="phone" id="phone" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="address">Address:</label>
+              <input type="address" class="form-control" value="<?php echo htmlspecialchars($address)?>"name="address" id="address" placeholder="Enter address">
+            </div>
+            <div class="form-group">
+              <label for="zip">Zipcode:</label>
+              <input type="zip" class="form-control" value="<?php echo htmlspecialchars($zipcode)?>"name="zipcode" id="zip" placeholder="Enter zipcode">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="first_name">First Name:</label>
+              <input type="first_name" class="form-control" value="<?php echo htmlspecialchars($first_name)?>"name="first_name" id="first_name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail:</label>
+              <input type="email" class="form-control" value="<?php echo htmlspecialchars($email)?>"name="email" id="email" placeholder="Enter name">
+            </div>
+            <div class="form-group"><label for=""></label><br><br><label for=""></label></div>
+            <div class="form-group">
+              <label for="city">City:</label>
+              <input type="city" class="form-control" value="<?php echo htmlspecialchars($city)?>"name="city" id="city" placeholder="Enter city" >
+            </div>
+          </div>
+        </div>
+        <br>
+        <hr>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <?php echo childInput('child')?>
+          </div>
+          <div class="col-md-2">
+            <?php echo childInput('grade')?>
+          </div>
+          <div class="col-md-4">
+            <?php echo childInput('birthday')?>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <input class="btn btn-success" type="submit" name="submit" value="Submit" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
