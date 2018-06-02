@@ -30,7 +30,7 @@
          $search_value = $_POST["search"];
          $sql = "";
          if($search_value != ''){
-           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$search_value'";
+           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%'";
          } else {
            $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family";
          }
@@ -39,7 +39,7 @@
          if($result = mysqli_query($con, $sql)){
              if(mysqli_num_rows($result) > 0){
                  echo "<form class='' action='?page=admin-edit' method='post'>";
-                 echo "<table class=\"table\">";
+                 echo "<table class=\"table\" style=\"width:100%;\">";
                      echo "<tr>";
                          echo "<th>First</th>";
                          echo "<th>Last</th>";
@@ -47,8 +47,6 @@
                          echo "<th>Email</th>";
                          echo "<th>Address</th>";
                          echo "<th>City</th>";
-                         echo "<th>Zipcode</th>";
-                         echo "<th>County</th>";
                          echo "<th>Edit</th>";
                      echo "</tr>";
                  while($row = mysqli_fetch_array($result)){
@@ -59,8 +57,6 @@
                          echo "<td>" . $row['email'] . "</td>";
                          echo "<td>" . $row['address'] . "</td>";
                          echo "<td>" . $row['city'] . "</td>";
-                         echo "<td>" . $row['zip'] . "</td>";
-                         echo "<td>" . $row['county'] . "</td>";
                          echo "<td><input type='submit' name='edit' value='". $row['last_name'] . "' class='btn btn-success'></td>";
                      echo "</tr>";
                  }
@@ -105,31 +101,30 @@
          echo "family_id ".$family_id."<br>";
          // Save student data
          for($i = 0; $i < 9; $i++){
-           if(isset($_POST["child".$i]) && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
+           if(isset($_POST["child".$i]) && $_POST["child".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
              $current_name = $_POST["child".$i];
              $current_grade = $_POST["grade".$i];
              $current_birthday = $_POST["birthday".$i];
 
-
              $check_sql = 'SELECT id FROM student WHERE family_id = "'.$family_id.'" AND name = "'.$current_name.'"';
-             echo $check_sql;
+
              if($result = mysqli_query($con, $check_sql)) {
 
                if(mysqli_num_rows($result) == 1){
-                 echo "here";
                  // student record already exists so update it
                  while($row = mysqli_fetch_array($result)){
                    $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = '.$current_grade.', birthday = "'.$current_birthday.'" WHERE id = '.$row["id"];
                    $con->query($update_sql);
-                   echo "Done";
                  }
+               } else {
+                 // Student record does not exist to create interface
+                 $insert_sql = "INSERT INTO student (family_id,name,grade,birthday) VALUES($family_id,'$current_name',$current_grade,'$current_birthday')";
+                 $con->query($insert_sql);
                }
              }
            }
          }
        }
-
-
        // Close connection
        mysqli_close($con);
       ?>
