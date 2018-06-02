@@ -5,7 +5,7 @@
   if(mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
   };
-  $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
+  $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
   $last_name = "";
   $first_name = "";
   $phone = "";
@@ -14,8 +14,11 @@
   $zipcode = "";
   $city = "";
 
+  $family_id = 0;
+
   if($result = mysqli_query($con, $sql)){
     while($row = mysqli_fetch_array($result)){
+      $family_id = $row["id"];
       $last_name = $row["last_name"];
       $first_name = $row["first_name"];
       $phone = $row["phone"];
@@ -23,6 +26,20 @@
       $address = $row["address"];
       $zipcode = $row["zip"];
       $city = $row["city"];
+    }
+  }
+
+  $student_name = [];
+  $student_grade = [];
+  $student_birthday = [];
+
+  $student_sql = "SELECT name, grade, birthday FROM student WHERE family_id = ".$family_id;
+  if($student_result = mysqli_query($con, $student_sql)){
+    $count = 0;
+    while($row = mysqli_fetch_array($student_result)){
+      $student_name[$count] = $row["name"];
+      $student_grade[$count] = $row["grade"];
+      $student_birthday[$count] = $row["birthday"];
     }
   }
 ?>
@@ -71,13 +88,13 @@
         <br>
         <div class="row">
           <div class="col-md-6">
-            <?php echo childInput('child')?>
+            <?php echo childInput('child', $student_name)?>
           </div>
           <div class="col-md-2">
-            <?php echo childInput('grade')?>
+            <?php echo childInput('grade', $student_grade)?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('birthday')?>
+            <?php echo childInput('birthday', $student_birthday)?>
           </div>
         </div>
       </div>

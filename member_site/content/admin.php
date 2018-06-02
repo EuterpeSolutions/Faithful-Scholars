@@ -92,6 +92,41 @@
          $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE last_name = '$original_last_name'";
 
          $con->query($save_sql);
+
+         $family_id_sql = 'SELECT id FROM family WHERE last_name = "'.$last_name.'"';
+         $family_id;
+         if($result = mysqli_query($con, $family_id_sql)){
+             if(mysqli_num_rows($result) > 0){
+                 while($row = mysqli_fetch_array($result)){
+                   $family_id = $row["id"];
+                 }
+             }
+         }
+         echo "family_id ".$family_id."<br>";
+         // Save student data
+         for($i = 0; $i < 9; $i++){
+           if(isset($_POST["child".$i]) && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
+             $current_name = $_POST["child".$i];
+             $current_grade = $_POST["grade".$i];
+             $current_birthday = $_POST["birthday".$i];
+
+
+             $check_sql = 'SELECT id FROM student WHERE family_id = "'.$family_id.'" AND name = "'.$current_name.'"';
+             echo $check_sql;
+             if($result = mysqli_query($con, $check_sql)) {
+
+               if(mysqli_num_rows($result) == 1){
+                 echo "here";
+                 // student record already exists so update it
+                 while($row = mysqli_fetch_array($result)){
+                   $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = '.$current_grade.', birthday = "'.$current_birthday.'" WHERE id = '.$row["id"];
+                   $con->query($update_sql);
+                   echo "Done";
+                 }
+               }
+             }
+           }
+         }
        }
 
 
