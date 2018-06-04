@@ -1,18 +1,13 @@
 <?php
-
+require 'db_config.php';
 ob_start();
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="mysql"; // Database name
-$tbl_name="members"; // Table name
-
 // Connect to server and select databse.
 $con = mysqli_connect("$host", "$username", "$password", $db_name);
 if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
 }
+
 
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];
