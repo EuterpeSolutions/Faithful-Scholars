@@ -1,10 +1,6 @@
 <?php
 ob_start();
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="mysql"; // Database name
-$tbl_name="members"; // Table name
+require 'db_config.php';
 $myemail=$_POST['myemail'];
 // Connect to server and select databse.
 $con = mysqli_connect("$host", "$username", "$password", $db_name);
