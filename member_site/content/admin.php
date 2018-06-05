@@ -7,8 +7,11 @@
     </div>
     <div class="col-md-4">
       <form class="" action="?page=admin" method="post">
-        <input class="admin-search" type="text" name="search"></input>
-        <input type="submit" name="search-submit" value="Search">
+        <div class="form-group">
+          <label for="search">User Search: </label>
+          <input class="admin-search" type="text" id="search" name="search">
+          <input type="submit" name="search-submit" value="Search">
+        </div>
       </form>
 
     </div>
