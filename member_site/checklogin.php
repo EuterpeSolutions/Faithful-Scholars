@@ -1,14 +1,8 @@
 <?php
-require 'db_config.php';
+require 'dbconfig.php';
 ob_start();
 // Connect to server and select databse.
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
-if(!$con)
-{
-  die("cannot connect" . mysqli_connect_error());
-}
-
-
+$con = db_connect();
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];
 $mypassword=$_POST['mypassword'];

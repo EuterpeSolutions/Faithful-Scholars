@@ -1,13 +1,9 @@
 <?php
+require '../dbconfig.php';
 ob_start();
-require 'db_config.php';
 $myemail=$_POST['myemail'];
 // Connect to server and select databse.
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
-if(!$con)
-{
-  die("cannot connect" . mysqli_connect_error());
-}
+$con = db_connect();
 //Find user
 $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
 $result=mysqli_query($con, $sql);
