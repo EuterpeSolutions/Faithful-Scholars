@@ -1,10 +1,11 @@
 <?php
-
+require 'db_config.php';
 ob_start();
+
 $host="127.0.0.1"; // Host name
 $username="root"; // Mysql username
-$password="newpassword"; // Mysql password
-$db_name="FaithfulScholars"; // Database name
+$password=""; // Mysql password
+$db_name=""; // Database name
 $tbl_name="members"; // Table name
 
 // Connect to server and select databse.
@@ -13,6 +14,7 @@ if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
 }
+
 
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];

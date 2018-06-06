@@ -81,6 +81,7 @@ $curriculum_student7=$_POST["curriculum_student7"];
 $curriculum_student8=$_POST["curriculum_student8"];
 
 // Connect to server and select databse.
+require 'db_config.php';
 $con = mysqli_connect("$host", "$username", "$password", $db_name);
 if(!$con)
 {
@@ -94,11 +95,7 @@ $site_salt = "faithfulscholarsalt";
 $p_salt = hash('sha256',$zip.$phone);
 $password = hash('sha256',$password.$site_salt.$p_salt);
 //Sql connection
-$host="localhost"; // Host name
-$username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="mysql"; // Database name
-$tbl_name="members"; // Table name
+
 
 $insert = $con->query( "INSERT INTO members (username,psalt,password,email) VALUES ('$username','$p_salt','$password','$email')" );
 mysqli_close($con);
