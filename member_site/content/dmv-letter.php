@@ -1,6 +1,5 @@
 <?php
 require "fpdf.php";
-
 $servername = "localhost";
 $username = "root";
 $password = "newpassword";

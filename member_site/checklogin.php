@@ -1,4 +1,8 @@
 <?php
+<<<<<<< HEAD
+require 'dbconfig.php';
+=======
+>>>>>>> 263468f1d210049e8aba9c69695430c489b02464
 ob_start();
 
 $host="127.0.0.1"; // Host name
@@ -8,13 +12,7 @@ $db_name="FaithfulScholars"; // Database name
 $tbl_name="members"; // Table name
 
 // Connect to server and select databse.
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
-if(!$con)
-{
-  die("cannot connect" . mysqli_connect_error());
-}
-
-
+$con = db_connect();
 // Define $myusername and $mypassword
 $myusername=$_POST['myusername'];
 $mypassword=$_POST['mypassword'];
