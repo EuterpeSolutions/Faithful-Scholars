@@ -1,7 +1,7 @@
 <?php
 $host="localhost"; // Host name
 $username="root"; // Mysql username
-$password="password"; // Mysql password
+$password="newpassword"; // Mysql password
 $db_name="mysql"; // Database name
 $tbl_name="members"; // Table name
 
