@@ -37,7 +37,7 @@
     <div class="col-md-12 endofyear btn-group">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-4">
             <h3>End of Year Forms</h3>
           </div>
         </div>
