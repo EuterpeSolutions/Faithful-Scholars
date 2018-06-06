@@ -214,7 +214,7 @@ CREATE TABLE `members` (
   `email` varchar(60) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-LOCK TABLES `student` WRITE;
+LOCK TABLES `members` WRITE;
 
 INSERT INTO `members` (`id`, `username`, `psalt`, `password`, `email`) VALUES
 (1, 'john', 's*vl%/?s8b*b4}b/w%w4', '75b4e8e5ecccdf843df41a32077707eb6b97981f5d3ab6c235f1158bf4950145', 'pmatt42@gmail.com');
