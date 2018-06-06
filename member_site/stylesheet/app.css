@@ -101,6 +101,11 @@ label {
 .admin-search {
   width: 100%;
 }
+.table {
+	table-layout: fixed;
+	word-wrap: break-word;
+}
+
 
 /* General Use Classes*/
 .left {

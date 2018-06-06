@@ -3,8 +3,8 @@ require "fpdf.php";
 
 $servername = "localhost";
 $username = "root";
-$password = "password";
-$dbname = "testdata";
+$password = "newpassword";
+$dbname = "FaithfulScholars";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
