@@ -1,9 +1,9 @@
 <?php
 require "fpdf.php";
-$servername = "localhost";
+$servername = "127.0.0.1";
 $username = "root";
-$password = "password";
-$dbname = "testdata";
+$password = "newpassword";
+$dbname = "FaithfulScholars";
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
