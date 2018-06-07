@@ -2,17 +2,87 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-4">
-
+    <div class="col-md-12">
+      <?php
+      // Establish MySQL connection
+      $con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
+      if(mysqli_connect_errno()) {
+       echo "Failed to connect to MySQL: " . mysqli_connect_error();
+      };
+      echo "<h3>Student Count by District</h3>";
+      $sql="SELECT COUNT(f.id) as count, f.district as district FROM student AS s JOIN family as f ON s.family_id = f.id WHERE f.district IS NOT NULL GROUP BY f.district;";
+      if($result = mysqli_query($con, $sql)){
+         if(mysqli_num_rows($result) > 0){
+             echo "<form class='' action='?page=admin-edit' method='post'>";
+             echo "<table class=\"table\" style=\"width:100%;\">";
+                 echo "<tr>";
+                     echo "<th>District</th>";
+                     echo "<th>Count</th>";
+                 echo "</tr>";
+             while($row = mysqli_fetch_array($result)){
+                 echo "<tr>";
+                     echo "<td>" . $row['district'] . "</td>";
+                     echo "<td>" . $row['count'] . "</td>";
+                 echo "</tr>";
+             }
+             echo "</table>";
+             echo "</form>";
+             // Free result set
+             mysqli_free_result($result);
+         } else{
+             echo "No records matching your query were found.";
+         }
+      } else{
+         echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
+      }
+      echo "<h3>Student Count by Grade</h3>";
+      $sql="SELECT COUNT(id) as count, grade FROM student WHERE grade IS NOT NULL GROUP BY grade;";
+      if($result = mysqli_query($con, $sql)){
+         if(mysqli_num_rows($result) > 0){
+             echo "<form class='' action='?page=admin-edit' method='post'>";
+             echo "<table class=\"table\" style=\"width:100%;\">";
+                 echo "<tr>";
+                     echo "<th>Grade</th>";
+                     echo "<th>Count</th>";
+                 echo "</tr>";
+             while($row = mysqli_fetch_array($result)){
+                 echo "<tr>";
+                     echo "<td>" . $row['grade'] . "</td>";
+                     echo "<td>" . $row['count'] . "</td>";
+                 echo "</tr>";
+             }
+             echo "</table>";
+             echo "</form>";
+             // Free result set
+             mysqli_free_result($result);
+         } else{
+             echo "No records matching your query were found.";
+         }
+      } else{
+         echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
+      }
+      // Close connection
+      mysqli_close($con);
+      ?>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <h3>User Search</h3>
+    </div>
+  </div>
+  <div class="row">
     <div class="col-md-4">
       <form class="" action="?page=admin" method="post">
         <div class="form-group">
-          <label for="search">User Search: </label>
           <input class="admin-search" type="text" id="search" name="search">
           <input type="submit" name="search-submit" value="Search">
         </div>
       </form>
+    </div>
+    <div class="col-md-4">
+
+
 
     </div>
     <div class="col-md-4">

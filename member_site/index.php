@@ -1,4 +1,4 @@
-<table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
+<!-- <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
 <form name="form1" method="post" action="checklogin.php">
 <td>
@@ -34,4 +34,10 @@
     <td><input type="submit" name="recoverpassword" value="Recover your Password"></td>
     </tr>
   </td>
-</form>
+</form> -->
+
+<?php
+require 'config.php';
+require 'functions.php';
+run()
+ ?>
