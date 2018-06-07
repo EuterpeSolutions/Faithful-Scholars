@@ -1,8 +1,5 @@
 <?php
-<<<<<<< HEAD
 require 'dbconfig.php';
-=======
->>>>>>> 263468f1d210049e8aba9c69695430c489b02464
 ob_start();
 
 $host="127.0.0.1"; // Host name
@@ -43,6 +40,9 @@ if($p==$salted_hash){
 
 require 'config.php';
 require 'functions.php';
+session_start();
+$_SESSION['pwd'] = $salted_hash;
+$_SESSION['uname'] = $myusername;
 run();
 
 }
