@@ -4,11 +4,9 @@
   <div class="row">
     <div class="col-md-12">
       <?php
+      require '../dbconfig.php';
       // Establish MySQL connection
-      $con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
-      if(mysqli_connect_errno()) {
-       echo "Failed to connect to MySQL: " . mysqli_connect_error();
-      };
+      $con = db_connect();
       echo "<h3>Student Count by District</h3>";
       $sql="SELECT COUNT(f.id) as count, f.district as district FROM student AS s JOIN family as f ON s.family_id = f.id WHERE f.district IS NOT NULL GROUP BY f.district;";
       if($result = mysqli_query($con, $sql)){
@@ -95,10 +93,7 @@
       <?php
 
        // Establish MySQL connection
-       $con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
-       if(mysqli_connect_errno()) {
-         echo "Failed to connect to MySQL: " . mysqli_connect_error();
-       };
+       $con = db_connect();
        if(isset($_POST["search"])){
          $search_value = $_POST["search"];
          $sql = "";

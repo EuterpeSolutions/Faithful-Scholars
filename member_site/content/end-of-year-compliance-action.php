@@ -1,4 +1,6 @@
 <?php
+require '../dbconfig.php';
+
 //personal information
 $email = $_POST['email'];
 $phone = $_POST['phone'];
@@ -30,10 +32,7 @@ if (isset($_POST['submit'])) {
 }
 
 // Establish MySQL connection
-$con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
-if(mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-};
+$con = db_connect();
 
 // Compliance Information
 // SQL Queries //TODO: Replace with prepared statements after login is merged in

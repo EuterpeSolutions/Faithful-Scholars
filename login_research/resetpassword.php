@@ -1,4 +1,5 @@
 <?php
+require 'dbconfig.php';
 ob_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username
@@ -8,11 +9,7 @@ $tbl_name="members"; // Table name
 $myemail=$_POST['myemail'];
 $mypassword=$_POST['mypassword'];
 // Connect to server and select databse.
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
-if(!$con)
-{
-  die("cannot connect" . mysqli_connect_error());
-}
+$con = db_connect();
 
 //find this user
 $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
