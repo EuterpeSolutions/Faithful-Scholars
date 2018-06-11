@@ -1,4 +1,6 @@
 <?php
+include '../dbconfig.php';
+
 // Main information
 $last_name = $_POST['last_name'];
 $spouse = $_POST['spouse'];
@@ -70,11 +72,7 @@ if(isset($_POST["expedite"]) && $_POST["expedite"] == 1){
 }
 
 // Establish MySQL connection
-$con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
-if(mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-};
-
+$con = db_connect();
 // Family Information
 // SQL Queries //TODO: Replace with prepared statements after login is merged in
 $sql = "INSERT INTO family (first_name, last_name, phone, email, county, zip, city, address)

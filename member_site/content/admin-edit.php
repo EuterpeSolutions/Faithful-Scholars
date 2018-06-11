@@ -1,10 +1,9 @@
 <?php
+  require '../dbconfig.php';
   $last_name = $_POST["edit"];
 
-  $con=mysqli_connect("127.0.0.1","root","newpassword","FaithfulScholars");
-  if(mysqli_connect_errno()) {
-    echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  };
+  $con=db_connect();
+  
   $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
   $last_name = "";
   $first_name = "";

@@ -10,7 +10,6 @@ function db_connect(){
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
   if(!$con)
   {
-    echo('YO');
     die("cannot connect" . mysqli_connect_error());
   }
   return $con;
