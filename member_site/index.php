@@ -5,8 +5,9 @@ require 'functions.php';
   session_start();
   if(isset($_SESSION['uname']) && isset($_SESSION['pwd'])){
     run();
+    echo $_SESSION['uname'];
   } else {
-    echo `
+    $index = <<<'EOT'
       <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
       <tr>
       <form name="form1" method="post" action="checklogin.php">
@@ -44,6 +45,7 @@ require 'functions.php';
           </tr>
         </td>
       </form>
-    `;
+EOT;
+      echo $index;
   }
 ?>

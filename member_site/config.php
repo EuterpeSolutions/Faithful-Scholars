@@ -6,7 +6,8 @@
       'name' => 'Faithful Scholars',
       'nav_menu' => [
         '' => 'Dashboard',
-        'update-family-information' => 'Update Family Information'
+        'update-family-information' => 'Update Family Information',
+        'logout' => 'Logout'
       ],
       'template_path' => 'template',
       'content_path' => 'content',
