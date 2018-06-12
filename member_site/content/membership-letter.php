@@ -5,6 +5,16 @@ require "../dbconfig.php";
 // Create connection
 $conn = db_connect();
 
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT ID,Name,Year FROM testtable";
+$result = $conn->query($sql);
+
+session_start();
+
 class myPDF extends FPDF {
   function header() {
     $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
