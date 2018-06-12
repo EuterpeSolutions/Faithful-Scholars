@@ -190,6 +190,7 @@ echo $membership_insert_sql . "<br>";
 
 session_start();
 if(isset($_POST['Submit'])){
+    $fname = $_POST["primary_instructor"];
     $lname = $_POST["last_name"];
     $email = $_POST['email'];
     $phone = $_POST["phone"];
@@ -210,6 +211,7 @@ if(isset($_POST['Submit'])){
             'email_address' => $email,
             'status'        => 'subscribed',
             'merge_fields'  => [
+                'FNAME'     => $fname,
                 'LNAME'     => $lname,
                 'PHONE'     => $phone,
                 'ADDRESS'   => $address,
