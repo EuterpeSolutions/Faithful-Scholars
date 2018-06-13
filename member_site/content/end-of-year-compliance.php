@@ -131,8 +131,8 @@
         </div>
       </fieldset>
       <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-          <input class="btn btn-default" type="submit" name="submit" value="submit" />
+        <div class="col-sm-2 mx-auto">
+          <input class="btn btn-success" type="submit" name="submit" value="Submit" />
         </div>
       </div>
     </fieldset>

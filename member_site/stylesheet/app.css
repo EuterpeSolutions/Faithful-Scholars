@@ -5,12 +5,6 @@ body {
   background-size: contain;
 }
 
-label {
-  display: inline-block;
-  width: 140px;
-  text-align: right;
-}
-
 footer {
   margin-top: 100px;
   margin-bottom: 10px;
@@ -45,6 +39,7 @@ footer {
   text-decoration: none;
   color: #000000;
   border-bottom: 2px solid grey;
+
 }
 
 /* Outer most boostrap row which contains
