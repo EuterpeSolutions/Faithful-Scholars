@@ -11,6 +11,11 @@ label {
   text-align: right;
 }
 
+footer {
+  margin-top: 100px;
+  margin-bottom: 10px;
+}
+
 /* Faithful Scholars Logo */
 .logoimg {
   width: 350px;
@@ -106,6 +111,18 @@ label {
 	word-wrap: break-word;
 }
 
+/* Login Form */
+.form-group {
+  margin-bottom: 10px !important;
+}
+
+.submit-button {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  width: 90%;
+}
 
 /* General Use Classes*/
 .left {
