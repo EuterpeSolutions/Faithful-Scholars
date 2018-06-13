@@ -5,10 +5,9 @@ body {
   background-size: contain;
 }
 
-label {
-  display: inline-block;
-  width: 140px;
-  text-align: right;
+footer {
+  margin-top: 100px;
+  margin-bottom: 10px;
 }
 
 /* Faithful Scholars Logo */
@@ -40,6 +39,7 @@ label {
   text-decoration: none;
   color: #000000;
   border-bottom: 2px solid grey;
+
 }
 
 /* Outer most boostrap row which contains
@@ -106,6 +106,18 @@ label {
 	word-wrap: break-word;
 }
 
+/* Login Form */
+.form-group {
+  margin-bottom: 10px !important;
+}
+
+.submit-button {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  width: 90%;
+}
 
 /* General Use Classes*/
 .left {
