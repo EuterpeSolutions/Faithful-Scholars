@@ -2,17 +2,17 @@
 require 'dbconfig.php';
 ob_start();
 
-$host="127.0.0.1"; // Host name
-$username="root"; // Mysql username
-$password="newpassword"; // Mysql password
-$db_name="FaithfulScholars"; // Database name
-$tbl_name="members"; // Table name
+//$host="127.0.0.1"; // Host name
+//$username="root"; // Mysql username
+//$password=""; // Mysql password
+//$db_name="FaithfulScholars"; // Database name
+//$tbl_name="members"; // Table name
 
 // Connect to server and select databse.
 $con = db_connect();
 // Define $myusername and $mypassword
-$myusername=$_POST['username'];
-$mypassword=$_POST['password'];
+$myusername=$_POST['myusername'];
+$mypassword=$_POST['mypassword'];
 
 // To protect MySQL injection
 $myusername = stripslashes($myusername);
@@ -20,15 +20,22 @@ $mypassword = stripslashes($mypassword);
 $myusername = mysqli_real_escape_string($con, $myusername);
 $mypassword = mysqli_real_escape_string($con, $mypassword);
 $id = 0;
+
 $sql="SELECT id,password,username,psalt FROM $tbl_name WHERE username='$myusername'";
-$result=mysqli_query($con, $sql);
-if($result->num_rows != 0){
-  while($row = mysqli_fetch_assoc($result)) {
-      $id = $row["id"];
-      $p_salt = $row["psalt"];
-      $p = $row["password"];
+
+if($stmt = $con->prepare($sql))
+{
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($col1, $col2, $col3, $col4);
+  while($stmt->fetch())
+  {
+    $id = $col1;
+    $p = $col2;
+    $p_salt = $col4;
   }
 }
+
 else {
   echo "The username or password was incorrect";
 }
