@@ -10,8 +10,9 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT ID,Name,Year FROM testtable";
-$result = $conn->query($sql);
+$sql = "SELECT * FROM `FaithfulScholars`.`family` WHERE `id` = 1";
+$result = mysqli_query($con, $sql);
+echo $result;
 
 session_start();
 
