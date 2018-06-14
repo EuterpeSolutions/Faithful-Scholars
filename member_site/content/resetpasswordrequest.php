@@ -4,25 +4,8 @@ ob_start();
 $myemail=$_POST['myemail'];
 // Connect to server and select databse.
 $con = db_connect();
-//Find user
-$sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
-if($stmt = $con->prepare($sql))
-{
-  $stmt->execute();
-  $stmt->store_result();
-  $stmt->bind_result($col1, $col2, $col3, $col4, $col5);
-  while($stmt->fetch())
-  {
-    $id = $col1;
-    $p = $col2;
-    $username = $col3;
-    $p_salt = $col4;
-    $email = $col5;
-  }
-}
-else {
-  echo 'db connection errror';
-}
+//Find user email
+$email = db_user_query('email',$myemail, '');
 //Generate reset link
 if($email == $myemail){
   $uniqidStr = md5(uniqid(mt_rand()));;
