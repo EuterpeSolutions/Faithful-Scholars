@@ -1,4 +1,8 @@
 <?php
+global $county_array;
+
+
+
 
 // Displays the site name
 function siteName()
@@ -56,6 +60,15 @@ function childInput($name, $data = [], $num_child = 9)
   return $output;
 }
 
+// Displays the options for the county dropdowns
+function generateCounty($selected_county){
+  $county_array = array('Abbeville', 'Akien', 'Allendale', 'Anderson', 'Bamberg', 'Barnwell', 'Beaufort', 'Berkeley', 'Calhoun', 'Charleston', 'Cherokee', 'Chester', 'Chesterfield', 'Clarendon', 'Colleton', 'Darlington', 'Dillon', 'Dorchester', 'Edgefield', 'Fairfield', 'Florence', 'Georgetown', 'Greenville', 'Greenwood', 'Hampton', 'Horry', 'Jasper', 'Kershaw', 'Lancaster', 'Laurens', 'Lee', 'Lexington', 'Marion', 'Marlboro', 'McCormick', 'Newberry', 'Oconee', 'Orangeburg', 'Pickens', 'Richland', 'Saluda', 'Spartanburg', 'Sumter', 'Union', 'Williamsburg', 'YORK');
+  foreach($county_array as $c){
+    echo "<option value='".$c."'";
+    if($selected_county == $c) echo ' selected="selected"';
+    echo "'>".$c."</option>";
+  }
+}
 
 // Starts everything and displays the template
 function run()

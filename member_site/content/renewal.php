@@ -1,3 +1,33 @@
+<?php
+$host="127.0.0.1"; // Host name
+$username="root"; // Mysql username
+$password="newpassword"; // Mysql password
+$db_name="FaithfulScholars"; // Database name
+$tbl_name="members"; // Table name
+
+  $con = mysqli_connect("$host", "$username", "$password", $db_name);
+
+
+  global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district;
+
+
+  $sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.family_id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '%". $_SESSION['uname']."%'";
+  if($result = mysqli_query($con, $sql)){
+    while($row = mysqli_fetch_array($result)){
+      $last_name = $row["last_name"];
+      $first_name = $row["first_name"];
+      $email = $row["email"];
+      $phone = $row["phone"];
+      $address = $row["address"];
+      $city = $row["city"];
+      $zipcode = $row["zip"];
+      $county = $row["county"];
+      $school_district = $row["district"];
+    }
+  }
+
+?>
+
 <form class="form-horizontal" method="post" action="?page=renewal-action">
   <fieldset>
     <legend> Membership Renewal </legend>
@@ -6,7 +36,7 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="last_name">Last Name:</label>
-              <input type="last_name" class="form-control" name="last_name" id="last_name" placeholder="Enter name">
+              <input type="last_name" class="form-control" name="last_name" id="last_name" value="<?php echo $last_name ?>">
             </div>
             <div class="form-group">
               <label for="spouse">Spouse:</label>
@@ -14,15 +44,15 @@
             </div>
             <div class="form-group">
               <label for="phone">Phone:</label>
-              <input type="phone" class="form-control" name="phone" id="phone" placeholder="Enter name">
+              <input type="phone" class="form-control" name="phone" id="phone" value="<?php echo $phone?>" placeholder="Enter name">
             </div>
             <div class="form-group">
               <label for="address">Address:</label>
-              <input type="address" class="form-control" name="address" id="address" placeholder="Enter address">
+              <input type="address" class="form-control" name="address" id="address" value="<?php echo $address?>" placeholder="Enter address">
             </div>
             <div class="form-group">
               <label for="zip">Zipcode:</label>
-              <input type="zip" class="form-control" name="zipcode" id="zip" placeholder="Enter zipcode">
+              <input type="zip" class="form-control" name="zipcode" id="zip" value="<?php echo $zipcode?>" placeholder="Enter zipcode">
             </div>
             <div class="form-group">
               <label for="district">School District: (<a href="http://ed.sc.gov/schools/" target="_blank">Look it up</a>)</label>
@@ -114,66 +144,22 @@
           <div class="col-md-6">
             <div class="form-group">
               <label for="first_name">First Name:</label>
-              <input type="first_name" class="form-control" name="first_name" id="first_name" placeholder="Enter name">
+              <input type="first_name" class="form-control" name="first_name" id="first_name" value="<?php echo $first_name ?>" placeholder="Enter name">
             </div>
             <div class="form-group">
               <label for="email">E-mail:</label>
-              <input type="email" class="form-control" name="email" id="email" placeholder="Enter name">
+              <input type="email" class="form-control" name="email" id="email" value="<?php echo $email ?>" placeholder="Enter name">
             </div>
             <div class="form-group"><label for=""></label><br><br><label for=""></label></div>
             <div class="form-group">
               <label for="city">City:</label>
-              <input type="city" class="form-control" name="city" id="city" placeholder="Enter city" >
+              <input type="city" class="form-control" name="city" id="city" value="<?php echo $city ?>" placeholder="Enter city" >
             </div>
             <div class="form-group">
               <label for="county">County:</label>
+              <?php echo $county ?>
               <select class="form-control" name="county" id="county" required>
-                <option value='Abbeville'>Abbeville</option>
-                <option value='Aiken'>Aiken</option>
-                <option value='Allendale'>Allendale</option>
-                <option value='Anderson'>Anderson</option>
-                <option value='Bamberg'>Bamberg</option>
-                <option value='Barnwell'>Barnwell</option>
-                <option value='Beaufort'>Beaufort</option>
-                <option value='Berkeley'>Berkeley</option>
-                <option value='Calhoun'>Calhoun</option>
-                <option value='Charleston'>Charleston</option>
-                <option value='Cherokee'>Cherokee</option>
-                <option value='Chester'>Chester</option>
-                <option value='Chesterfield'>Chesterfield</option>
-                <option value='Clarendon'>Clarendon</option>
-                <option value='Colleton'>Colleton</option>
-                <option value='Darlington'>Darlington</option>
-                <option value='Dillon'>Dillon</option>
-                <option value='Dorchester'>Dorchester</option>
-                <option value='Edgefield'>Edgefield</option>
-                <option value='Fairfield'>Fairfield</option>
-                <option value='Florence'>Florence</option>
-                <option value='Georgetown'>Georgetown</option>
-                <option value='Greenville'>Greenville</option>
-                <option value='Greenwood'>Greenwood</option>
-                <option value='Hampton'>Hampton</option>
-                <option value='Horry'>Horry</option>
-                <option value='Jasper'>Jasper</option>
-                <option value='Kershaw'>Kershaw</option>
-                <option value='Lancaster'>Lancaster</option>
-                <option value='Laurens'>Laurens</option>
-                <option value='Lee'>Lee</option>
-                <option value='Lexington'>Lexington</option>
-                <option value='Marion'>Marion</option>
-                <option value='Marlboro'>Marlboro</option>
-                <option value='McCormick'>McCormick</option>
-                <option value='Newberry'>Newberry</option>
-                <option value='Oconee'>Oconee</option>
-                <option value='Orangeburg'>Orangeburg</option>
-                <option value='Pickens'>Pickens</option>
-                <option value='Richland'>Richland</option>
-                <option value='Saluda'>Saluda</option>
-                <option value='Spartanburg'>Spartanburg</option>
-                <option value='Sumter'>Sumter</option>
-                <option value='Union'>Union</option>
-                <option value='Williamsburg'>Williamsburg</option>
-                <option value='York '>York </option>
+                <?php generateCounty($county); ?>
               </select>
             </div>
           </div>
