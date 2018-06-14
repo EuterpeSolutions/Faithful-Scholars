@@ -8,7 +8,7 @@
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
 
 
-  global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district;
+  global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district, $students;
 
 
   $sql = "SELECT * FROM family WHERE id = ". $_SESSION['userid'].";";
@@ -26,6 +26,13 @@
     }
   }
 
+  $student_sql = "SELECT * FROM student WHERE family_id = " . $_SESSION['userid'] . ";";
+  $students = array();
+  if($student_result = mysqli_query($con, $student_sql)){
+    while($row = mysqli_fetch_array($student_result)){
+      array_push($students, $row);
+    }
+  }
 ?>
 
 <form class="form-horizontal" method="post" action="?page=renewal-action">
@@ -95,13 +102,13 @@
         <hr>
         <div class="row">
           <div class="col-md-6">
-            <?php echo childInput('child')?>
+            <?php echo childInput('name', $students)?>
           </div>
           <div class="col-md-2">
-            <?php echo childInput('grade')?>
+            <?php echo childInput('grade', $students)?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('birthday')?>
+            <?php echo childInput('birthday', $students)?>
           </div>
         </div>
         <div class="row">

@@ -8,7 +8,7 @@
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
 
 
-  global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district;
+  global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district, $students;
 
 
   $sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.family_id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '%". $_SESSION['uname']."%'";
@@ -26,11 +26,19 @@
     }
   }
 
+
+  $student_sql = "SELECT * FROM student WHERE family_id = " . $_SESSION['userid'] . ";";
+  $students = array();
+  if($student_result = mysqli_query($con, $student_sql)){
+    while($row = mysqli_fetch_array($student_result)){
+      array_push($students, $row);
+    }
+  }
 ?>
 
 <form class="form-horizontal" method="post" action="?page=renewal-action">
   <fieldset>
-    <legend> Membership Renewal </legend>
+    <legend> </legend>
       <div class="container">
         <div class="row">
           <div class="col-md-6">
@@ -95,13 +103,13 @@
         <hr>
         <div class="row">
           <div class="col-md-6">
-            <?php echo childInput('child')?>
+            <?php echo childInput('name', $students)?>
           </div>
           <div class="col-md-2">
-            <?php echo childInput('grade')?>
+            <?php echo childInput('grade', $students)?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('birthday')?>
+            <?php echo childInput('birthday', $students)?>
           </div>
         </div>
         <div class="row">
@@ -141,13 +149,13 @@
             <div class="form-group">
               <label for="membership_type">Type of Membership:</label>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="1">Kindergarten only membership $25/year</label>
+                <label><input type="radio" name="optradio" value="1" required>Kindergarten only membership $25/year</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="2">Single-student family membership $35/year</label>
+                <label><input type="radio" name="optradio" value="2" required>Single-student family membership $35/year</label>
               </div>
               <div class="radio">
-                <label><input type="radio" name="optradio" value="3">Multi-student family membership $60/year</label>
+                <label><input type="radio" name="optradio" value="3" required>Multi-student family membership $60/year</label>
               </div>
             </div>
           </div>
