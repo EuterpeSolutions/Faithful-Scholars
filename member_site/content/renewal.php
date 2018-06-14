@@ -1,9 +1,9 @@
 <?php
-$host="127.0.0.1"; // Host name
-$username="root"; // Mysql username
-$password="newpassword"; // Mysql password
-$db_name="FaithfulScholars"; // Database name
-$tbl_name="members"; // Table name
+  $host="127.0.0.1"; // Host name
+  $username="root"; // Mysql username
+  $password="newpassword"; // Mysql password
+  $db_name="FaithfulScholars"; // Database name
+  $tbl_name="members"; // Table name
 
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
 
@@ -57,87 +57,7 @@ $tbl_name="members"; // Table name
             <div class="form-group">
               <label for="district">School District: (<a href="http://ed.sc.gov/schools/" target="_blank">Look it up</a>)</label>
               <select class="form-control" name="district" id="district">
-                <option value='Abbeville 60'>Abbeville 60</option>
-                <option value='Aiken 01'>Aiken 01</option>
-                <option value='Allendale 01'>Allendale 01</option>
-                <option value='Anderson 01'>Anderson 01</option>
-                <option value='Anderson 02'>Anderson 02</option>
-                <option value='Anderson 03'>Anderson 03</option>
-                <option value='Anderson 04'>Anderson 04</option>
-                <option value='Anderson 05'>Anderson 05</option>
-                <option value='Bamberg 01'>Bamberg 01</option>
-                <option value='Bamberg 02'>Bamberg 02</option>
-                <option value='Barnwell 19'>Barnwell 19</option>
-                <option value='Barnwell 29'>Barnwell 29</option>
-                <option value='Barnwell 45'>Barnwell 45</option>
-                <option value='Beaufort 01'>Beaufort 01</option>
-                <option value='Berkeley 01'>Berkeley 01</option>
-                <option value='Calhoun 01'>Calhoun 01</option>
-                <option value='Charleston 01'>Charleston 01</option>
-                <option value='Cherokee 01'>Cherokee 01</option>
-                <option value='Chester 01'>Chester 01</option>
-                <option value='Chesterfield 01'>Chesterfield 01</option>
-                <option value='Clarendon 01'>Clarendon 01</option>
-                <option value='Clarendon 02'>Clarendon 02</option>
-                <option value='Clarendon 03'>Clarendon 03</option>
-                <option value='Colleton 01'>Colleton 01</option>
-                <option value='Darlington 01'>Darlington 01</option>
-                <option value='Dillon 03'>Dillon 03</option>
-                <option value='Dillon 04'>Dillon 04</option>
-                <option value='Dorchester 02'>Dorchester 02</option>
-                <option value='Dorchester 04'>Dorchester 04</option>
-                <option value='Edgefield 01'>Edgefield 01</option>
-                <option value='Fairfield 01'>Fairfield 01</option>
-                <option value='Florence 01'>Florence 01</option>
-                <option value='Florence 02'>Florence 02</option>
-                <option value='Florence 03'>Florence 03</option>
-                <option value='Florence 04'>Florence 04</option>
-                <option value='Florence 05'>Florence 05</option>
-                <option value='Georgetown 01'>Georgetown 01</option>
-                <option value='Greenville 01'>Greenville 01</option>
-                <option value='Greenwood 50'>Greenwood 50</option>
-                <option value='Greenwood 51'>Greenwood 51</option>
-                <option value='Greenwood 52'>Greenwood 52</option>
-                <option value='Hampton 01'>Hampton 01</option>
-                <option value='Hampton 02'>Hampton 02</option>
-                <option value='Horry 01'>Horry 01</option>
-                <option value='Jasper 01'>Jasper 01</option>
-                <option value='Kershaw 01'>Kershaw 01</option>
-                <option value='Lancaster 01'>Lancaster 01</option>
-                <option value='Laurens 55'>Laurens 55</option>
-                <option value='Laurens 56'>Laurens 56</option>
-                <option value='Lee 01'>Lee 01</option>
-                <option value='Lexington 01'>Lexington 01</option>
-                <option value='Lexington 02'>Lexington 02</option>
-                <option value='Lexington 03'>Lexington 03</option>
-                <option value='Lexington 04'>Lexington 04</option>
-                <option value='Lexington 05'>Lexington 05</option>
-                <option value='Marion 10'>Marion 10</option>
-                <option value='Marlboro 01'>Marlboro 01</option>
-                <option value='McCormick 01'>McCormick 01</option>
-                <option value='Newberry 01'>Newberry 01</option>
-                <option value='Oconee 01'>Oconee 01</option>
-                <option value='Orangeburg 03'>Orangeburg 03</option>
-                <option value='Orangeburg 04'>Orangeburg 04</option>
-                <option value='Orangeburg 05'>Orangeburg 05</option>
-                <option value='Pickens 01'>Pickens 01</option>
-                <option value='Richland 01'>Richland 01</option>
-                <option value='Richland 02'>Richland 02</option>
-                <option value='Saluda 01'>Saluda 01</option>
-                <option value='Spartanburg 01'>Spartanburg 01</option>
-                <option value='Spartanburg 02'>Spartanburg 02</option>
-                <option value='Spartanburg 03'>Spartanburg 03</option>
-                <option value='Spartanburg 04'>Spartanburg 04</option>
-                <option value='Spartanburg 05'>Spartanburg 05</option>
-                <option value='Spartanburg 06'>Spartanburg 06</option>
-                <option value='Spartanburg 07'>Spartanburg 07</option>
-                <option value='Sumter 01'>Sumter 01</option>
-                <option value='Union 01'>Union 01</option>
-                <option value='Williamsburg 01'>Williamsburg 01</option>
-                <option value='York 01'>York 01</option>
-                <option value='York 02'>York 02</option>
-                <option value='York 03'>York 03</option>
-                <option value='York 04 '>York 04 </option>
+                <?php generateSchoolDisctrict($school_district)?>
               </select>
             </div>
           </div>
