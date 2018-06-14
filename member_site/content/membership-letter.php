@@ -17,18 +17,22 @@ session_start();
 
 class myPDF extends FPDF {
   function header() {
-    $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
-    $this->SetFont('Times','B',12);   // Arial bold, size 15
-    $this->SetY(50);    // set the cursor at Y position 5
-    $this->Cell(80); // Move to the right
-    $this->Cell(30,10,'Proof of Membership & Legal Home School Status',0,1,'C'); // Title
-    $this->Ln(2);// Line break
+    if ( $this->PageNo() == 1 ) {
+      $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
+      $this->SetFont('Times','B',12);   // Arial bold, size 15
+      $this->SetY(50);    // set the cursor at Y position 5
+      $this->Cell(80); // Move to the right
+      $this->Cell(30,10,'Proof of Membership & Legal Home School Status',0,1,'C'); // Title
+      $this->Ln(2);// Line break
+    }
   }
 
   function footer() {
-    $this->SetXY(0,-15); //set X and Y
-    $this->SetFont('Times','', 12); //times, size 12
-    $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715 www.faithfulscholars.com (803) 548-4428',0,0,'C');
+    if ( $this->PageNo() == 1 ) {
+      $this->SetXY(0,-15); //set X and Y
+      $this->SetFont('Times','', 12); //times, size 12
+      $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715 www.faithfulscholars.com (803) 548-4428',0,0,'C');
+    }
   }
 
   function headerTable() {
@@ -64,14 +68,24 @@ class myPDF extends FPDF {
 
   }
 
-  function viewTable($conn) {
+  function header2Table() {
+    $this->SetFont('Times','B', 12); //times, size 12
+    $this->Cell(100,50,'',1,1);
+    $this->SetY(65);
+    $this->Cell(100,50,'',1,1);
+    $this->SetY(120);
+    $this->Cell(100,50,'',1,1);
+    $this->SetY(175);
+    $this->Cell(100,50,'',1,1);
   }
+
 }
 $pdf = new myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('P','Letter',0);
 $pdf->headerTable();
-$pdf->viewTable($conn);
+$pdf->AddPage('P','Letter',0);
+$pdf->header2Table();
 $pdf->Output();
 
 $conn->close();
