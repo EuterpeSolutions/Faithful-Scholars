@@ -6,9 +6,25 @@ $myemail=$_POST['myemail'];
 $con = db_connect();
 //Find user
 $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
-$result=mysqli_query($con, $sql);
+if($stmt = $con->prepare($sql))
+{
+  $stmt->execute();
+  $stmt->store_result();
+  $stmt->bind_result($col1, $col2, $col3, $col4, $col5);
+  while($stmt->fetch())
+  {
+    $id = $col1;
+    $p = $col2;
+    $username = $col3;
+    $p_salt = $col4;
+    $email = $col5;
+  }
+}
+else {
+  echo 'db connection errror';
+}
 //Generate reset link
-if($result->num_rows != 0){
+if($email == $myemail){
   $uniqidStr = md5(uniqid(mt_rand()));;
   $resetPassLink = 'LINK TO RESET FORM SHOULD GO TO RESETPASWORD_FORM'.$uniqidStr;
 
