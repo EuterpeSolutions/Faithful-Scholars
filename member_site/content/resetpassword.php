@@ -7,17 +7,9 @@ $myemail=$_POST['myemail'];
 $mypassword=$_POST['mypassword'];
 // Connect to server and select databse.
 $con = db_connect();
-//find this user
-$sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
-$result=mysqli_query($con, $sql);
-//get the salt
-if($result->num_rows != 0){
-  while($row = mysqli_fetch_assoc($result)) {
-      $p_salt = $row["psalt"];
-  }
-}
 //Create new pwd hash
 $site_salt="faithfulscholarsalt";
+$p_salt = db_user_query(salt,$myemail, '');
 $salted_hash = hash('sha256',$mypassword.$site_salt.$p_salt);
 //Submit new pwd
 $sql="UPDATE members SET password = '$salted_hash' WHERE email = '$myemail'";

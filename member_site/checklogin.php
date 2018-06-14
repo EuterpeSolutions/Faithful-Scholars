@@ -21,31 +21,15 @@ $myusername = mysqli_real_escape_string($con, $myusername);
 $mypassword = mysqli_real_escape_string($con, $mypassword);
 $id = 0;
 
-$sql="SELECT id,password,username,psalt FROM $tbl_name WHERE username='$myusername'";
-
-if($stmt = $con->prepare($sql))
-{
-  $stmt->execute();
-  $stmt->store_result();
-  $stmt->bind_result($col1, $col2, $col3, $col4);
-  while($stmt->fetch())
-  {
-    $id = $col1;
-    $p = $col2;
-    $p_salt = $col4;
-  }
-}
-
-else {
-  echo "The username or password was incorrect";
-}
-
+$id = db_user_query('id', '', $myusername);
+$p = db_user_query('password', '', $myusername);
+$p_salt = db_user_query('salt', '', $myusername);
 $site_salt="faithfulscholarsalt";
 $salted_hash = hash('sha256',$mypassword.$site_salt.$p_salt);
 
 //If pwds match
 if($p==$salted_hash){
-
+$p = "";
 require 'config.php';
 require 'functions.php';
 session_start();
