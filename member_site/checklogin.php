@@ -19,11 +19,12 @@ $myusername = stripslashes($myusername);
 $mypassword = stripslashes($mypassword);
 $myusername = mysqli_real_escape_string($con, $myusername);
 $mypassword = mysqli_real_escape_string($con, $mypassword);
-
+$id = 0;
 $sql="SELECT id,password,username,psalt FROM $tbl_name WHERE username='$myusername'";
 $result=mysqli_query($con, $sql);
 if($result->num_rows != 0){
   while($row = mysqli_fetch_assoc($result)) {
+      $id = $row["id"];
       $p_salt = $row["psalt"];
       $p = $row["password"];
   }
@@ -43,6 +44,7 @@ require 'functions.php';
 session_start();
 $_SESSION['pwd'] = $salted_hash;
 $_SESSION['uname'] = $myusername;
+$_SESSION['userid'] = $id;
 run();
 
 }

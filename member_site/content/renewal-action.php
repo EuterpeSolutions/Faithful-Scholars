@@ -1,6 +1,6 @@
 <?php
 
-require '../dbconfig.php';
+
 
 // Main information
 $last_name = $_POST['last_name'];
@@ -72,24 +72,26 @@ if(isset($_POST["expedite"]) && $_POST["expedite"] == 1){
   $expedite = "0";
 }
 
-// Establish MySQL connection
-$con = db_connect();
+$host="127.0.0.1"; // Host name
+$username="root"; // Mysql username
+$password="newpassword"; // Mysql password
+$db_name="FaithfulScholars"; // Database name
+$tbl_name="members"; // Table name
+
+$con = mysqli_connect("$host", "$username", "$password", $db_name);
 
 // Family Information
-// SQL Queries //TODO: Replace with prepared statements after login is merged in
-$sql = "INSERT INTO family (first_name, last_name, phone, email, county, zip, city, address)
-                    VALUES('$first_name', '$last_name', '$phone', '$email', '$county', '$zipcode', '$city', '$address')";
+$sql = "UPDATE family SET first_name = '$first_name', last_name = '$last_name', phone = '$phone', email = '$email', county = '$county', zip = '$zipcode', city = '$city', address = '$address' WHERE id =".$_SESSION['userid'].";";
 $insert_id = 0;
-if ($con->query($sql) === TRUE) {
-  $insert_id = mysqli_insert_id($con);
-} else {
-  echo "Error: " . $sql . "<br>" . $con->error . "<br>";
-}
+$con->query($sql);
 
 // Student Information
 for($i = 1; $i < 9; $i++){
   if(${"child" . $i} != ''){
-    $sql_student = "INSERT INTO student (family_id, name, grade, birthday)
+    $sql_student = "UPDATE student
+                    SET family_id = $insert_id
+
+    INSERT INTO student (family_id, name, grade, birthday)
                     VALUES ('$insert_id','${"child" . $i}','${"grade" . $i}','${"birthdate" . $i}')";
     if ($con->query($sql_student) === TRUE) {
     } else {
@@ -101,9 +103,7 @@ for($i = 1; $i < 9; $i++){
 // Membership Information
 $type = (int)$optradio;
 $highschool = (int)$high_school_number;
-$sql_membership = "INSERT INTO membership (family_id, type_id, highschool,
-                   replacement_card, schea, enchanted_learning, expedited, initial_1, initial_5, initial_6)
-                   VALUES ('$insert_id', '$type', '$highschool', '$replacement', '$schea', '$el', '$expedite', '$initial1', '$initial5', '$initial6')";
+$sql_membership = "UPDATE membership SET type_id = '$type', highschool = '$highschool', replacement_card = '$replacement', schea = '$schea', enchanted_learning = '$el', expedited = '$expedite', initial_1 = '$initial1', initial_5 = '$initial5', initial_6 = '$initial6' WHERE family_id = ".$_SESSION['userid'].";";
 if ($con->query($sql_membership) === TRUE) {
 } else {
  echo "Error: " . $sql_membership . "<br>" . $con->error . "<br>";
