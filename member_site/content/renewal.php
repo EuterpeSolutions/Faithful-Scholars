@@ -7,7 +7,6 @@
 
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
 
-
   global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district;
 
 
