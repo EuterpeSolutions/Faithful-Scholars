@@ -31,6 +31,7 @@ if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
     $grade = $row["grade"];
+    $family_id = $row["family_id"];
   }
 }
 
@@ -58,21 +59,21 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Name: ',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(45,70);
-    $this->Cell(30,10,$GLOBALS[first_name]." ".$GLOBALS[last_name],0,1);
+    $this->Cell(30,10,$GLOBALS['first_name']." ".$GLOBALS['last_name'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(85);
     $this->Cell(20);
     $this->Cell(30,10,'Address: ',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(50,85);
-    $this->Cell(30,10,$GLOBALS[address],0,1);
+    $this->Cell(30,10,$GLOBALS['address'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(100);
     $this->Cell(20);
     $this->Cell(30,10,'County:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(50,100);
-    $this->Cell(30,10,$GLOBALS[county],0,1);
+    $this->Cell(30,10,$GLOBALS['county'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(120);
     $this->Cell(20);
@@ -82,17 +83,43 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'School Year:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(55,140);
-    $this->Cell(30,10,date('Y', strtotime('+0 year'))."-".date('Y', strtotime('+1 year')),0,1);
+
+    $now = new \DateTime('now');
+    $month = $now->format('n');
+    $year = $now->format('Y');
+    $currentYear = $now->format('Y');
+    $intMonth = (int)$month;
+
+    if($intMonth >= 8 and $intMonth <=12) {
+      $schoolYear = $currentYear;
+      $semester = "Fall";
+      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+
+    } else if ($intMonth >=1 and $intMonth <=5) {
+
+      $schoolYear = $currentYear;
+      $semester = "Spring";
+      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+
+    } else {
+      $schoolYear = $currentYear;
+      $semester = "Summer";
+      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+    }
     $this->SetFont('Times','B', 12);
     $this->SetY(155);
     $this->Cell(20);
     $this->Cell(30,10,'Member Number:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetXY(65,155);
+    $this->Cell(30,10,$GLOBALS['family_id'],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetY(170);
     $this->Cell(20);
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(62,170);
-    $this->Cell(30,10,$GLOBALS[name]." ".$GLOBALS[last_name]." , ".$GLOBALS[grade],0,1);
+    $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name']." , ".$GLOBALS['grade'],0,1);
     $this->SetFont('Times','B', 12);
     $this->Line(135,195,195,195);
     $this->SetXY(113,195);
