@@ -50,7 +50,7 @@ function childInput($name, $data = [], $num_child = 9)
     $output .= '<div class="form-group">';
     $output .= '<label for="'.$name.$i.'">'.ucfirst($name).' '.$i.':&nbsp</label>';
     if(isset($data[$i-1])){
-      $output .= '<input id="'.$name.$i.'" value="'.$data[$i-1].'" name="'.$name.$i.'"class="form-control">';
+      $output .= '<input id="'.$name.$i.'" value="'.$data[$i-1][$name].'" name="'.$name.$i.'"class="form-control">';
     }else{
       $output .= '<input id="'.$name.$i.'" name="'.$name.$i.'"class="form-control">';
     }
