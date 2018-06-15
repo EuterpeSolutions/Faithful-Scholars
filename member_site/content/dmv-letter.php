@@ -5,6 +5,31 @@ require "../dbconfig.php";
 // Create connection
 $conn = db_connect();
 
+session_start();
+
+$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '".$_SESSION['uname']."%'";
+if($result = mysqli_query($conn, $sql)){
+  while($row = mysqli_fetch_array($result)){
+    $last_name = $row["last_name"];
+    $first_name = $row["first_name"];
+    $email = $row["email"];
+    $phone = $row["phone"];
+    $address = $row["address"];
+    $city = $row["city"];
+    $zipcode = $row["zip"];
+    $county = $row["county"];
+  }
+}
+
+$sql2 = "SELECT * FROM student as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '".$_SESSION['uname']."%'";
+if($result2 = mysqli_query($conn, $sql2)){
+  while($row = mysqli_fetch_array($result2)){
+    $name = $row["name"];
+    $grade = $row["grade"];
+    $birthday = $row["birthday"];
+  }
+}
+
 class myPDF extends FPDF {
   function header() {
     $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
@@ -26,18 +51,41 @@ class myPDF extends FPDF {
     $this->SetY(70);
     $this->Cell(20);
     $this->Cell(30,10,'Student:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetXY(47,70);
+    $this->Cell(30,10,$GLOBALS[name]." ".$GLOBALS[last_name],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetY(80);
     $this->Cell(20);
     $this->Cell(30,10,'D.O.B:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetY(80);
+    $this->SetX(47);
+    $this->Cell(30,10,$GLOBALS[birthday],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetY(90);
     $this->Cell(20);
     $this->Cell(30,10,'Address:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetY(90);
+    $this->SetX(47);
+    $this->Cell(30,10,$GLOBALS[address],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetXY(70,70);
     $this->Cell(20);
     $this->Cell(30,10,'Home School Association:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetY(70);
+    $this->SetX(140);
+    $this->Cell(30,10,"Faithful Scholars",0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetXY(70,90);
     $this->Cell(20);
     $this->Cell(30,10,'School Year:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetY(90);
+    $this->SetX(120);
+    $this->Cell(30,10,date('Y', strtotime('+0 year'))."-".date('Y', strtotime('+1 year')),0,1);
     $this->SetFont('Times','', 12); //times, size 12
     $this->SetXY(10,120);
     $this->Cell(20);
