@@ -1,9 +1,14 @@
 <?php
-  require '../dbconfig.php';
+  $host="127.0.0.1"; // Host name
+  $username="root"; // Mysql username
+  $password="newpassword"; // Mysql password
+  $db_name="FaithfulScholars"; // Database name
+  $tbl_name="members"; // Table name
+
+  $con = mysqli_connect("$host", "$username", "$password", $db_name);
   $last_name = $_POST["edit"];
 
-  $con=db_connect();
-  
+
   $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
   $last_name = "";
   $first_name = "";
@@ -39,6 +44,14 @@
       $student_name[$count] = $row["name"];
       $student_grade[$count] = $row["grade"];
       $student_birthday[$count] = $row["birthday"];
+    }
+  }
+  global $students;
+  $student_sql = "SELECT * FROM student WHERE family_id = " . $_SESSION['userid'] . ";";
+  $students = array();
+  if($student_result = mysqli_query($con, $student_sql)){
+    while($row = mysqli_fetch_array($student_result)){
+      array_push($students, $row);
     }
   }
 ?>
@@ -87,13 +100,13 @@
         <br>
         <div class="row">
           <div class="col-md-6">
-            <?php echo childInput('child', $student_name)?>
+            <?php echo childInput('name', $students)?>
           </div>
           <div class="col-md-2">
-            <?php echo childInput('grade', $student_grade)?>
+            <?php echo childInput('grade', $students)?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('birthday', $student_birthday)?>
+            <?php echo childInput('birthday', $students)?>
           </div>
         </div>
       </div>

@@ -50,7 +50,7 @@
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=membership-letter">
+            <a class="undecorated" href="/?page=end-of-year-compliance">
               <div class="circle center">
                 Mid Year Compliance
               </div>
