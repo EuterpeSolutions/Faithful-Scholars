@@ -1,8 +1,8 @@
 <?php
-$host="localhost"; // Host name
+$host="127.0.0.1"; // Host name
 $username="root"; // Mysql username
-$password=""; // Mysql password
-$db_name="mysql"; // Database name
+$password="newpassword"; // Mysql password
+$db_name="FaithfulScholars"; // Database name
 $tbl_name="members"; // Table name
 
 function db_connect(){
