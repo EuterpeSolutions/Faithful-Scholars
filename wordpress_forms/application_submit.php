@@ -27,10 +27,22 @@ $hs_students=$_POST["hs_students"];
 // $hs_diploma=$_POST["hs_diploma"];
 // $hs_transcript=$_POST["hs_transcript"];
 // $consultations=$_POST["consultations"];
-$card=$_POST["card"];
-$schea=$_POST["schea"];
-$enchanted=$_POST["enchanted"];
-$expedite=$_POST["expedite"];
+$card="";
+if(isset($_POST["card"])){
+  $card=$_POST["card"];
+}
+$schea="";
+if(isset($_POST["schea"])){
+  $schea=$_POST["schea"];
+}
+$enchanted="";
+if(isset($_POST["enchanted"])){
+  $enchanted=$_POST["enchanted"];
+}
+$expedite="";
+if(isset($_POST["expedite"])){
+  $expedite=$_POST["expedite"];
+}
 $certify_curriculum=$_POST["certify_curriculum"];
 $certify_diploma=$_POST["certify_diploma"];
 $certify_hs_transcript=$_POST["certify_hs_transcript"];
@@ -97,7 +109,7 @@ $password = hash('sha256',$password.$site_salt.$p_salt);
 //Sql connection
 
 
-$insert = $con->query( "INSERT INTO members (username,psalt,password,email) VALUES
+$con->query( "INSERT INTO members (username,psalt,password,email) VALUES
 ('$username','$p_salt','$password','$email')" );
 
 if($new_hs == 'yes'){
@@ -162,9 +174,6 @@ for($i = 1; $i <= 9; $i++){
 }
 
 mysqli_close($con);
-
-echo "type: " . $type . "<br>";
-echo $membership_insert_sql . "<br>";
 
 // if ($type == "Single-Student") {
 // $membership_cost = 35;
@@ -250,8 +259,8 @@ if(isset($_POST['Submit'])){
         $_SESSION['msg'] = '<p style="color: #EA4335">Please enter valid email address.</p>';
     }
 }
-// redirect to homepage
-header('location:onlineapplication.html');
+// // redirect to homepage
+// header('location:onlineapplication.html');
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

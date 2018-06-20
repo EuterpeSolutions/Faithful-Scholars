@@ -27,32 +27,16 @@
             <div class="col-md-4 mx-auto">
               <form class="" name="form1" method="post" action="checklogin.php">
                 <div class="form-group">
-                  <label class="left" for="username">Username:</label>
-                  <input type="text" class="form-control" id="username" name="username">
-                </div>
-                <div class="form-group">
-                  <label class="left" for="username">Password:</label>
-                  <input type="password" class="form-control" id="password" name="password">
+                  <label class="left" for="username">Email:</label>
+                  <input class="form-control" name="myemail" type="text" id="myemail">
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-primary submit-button">Submit</button>
+                  <input class="btn btn-primary" type="submit" name="Submit" value="Login">
                 </div>
               </form>
             </div>
           </div>
-          <div class="row">
-            <div class="col-md-4">
-              <a href="http://www.faithfulscholars.com"> <img src="/assets/arrow.png" alt=""> Back to FaithfulScholars</a>
-            </div>
-            <div class="col-md-4">
-
-            </div>
-            <div class="col-md-4">
-              <a href="/resetpassword_requestform.php">Reset Password</a>
-            </div>
-          </div>
-        </div>
-        <footer><small>&copy;2018 FaithfulScholars.</small></footer>
+          <footer><small>&copy;2018 FaithfulScholars.</small></footer>
       </div>
     </div>
   </body>

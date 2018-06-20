@@ -153,7 +153,7 @@ class myPDF extends FPDF {
 $pdf = new myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('P','Letter',0);
-$pdf->headerTable();
+$pdf->headerTable($conn);
 $pdf->AddPage('P','Letter',0);
 $pdf->header2Table();
 $pdf->Output();

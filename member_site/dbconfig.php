@@ -1,5 +1,5 @@
 <?php
-$host="localhost"; // Host name
+$host="127.0.0.1"; // Host name
 $username="root"; // Mysql username
 $password="newpassword"; // Mysql password
 $db_name="FaithfulScholars"; // Database name

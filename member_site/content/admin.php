@@ -12,10 +12,12 @@
   </div>
   <div class="row">
     <div class="col-md-6 mx-auto">
-      <form class="" action="?page=admin" method="post">
+      <form action="?page=admin" method="post">
         <div class="form-group">
-          <input class="admin-search" type="text" id="search" name="search">
-          <input type="submit" name="search-submit" value="Search">
+          <input class="admin-search" type="text" id="search" name="search" class="form-control">
+        </div>
+        <div class="form-group">
+          <input type="submit" name="search-submit" value="Search" class="btn-primary">
         </div>
       </form>
     </div>

@@ -128,9 +128,13 @@ footer {
 }
 .right {
   text-align: right;
+  float: right;
 }
 .undecorated:hover{
   text-decoration: none;
+}
+.right-margin {
+  margin-right: 10px;
 }
 
 /* Small Changes */
