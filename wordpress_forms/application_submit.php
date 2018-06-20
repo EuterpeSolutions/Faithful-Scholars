@@ -91,7 +91,6 @@ $curriculum_student7=$_POST["curriculum_student7"];
 $curriculum_student8=$_POST["curriculum_student8"];
 
 
-
 // Connect to server and select databse.
 require 'dbconfig.php';
 $con = mysqli_connect("$host", "$username", "$password", $db_name);
@@ -109,8 +108,6 @@ $password = hash('sha256',$password.$site_salt.$p_salt);
 //Sql connection
 
 
-$con->query( "INSERT INTO members (username,psalt,password,email) VALUES
-('$username','$p_salt','$password','$email')" );
 
 if($new_hs == 'yes'){
   $new_hs = 1;
@@ -124,6 +121,8 @@ if($con->query($family_insert_sql) === TRUE) {
   $family_id = mysqli_insert_id($con);
 }
 
+$con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALUES
+('$username','$p_salt','$password','$email',$family_id);" );
 
 $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
 $con->query($homeschool_insert_sql);
@@ -273,25 +272,23 @@ if(isset($_POST['Submit'])){
 
 <body>
 
-
-
     <h2>Thank you for applying for membership with Faithful Scholars! </h2>
-    <p> <? echo $last_name?> Family,
+    <p> <?php echo $last_name?> Family,
     <p>Thank  you for joining Faithful Scholars; we look forward to serving your  family.  Below is a summary of what you have submitted to us. Please print a copy of this page to keep as a record of your membership until your membership packet arrives.  </p>
     <p> To complete your application, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. You may also pay by personal check, certified check, or money order.  Please mail payments to: Faithful Scholars, 1761 Ballard Lane, Fort Mill, SC 29715.  Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <? if ($expedite == 20){ ?>
+    <?php if ($expedite == 20){ ?>
          <p>  You have chosen to expedite your application.  You are legal to homeschool as of the completion of submitting and paying for your application.  Your paperwork will be process, faxed and/or mailed out within 24 hours. </p>
          <? }
 		   else { ?>
          <p>&nbsp; It will take us 3 to 30 days to fully process your paperwork  including mailouts.&nbsp; You are legal to homeschool as of the completion  of submitting/paying for your application.&nbsp; If there are any problems  with your application you will be notified within 7 days.&nbsp; If you need  your paperwork fully processed before this time, please hit the back arrow and re-submit your applicaton with expedited application option checked for an additional $20--which will have it processed,  faxed and/or mailed out within 24 hours.&nbsp;&nbsp;      </p>
-         <? } ?>
+         <?php } ?>
     <p>If you have any questions or comments about your application, please <a href="contact.html">contact us!</a></p>
     <div align="center">
       <p>
 
 </p>
 <table align="center"><tr><td>
-	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post"  target="_top"> <!-- Identify your business so that you can collect the payments. --> <input type="hidden" name="business" value="katie@faithfulscholars.com"> <!-- Specify a Buy Now button. --> <input type="hidden" name="cmd" value="_xclick"> <!-- Specify details about the item that buyers will purchase. --> <input type="hidden" name="item_name" value="Faithful Scholars Membership Fees - <? echo $last_name ?>, <? echo $membership?>" > <input type="hidden" name="amount" value="<? echo $total ?>"> <input type="hidden" name="currency_code" value="USD"> <!-- Display the payment button. --> <input type="image" name="submit" border="0" src="http://www.faithfulscholars.com/images/paynow.jpg" alt="Faithful Scholars Checkout"> <img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" > </form></td></tr></table>
+	  <form action="https://www.paypal.com/cgi-bin/webscr" method="post"  target="_top"> <!-- Identify your business so that you can collect the payments. --> <input type="hidden" name="business" value="katie@faithfulscholars.com"> <!-- Specify a Buy Now button. --> <input type="hidden" name="cmd" value="_xclick"> <!-- Specify details about the item that buyers will purchase. --> <input type="hidden" name="item_name" value="Faithful Scholars Membership Fees - <?php echo $last_name ?>, <?php echo $membership?>" > <input type="hidden" name="amount" value="<?php echo $total ?>"> <input type="hidden" name="currency_code" value="USD"> <!-- Display the payment button. --> <input type="image" name="submit" border="0" src="http://www.faithfulscholars.com/images/paynow.jpg" alt="Faithful Scholars Checkout"> <img alt="" border="0" width="1" height="1" src="https://www.paypal.com/en_US/i/scr/pixel.gif" > </form></td></tr></table>
 
 </div>
 </p>
@@ -303,43 +300,43 @@ if(isset($_POST['Submit'])){
         <table width="700" border="0">
           <tr>
             <td width="153"><label for="last_name">Last Name</label></td>
-            <td width="120"><? echo $last_name ?></td>
+            <td width="120"><?php echo $last_name ?></td>
             <td width="226"><label for="new_fs">New to Faithful Scholars?</label></td>
-            <td width="183"><? echo $new_hs ?></td>
+            <td width="183"><?php echo $new_hs ?></td>
           </tr>
           <tr>
             <td><label for="Father2">Father's Name </label></td>
-            <td><? echo $father ?></td>
+            <td><?php echo $father ?></td>
             <td><label for="phone2">Phone</label></td>
-            <td><? echo $phone?></td>
+            <td><?php echo $phone?></td>
           </tr>
           <tr>
             <td><label for="mother">Mother's Name</label></td>
-            <td><? echo $mother?></td>
+            <td><?php echo $mother?></td>
             <td><label>Cell Phone (Mom)</label></td>
-            <td><? echo $cell_phone_mom ?></td>
+            <td><?php echo $cell_phone_mom ?></td>
           </tr>
           <tr>
             <td><label for="address">Address</label></td>
-            <td><? echo $address?></td>
+            <td><?php echo $address?></td>
             <td><label>Cell Phone (Dad)</label></td>
-            <td><? echo $cell_phone_dad ?></td>
+            <td><?php echo $cell_phone_dad ?></td>
           </tr>
           <tr>
             <td><label for="city">City</label></td>
-            <td><? echo $city ?></td>
+            <td><?php echo $city ?></td>
             <td><label>Email Address</label></td>
-            <td><? echo $email ?></td>
+            <td><?php echo $email ?></td>
           </tr>
           <tr>
             <td><label for="zip">Zip</label></td>
-            <td><? echo $zip ?></td>
+            <td><?php echo $zip ?></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
           <tr>
             <td><label for="county">County</label></td>
-            <td><? echo $county ?></td>
+            <td><?php echo $county ?></td>
             <td>&nbsp;</td>
             <td>&nbsp;</td>
           </tr>
@@ -351,39 +348,39 @@ if(isset($_POST['Submit'])){
         <table width="700" border="0">
           <tr>
             <td width="174"><label for="start_date">School Year Start Date</label></td>
-            <td width="88"><? echo $start_date ?></td>
+            <td width="88"><?php echo $start_date ?></td>
             <td width="280"><label>New to Homeschooling?</label></td>
-            <td width="140"><? echo $new_hs ?></td>
+            <td width="140"><?php echo $new_hs ?></td>
           </tr>
           <tr>
             <td><label for="end_date">End of Year Date</label></td>
-            <td><? echo $end_date ?></td>
+            <td><?php echo $end_date ?></td>
             <td><label>Years of homeschooling</label></td>
-            <td><? echo $years_homeschoooling ?></td>
+            <td><?php echo $years_homeschoooling ?></td>
           </tr>
           <tr>
             <td><label for="primary_instructor">Primary Instructor</label></td>
-            <td><? echo $primary_instructor ?></td>
+            <td><?php echo $primary_instructor ?></td>
             <td><label>States in which you've homeschooled</label></td>
-            <td><? echo $states_homeschooled ?></td>
+            <td><?php echo $states_homeschooled ?></td>
           </tr>
           <tr>
             <td><label for="instructor_education">Level of Education</label></td>
-            <td><? echo $instructor_education ?></td>
+            <td><?php echo $instructor_education ?></td>
             <td><label>Removing a child from Public School?</label></td>
-            <td><? echo $removing_ps ?></td>
+            <td><?php echo $removing_ps ?></td>
           </tr>
           <tr>
             <td><label for="referred_by">Referred By</label></td>
-            <td><? echo $referred_by ?></td>
+            <td><?php echo $referred_by ?></td>
             <td><label>If yes, school name:</label></td>
-            <td><? echo $school_name ?></td>
+            <td><?php echo $school_name ?></td>
           </tr>
           <tr>
             <td><label for="school_district">School District</label></td>
-            <td><? echo $school_district ?></td>
+            <td><?php echo $school_district ?></td>
             <td><label>If yes, school fax #:</label></td>
-            <td><? echo $school_fax ?></td>
+            <td><?php echo $school_fax ?></td>
           </tr>
         </table>
         <p>&nbsp;</p>
@@ -398,52 +395,52 @@ if(isset($_POST['Submit'])){
             <td>Birthdate (M / D / Y)</td>
           </tr>
           <tr>
-            <td><? echo $student_1?></td>
-            <td><? echo $student_1_grade ?></td>
-            <td><? echo $student_1_age ?></td>
-            <td><? echo $student_1_birthdate ?></td>
+            <td><?php echo $student_1?></td>
+            <td><?php echo $student_1_grade ?></td>
+            <td><?php echo $student_1_age ?></td>
+            <td><?php echo $student_1_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_2 ?></td>
-            <td><? echo $student_2_grade ?></td>
-            <td><? echo $student_2_age ?></td>
-            <td><? echo $student_2_birthdate ?></td>
+            <td><?php echo $student_2 ?></td>
+            <td><?php echo $student_2_grade ?></td>
+            <td><?php echo $student_2_age ?></td>
+            <td><?php echo $student_2_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_3 ?></td>
-            <td><? echo $student_3_grade ?></td>
-            <td><? echo $student_3_age ?></td>
-            <td><? echo $student_3_birthdate ?></td>
+            <td><?php echo $student_3 ?></td>
+            <td><?php echo $student_3_grade ?></td>
+            <td><?php echo $student_3_age ?></td>
+            <td><?php echo $student_3_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_4 ?></td>
-            <td><? echo $student_4_grade ?></td>
-            <td><? echo $student_4_age ?></td>
-            <td><? echo $student_4_birthdate ?></td>
+            <td><?php echo $student_4 ?></td>
+            <td><?php echo $student_4_grade ?></td>
+            <td><?php echo $student_4_age ?></td>
+            <td><?php echo $student_4_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_5 ?></td>
-            <td><? echo $student_5_grade ?></td>
-            <td><? echo $student_5_age ?></td>
-            <td><? echo $student_5_birthdate ?></td>
+            <td><?php echo $student_5 ?></td>
+            <td><?php echo $student_5_grade ?></td>
+            <td><?php echo $student_5_age ?></td>
+            <td><?php echo $student_5_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_6 ?></td>
-            <td><? echo $student_6_grade ?></td>
-            <td><? echo $student_6_age ?></td>
-            <td><? echo $student_6_birthdate ?></td>
+            <td><?php echo $student_6 ?></td>
+            <td><?php echo $student_6_grade ?></td>
+            <td><?php echo $student_6_age ?></td>
+            <td><?php echo $student_6_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_7 ?></td>
-            <td><? echo $student_7_grade ?></td>
-            <td><? echo $student_7_age ?></td>
-            <td><? echo $student_7_birthdate ?></td>
+            <td><?php echo $student_7 ?></td>
+            <td><?php echo $student_7_grade ?></td>
+            <td><?php echo $student_7_age ?></td>
+            <td><?php echo $student_7_birthdate ?></td>
           </tr>
           <tr>
-            <td><? echo $student_8 ?></td>
-            <td><? echo $student_8_grade ?></td>
-            <td><? echo $student_8_age ?></td>
-            <td><? echo $student_8_birthdate ?></td>
+            <td><?php echo $student_8 ?></td>
+            <td><?php echo $student_8_grade ?></td>
+            <td><?php echo $student_8_age ?></td>
+            <td><?php echo $student_8_birthdate ?></td>
           </tr>
         </table>
         <p>&nbsp;</p>
@@ -453,25 +450,25 @@ if(isset($_POST['Submit'])){
         <p><strong>Type of Membership: </strong></p>
         <ul>
           <p>
-            <? echo $type ?>
+            <?php echo $type ?>
           </p>
         </ul>
         <p><strong>Additions to your membership: </strong></p>
         <ul>
-          <p>High School Students $<? echo $hs_students ?>
+          <p>High School Students $<?php echo $hs_students ?>
           </p>
-          <p>High School Diploma $<? echo $hs_diploma ?></p>
+          <p>High School Diploma $<?php echo $hs_diploma ?></p>
 
-          <p>High School Transcript $<? echo $hs_transcript ?></p>
+          <p>High School Transcript $<?php echo $hs_transcript ?></p>
 
-          <p>Consultations $<? echo $consultations ?></p>
+          <p>Consultations $<?php echo $consultations ?></p>
           <p>             Replacement
-            membership card $<? echo $card?> </p>
-          <p>SCHEA discounted membership $<? echo $schea ?></p>
-          <p>Enchanted Learning discounted membership $<? echo $enchanted ?> </p>
+            membership card $<?php echo $card?> </p>
+          <p>SCHEA discounted membership $<?php echo $schea ?></p>
+          <p>Enchanted Learning discounted membership $<?php echo $enchanted ?> </p>
           <p>
             Expedite
-            my Application Please $<? echo $expedite ?></p>
+            my Application Please $<?php echo $expedite ?></p>
         </ul>
 
       </fieldset>
