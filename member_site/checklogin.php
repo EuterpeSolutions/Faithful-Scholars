@@ -11,8 +11,8 @@ ob_start();
 // Connect to server and select databse.
 $con = db_connect();
 // Define $myusername and $mypassword
-$myusername=$_POST['username'];
-$mypassword=$_POST['password'];
+$myusername=$_POST['myusername'];
+$mypassword=$_POST['mypassword'];
 
 // To protect MySQL injection
 $myusername = stripslashes($myusername);
