@@ -108,8 +108,6 @@ $password = hash('sha256',$password.$site_salt.$p_salt);
 //Sql connection
 
 
-$con->query( "INSERT INTO members (username,psalt,password,email) VALUES
-('$username','$p_salt','$password','$email')" );
 
 if($new_hs == 'yes'){
   $new_hs = 1;
@@ -123,6 +121,8 @@ if($con->query($family_insert_sql) === TRUE) {
   $family_id = mysqli_insert_id($con);
 }
 
+$con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALUES
+('$username','$p_salt','$password','$email',$family_id);" );
 
 $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
 $con->query($homeschool_insert_sql);
