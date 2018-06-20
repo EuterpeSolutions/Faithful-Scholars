@@ -24,7 +24,12 @@ function navMenu($sep = '  ')
 
   // For each page as defined in config.php
   foreach (config('nav_menu') as $uri => $name) {
-    $nav_menu .= '<a href="/'.(config('pretty_uri') || $uri == '' ? '' : '?page=').$uri.'">'.$name.'</a>'.'  ';
+    if($uri == 'logout'){
+      $nav_menu .= '<a href="/'.(config('pretty_uri') || $uri == '' ? '' : '?page=').$uri.'" class="right right-margin">'.$name.'</a>'.'  ';
+    } else {
+      $nav_menu .= '<a href="/'.(config('pretty_uri') || $uri == '' ? '' : '?page=').$uri.'">'.$name.'</a>'.'  ';
+    }
+
   }
 
   echo trim($nav_menu, $sep);
