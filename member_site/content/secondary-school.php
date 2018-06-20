@@ -45,7 +45,7 @@ class myPDF extends FPDF {
   function footer() {
     $this->SetXY(0,-15); //set X and Y
     $this->SetFont('Times','', 12); //times, size 12
-    $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715 www.faithfulscholars.com (803) 548-4428',0,0,'C');
+    $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715  www.faithfulscholars.com  (803) 548-4428',0,0,'C');
   }
 
   function headerTable() {
