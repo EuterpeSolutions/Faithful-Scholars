@@ -7,9 +7,7 @@
 
   $con = mysqli_connect("$host", "$username", "$password", $db_name);
 
-
   global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district, $students;
-
 
   $sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.family_id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '%". $_SESSION['uname']."%'";
   if($result = mysqli_query($con, $sql)){
