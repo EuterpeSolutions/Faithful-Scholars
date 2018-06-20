@@ -143,15 +143,23 @@ class myPDF extends FPDF {
   function header2Table() {
     $this->SetFont('Times','B', 11); //times, size 12
     $this->Text(38,15,'FAITHFUL SCHOLARS');
+    $this->Text(45,20,'(803) 548-4428');
+    $this->Text(35,25,'www.faithfulscholars.com');
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
     $this->Text(38,70,'FAITHFUL SCHOLARS');
+    $this->Text(45,75,'(803) 548-4428');
+    $this->Text(35,80,'www.faithfulscholars.com');
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
     $this->Text(38,125,'FAITHFUL SCHOLARS');
+    $this->Text(45,130,'(803) 548-4428');
+    $this->Text(35,135,'www.faithfulscholars.com');
     $this->Cell(100,50,'',1,1);
     $this->SetY(175);
     $this->Text(38,180,'FAITHFUL SCHOLARS');
+    $this->Text(45,185,'(803) 548-4428');
+    $this->Text(35,190,'www.faithfulscholars.com');
     $this->Cell(100,50,'',1,1);
   }
 
