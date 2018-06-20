@@ -39,6 +39,11 @@
     <legend> </legend>
       <div class="container">
         <div class="row">
+          <div class="col-md-12">
+            <p>In order to renew your Faithful Scholars membership please review the following information to make sure that it is still valid. Then initial the compliance boxes and select any additions to your membership that you want to add then click the the submit button.</p>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="last_name">Last Name:</label>

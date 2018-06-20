@@ -40,6 +40,11 @@
     <legend></legend>
       <div class="container">
         <div class="row">
+          <div class="col-md-12">
+            <p>Update any of your following information below if it is no longer valid.</p>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <label for="last_name">Last Name:</label>
