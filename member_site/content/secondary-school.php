@@ -34,10 +34,12 @@ class myPDF extends FPDF {
   function header() {
     $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
     $this->SetFont('Times','B',12);   // Arial bold, size 15
-    $this->SetY(50);    // set the cursor at Y position 5
+    $this->SetY(40);    // set the cursor at Y position 5
     $this->Cell(80); // Move to the right
-    $this->Cell(30,10,'STUDENT IDENTIFICATION VERIFICATION For DMV',0,1,'C'); // Title
-    $this->Ln(2);// Line break
+    $this->Cell(30,10,'PERMISSION FOR ATTENDING A SECONDARY SCHOOL',0,1,'C'); // Title
+    $this->SetX(87);
+    $this->Cell(30,10,'such as York Tech',0,1,'C'); // Title
+    $this->Ln();// Line break
   }
 
   function footer() {
@@ -96,14 +98,14 @@ class myPDF extends FPDF {
     $this->Cell(30,10,$GLOBALS['name'],0,1);
     $this->SetXY(30,140);
     $this->Cell(20);
-    $this->MultiCell(140,10,'is a member in good standing of the South Carolina home school accountability association, Faithful Scholars.',0,1);
-    $this->SetXY(10,170);
+    $this->MultiCell(140,10,'is a member in good standing of the home school accountability association Faithful Scholars, and as such has permission to attend classes at York Tech and/or any secondary school.',0,1);
+    $this->SetXY(10,180);
     $this->Cell(20);
     $this->Cell(30,10,'Sincerely,',0,1);
-    $this->SetXY(10,175);
+    $this->SetXY(10,185);
     $this->Cell(20);
     $this->Cell(30,10,'I am,',0,1);
-    $this->SetXY(10,185);
+    $this->SetXY(10,190);
     $this->Cell(20);
     $this->Cell(30,10,'Katharine S. Bach, Administrator',0,1);
 

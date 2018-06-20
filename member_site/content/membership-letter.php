@@ -23,6 +23,7 @@ if($result = mysqli_query($conn, $sql)){
     $city = $row["city"];
     $zipcode = $row["zip"];
     $county = $row["county"];
+    $district = $row["district"];
   }
 }
 
@@ -76,12 +77,16 @@ class myPDF extends FPDF {
     $this->Cell(20);
     $this->Cell(30,10,'County:',0,1);
     $this->SetFont('Times','', 12);
-    $this->SetXY(50,100);
+    $this->SetXY(47,100);
     $this->Cell(30,10,$GLOBALS['county'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(120);
     $this->Cell(20);
     $this->Cell(30,10,'School District:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetXY(60,120);
+    $this->Cell(30,10,$GLOBALS['district'],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetY(140);
     $this->Cell(20);
     $this->Cell(30,10,'School Year:',0,1);
@@ -125,6 +130,7 @@ class myPDF extends FPDF {
     $this->SetXY(62,170);
     $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name']." , ".$GLOBALS['grade'],0,1);
     $this->SetFont('Times','B', 12);
+    $this->Image('../assets/kate-signature.png',142,175,50); // Logo
     $this->Line(135,195,195,195);
     $this->SetXY(113,195);
     $this->Cell(20);
