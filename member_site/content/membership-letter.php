@@ -171,6 +171,8 @@ class myPDF extends FPDF {
     $this->Text(40,210,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
     $this->Text(25,215,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
+    $this->SetXY(140,60);
+    $this->MultiCell(0,15,'Laminating Options: Laminating machine, self-sealing laminating pouches, clear packing tape, or synthetic paper.');
   }
 
 }
