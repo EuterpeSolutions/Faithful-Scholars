@@ -23,6 +23,9 @@ if($result = mysqli_query($conn, $sql)){
     $city = $row["city"];
     $zipcode = $row["zip"];
     $county = $row["county"];
+    $district = $row["district"];
+    $father_name = $row["father_name"];
+    $mother_name = $row["mother_name"];
   }
 }
 
@@ -52,7 +55,7 @@ class myPDF extends FPDF {
     if ( $this->PageNo() == 1 ) {
       $this->SetXY(0,-15); //set X and Y
       $this->SetFont('Times','', 12); //times, size 12
-      $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715 www.faithfulscholars.com (803) 548-4428',0,0,'C');
+      $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715  www.faithfulscholars.com  (803) 548-4428',0,0,'C');
     }
   }
 
@@ -76,12 +79,16 @@ class myPDF extends FPDF {
     $this->Cell(20);
     $this->Cell(30,10,'County:',0,1);
     $this->SetFont('Times','', 12);
-    $this->SetXY(50,100);
+    $this->SetXY(47,100);
     $this->Cell(30,10,$GLOBALS['county'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(120);
     $this->Cell(20);
     $this->Cell(30,10,'School District:',0,1);
+    $this->SetFont('Times','', 12);
+    $this->SetXY(60,120);
+    $this->Cell(30,10,$GLOBALS['district'],0,1);
+    $this->SetFont('Times','B', 12);
     $this->SetY(140);
     $this->Cell(20);
     $this->Cell(30,10,'School Year:',0,1);
@@ -125,6 +132,7 @@ class myPDF extends FPDF {
     $this->SetXY(62,170);
     $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name']." , ".$GLOBALS['grade'],0,1);
     $this->SetFont('Times','B', 12);
+    $this->Image('../assets/kate-signature.png',142,175,50); // Logo
     $this->Line(135,195,195,195);
     $this->SetXY(113,195);
     $this->Cell(20);
@@ -137,16 +145,34 @@ class myPDF extends FPDF {
   function header2Table() {
     $this->SetFont('Times','B', 11); //times, size 12
     $this->Text(38,15,'FAITHFUL SCHOLARS');
+    $this->Text(45,20,'(803) 548-4428');
+    $this->Text(35,25,'www.faithfulscholars.com');
+    $this->Text(40,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    $this->Text(25,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
     $this->Text(38,70,'FAITHFUL SCHOLARS');
+    $this->Text(45,75,'(803) 548-4428');
+    $this->Text(35,80,'www.faithfulscholars.com');
+    $this->Text(40,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    $this->Text(25,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
     $this->Text(38,125,'FAITHFUL SCHOLARS');
+    $this->Text(45,130,'(803) 548-4428');
+    $this->Text(35,135,'www.faithfulscholars.com');
+    $this->Text(40,155,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    $this->Text(25,160,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(175);
     $this->Text(38,180,'FAITHFUL SCHOLARS');
+    $this->Text(45,185,'(803) 548-4428');
+    $this->Text(35,190,'www.faithfulscholars.com');
+    $this->Text(40,210,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    $this->Text(25,215,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
+    $this->SetXY(140,60);
+    $this->MultiCell(0,15,'Laminating Options: Laminating machine, self-sealing laminating pouches, clear packing tape, or synthetic paper.');
   }
 
 }

@@ -23,7 +23,7 @@
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=membership-letter">
+            <a class="undecorated" href="/content/secondary-school.php">
               <div class="circle center">
                 Secondary School Form
               </div>
