@@ -4,7 +4,6 @@ $username="root"; // Mysql username
 $password="newpassword"; // Mysql password
 $db_name="FaithfulScholars"; // Database name
 $tbl_name="members"; // Table name
-
 function db_connect(){
   global $host, $username, $password, $db_name;
   $con = mysqli_connect($host, $username, $password, $db_name);
@@ -13,6 +12,25 @@ function db_connect(){
     die("cannot connect" . mysqli_connect_error());
   }
   return $con;
+}
+
+function isAdmin($username) {
+  $con = db_connect();
+  $sql = "SELECT COUNT(id) as count FROM members WHERE admin = 1 AND username LIKE '%$username%'";
+  if($stmt = $con->prepare($sql))
+  {
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($count);
+    while($stmt->fetch()){
+      if($count > 0){
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+  return false;
 }
 
 //Retrieve user data

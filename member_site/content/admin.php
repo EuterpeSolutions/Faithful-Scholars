@@ -1,5 +1,6 @@
 <?php
-  if($_SESSION['userid'] != 1){
+  require_once 'dbconfig.php';
+  if(isAdmin($_SESSION['uname']) != 1){
     header("Location: /");
   }
 ?>
@@ -208,7 +209,7 @@
   </div>
     <div class="row">
       <div class="col-md-12">
-        test
+
       </div>
     </div>
   </div>

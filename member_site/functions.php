@@ -1,6 +1,8 @@
 <?php
-global $county_array;
 
+require_once 'dbconfig.php';
+
+global $county_array;
 
 
 
@@ -21,7 +23,6 @@ function pageTitle()
 function navMenu($sep = '  ')
 {
   $nav_menu = '';
-
   // For each page as defined in config.php
   foreach (config('nav_menu') as $uri => $name) {
     if($uri == 'logout'){

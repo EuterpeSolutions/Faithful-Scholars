@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.22)
 # Database: FaithfulScholars
-# Generation Time: 2018-06-20 23:00:02 +0000
+# Generation Time: 2018-06-23 18:44:06 +0000
 # ************************************************************
 
 
@@ -19,7 +19,6 @@
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
-USE db743020317;
 
 # Dump of table eoy
 # ------------------------------------------------------------
@@ -248,7 +247,8 @@ VALUES
 	(232,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL),
 	(233,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL),
 	(234,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL),
-	(235,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL);
+	(235,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL),
+	(236,'t','t','t','t','t','t',1,'t','t','t','t',NULL,'test',NULL);
 
 /*!40000 ALTER TABLE `family` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -327,16 +327,17 @@ CREATE TABLE `members` (
   `password` varchar(100) NOT NULL DEFAULT '',
   `email` varchar(60) DEFAULT '',
   `family_id` int(11) NOT NULL,
+  `admin` int(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
 
-INSERT INTO `members` (`id`, `username`, `psalt`, `password`, `email`, `family_id`)
+INSERT INTO `members` (`id`, `username`, `psalt`, `password`, `email`, `family_id`, `admin`)
 VALUES
-	(1,'john','s*vl%/?s8b*b4}b/w%w4','75b4e8e5ecccdf843df41a32077707eb6b97981f5d3ab6c235f1158bf4950145','pmatt42@gmail.com',1),
-	(2,'tmoon','0e07cf830957701d43c183f1515f63e6b68027e528f43ef52b1527a520ddec82','6ca2088fa4d6db9ed2fcaba78c508c3568cf0fea0bec5420404e0d5f76297d85','t',235);
+	(1,'john','s*vl%/?s8b*b4}b/w%w4','75b4e8e5ecccdf843df41a32077707eb6b97981f5d3ab6c235f1158bf4950145','pmatt42@gmail.com',1,1),
+	(2,'tmoon','0e07cf830957701d43c183f1515f63e6b68027e528f43ef52b1527a520ddec82','6ca2088fa4d6db9ed2fcaba78c508c3568cf0fea0bec5420404e0d5f76297d85','t',235,0);
 
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -405,7 +406,8 @@ VALUES
 	(30,232,1,0,1,1,1,1,'t','t','t','t','t','t'),
 	(31,233,1,0,1,1,1,1,'t','t','t','t','t','t'),
 	(32,234,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(33,235,1,0,1,1,1,1,'t','t','t','t','t','t');
+	(33,235,1,0,1,1,1,1,'t','t','t','t','t','t'),
+	(34,236,1,0,1,1,1,1,'t','t','t','t','t','t');
 
 /*!40000 ALTER TABLE `membership` ENABLE KEYS */;
 UNLOCK TABLES;
