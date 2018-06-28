@@ -1,8 +1,7 @@
 /* Body which defines the background image */
 body {
-  background-image: url('/member_site/assets/background-image.jpeg');
+  background-image: url('/member_site/assets/brick-background.png');
   background-repeat: repeat;
-  background-size: contain;
 }
 
 footer {
