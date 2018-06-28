@@ -191,8 +191,13 @@
       } else{
          echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
       }
-
-      $sql = "SELECT count(id) as count FROM membership WHERE schea > 0;";
+?>
+  </div>
+</div>
+<div class="row">
+<div class="col-md-6">
+<?php
+      $sql = "SELECT count(id) as count FROM membership WHERE schea > 0 AND schea_sent = 0;";
       if($result = mysqli_query($con, $sql)){
         if(mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_array($result)){
@@ -201,7 +206,7 @@
           }
         }
       }
-      $sql = "SELECT count(id) as count FROM membership WHERE enchanted_learning > 0;";
+      $sql = "SELECT count(id) as count FROM membership WHERE enchanted_learning > 0 AND enchanted_learning_sent = 0;";
       if($result = mysqli_query($con, $sql)){
         if(mysqli_num_rows($result) > 0){
           while($row = mysqli_fetch_array($result)){
@@ -215,10 +220,35 @@
       mysqli_close($con);
       ?>
     </div>
-  </div>
-    <div class="row">
-      <div class="col-md-12">
+    <div class="col-md-6">
+      <form method="post">
+        <input class="btn btn-success" type="submit" name="test" id="test" value="Mark SCHEA as Sent" /><br />
+      </form>
+      <?php
+        if(array_key_exists('test', $_POST)){
+          $con = db_connect();
+          $update_sql = "UPDATE membership SET schea_sent = 1;";
+          if($con->query($update_sql)){
+            echo "Updated SCHEA"
+            header('Location: /member_site/?page=admin');
+          }
+        }
 
-      </div>
+       ?>
+       <br>
+       <form method="post">
+         <input class="btn btn-success" type="submit" name="test2" id="test2" value="Mark Enchanted Learning as Sent" /><br />
+       </form>
+       <?php
+         if(array_key_exists('test2', $_POST)){
+           $con = db_connect();
+           $update_sql = "UPDATE membership SET enchanted_learning_sent = 1;";
+           if($con->query($update_sql)){
+             echo "Updated Enchanted Learning";
+             header('Location: /member_site/?page=admin');
+           }
+         }
+        ?>
     </div>
   </div>
+</div>
