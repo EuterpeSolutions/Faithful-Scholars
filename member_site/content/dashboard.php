@@ -25,7 +25,9 @@
           <div class="col-md-4">
             <a class="undecorated" href="/member_site/content/secondary-school.php">
               <div class="circle center">
-                Secondary School Form
+                <div style="padding-top: 70px; line-height: 30px;">
+                  Secondary School Form (College / Dual Credit)
+                </div>
               </div>
             </a>
           </div>
