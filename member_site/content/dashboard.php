@@ -9,21 +9,21 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <a class="undecorated" href="/content/membership-letter.php">
+            <a class="undecorated" href="/member_site/content/membership-letter.php">
               <div class="circle center">
                 Membership Letter
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/content/dmv-letter.php">
+            <a class="undecorated" href="/member_site/content/dmv-letter.php">
               <div class="circle center">
                 DMV Letter
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/content/secondary-school.php">
+            <a class="undecorated" href="/member_site/content/secondary-school.php">
               <div class="circle center">
                 Secondary School Form
               </div>
@@ -43,21 +43,21 @@
         </div>
         <div class="row">
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=renewal">
+            <a class="undecorated" href="/member_site/?page=renewal">
               <div class="circle center">
                 Renewal
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=end-of-year-compliance">
+            <a class="undecorated" href="/member_site/?page=end-of-year-compliance">
               <div class="circle center">
                 Mid Year Compliance
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=end-of-year-compliance">
+            <a class="undecorated" href="/member_site/?page=end-of-year-compliance">
               <div class="circle center">
                 End of Year Compliance
               </div>
