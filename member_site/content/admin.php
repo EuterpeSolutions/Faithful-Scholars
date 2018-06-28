@@ -28,13 +28,7 @@
     <div class="col-md-12">
       <?php
 
-      $host="127.0.0.1"; // Host name
-      $username="root"; // Mysql username
-      $password="newpassword"; // Mysql password
-      $db_name="FaithfulScholars"; // Database name
-      $tbl_name="members"; // Table name
-
-      $con = mysqli_connect("$host", "$username", "$password", $db_name);
+      $con = db_connect();
        if(isset($_POST["search"])){
          $search_value = $_POST["search"];
          $sql = "";
@@ -143,15 +137,10 @@
   <div class="row">
     <div class="col-md-12">
       <?php
-      $host="127.0.0.1"; // Host name
-      $username="root"; // Mysql username
-      $password="newpassword"; // Mysql password
-      $db_name="FaithfulScholars"; // Database name
-      $tbl_name="members"; // Table name
 
-      $con = mysqli_connect("$host", "$username", "$password", $db_name);
+      $con = db_connect();//mysqli_connect("$host", "$username", "$password", $db_name);
       echo "<h5>Student Count by District</h5>";
-      $sql="SELECT COUNT(f.id) as count, f.district as district FROM student AS s JOIN family as f ON s.family_id = f.id WHERE f.district IS NOT NULL GROUP BY f.district;";
+      $sql="SELECT COUNT(id) as count, district as district FROM family WHERE district IS NOT NULL GROUP BY district;";
       if($result = mysqli_query($con, $sql)){
          if(mysqli_num_rows($result) > 0){
              echo "<form class='' action='?page=admin-edit' method='post'>";
@@ -202,6 +191,26 @@
       } else{
          echo "ERROR: Could not able to execute $sql. " . mysqli_error($con);
       }
+
+      $sql = "SELECT count(id) as count FROM membership WHERE schea > 0;";
+      if($result = mysqli_query($con, $sql)){
+        if(mysqli_num_rows($result) > 0){
+          while($row = mysqli_fetch_array($result)){
+            echo "<p>SCHEA: $" . (15 * $row['count']) . "</p>";
+            echo "<br>";
+          }
+        }
+      }
+      $sql = "SELECT count(id) as count FROM membership WHERE enchanted_learning > 0;";
+      if($result = mysqli_query($con, $sql)){
+        if(mysqli_num_rows($result) > 0){
+          while($row = mysqli_fetch_array($result)){
+            echo "<p>Enchanted Learning: $" . (10 * $row['count']) . "</p>";
+            echo "<br>";
+          }
+        }
+      }
+
       // Close connection
       mysqli_close($con);
       ?>
