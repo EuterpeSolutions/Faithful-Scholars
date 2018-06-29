@@ -73,7 +73,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Address: ',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(50,85);
-    $this->Cell(30,10,$GLOBALS['address'],0,1);
+    $this->Cell(30,10,$GLOBALS['address'].", ".$GLOBALS['city'].", SC ".$GLOBALS['zipcode'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(100);
     $this->Cell(20);
@@ -101,35 +101,30 @@ class myPDF extends FPDF {
     $currentYear = $now->format('Y');
     $intMonth = (int)$month;
 
+    $this->Cell(30,10,date('Y')." - ".date('Y', strtotime('+1 year')),0,1);
+
     if($intMonth >= 8 and $intMonth <=12) {
       $schoolYear = $currentYear;
       $semester = "Fall";
-      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
 
     } else if ($intMonth >=1 and $intMonth <=5) {
 
       $schoolYear = $currentYear;
       $semester = "Spring";
-      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
 
     } else {
       $schoolYear = $currentYear;
       $semester = "Summer";
-      $this->Cell(30,10,$semester." ".$schoolYear,0,1);
+      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
     }
     $this->SetFont('Times','B', 12);
     $this->SetY(155);
     $this->Cell(20);
-    $this->Cell(30,10,'Member Number:',0,1);
-    $this->SetFont('Times','', 12);
-    $this->SetXY(65,155);
-    $this->Cell(30,10,$GLOBALS['family_id'],0,1);
-    $this->SetFont('Times','B', 12);
-    $this->SetY(170);
-    $this->Cell(20);
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
-    $this->SetXY(62,170);
+    $this->SetXY(62,155);
     $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name']." , ".$GLOBALS['grade'],0,1);
     $this->SetFont('Times','B', 12);
     $this->Image('../assets/kate-signature.png',142,175,50); // Logo
