@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.22)
 # Database: FaithfulScholars
-# Generation Time: 2018-06-23 18:44:06 +0000
+# Generation Time: 2018-06-28 22:59:36 +0000
 # ************************************************************
 
 
@@ -18,7 +18,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-USE db743020317;
+
 
 # Dump of table eoy
 # ------------------------------------------------------------
@@ -73,7 +73,7 @@ LOCK TABLES `family` WRITE;
 
 INSERT INTO `family` (`id`, `father_name`, `mother_name`, `address`, `city`, `zip`, `county`, `new`, `mom_cell`, `dad_cell`, `email`, `phone`, `first_name`, `last_name`, `district`)
 VALUES
-	(1,'Steve','Carol','123 Test Street','Test Cityzzz','12345','YORK',0,'1234567891','1234567891','pmatt42@gmail.com','1234567891','Steve','Rogers','York 01'),
+	(1,'Steve','Carol','123 Test Street','Test City','12345','YORK',0,'1234567891','1234567891','steve@gmail.com','1234567891','Steve','Rogers','York 01'),
 	(2,'Abe','Beta','1234 Who?','Whereverville','12345','',NULL,NULL,NULL,'beta@email.com','1231231233','Test','Beta','YORK2'),
 	(63,NULL,NULL,'P.O. Box 224, 8377 Faucibus. Rd.','Lidköping','9862','Västra Götalands län',NULL,NULL,NULL,'et.lacinia.vitae@non.com','1-721-847-7646','Graiden','Bates','YORK1'),
 	(64,NULL,NULL,'205-6709 Nec, Road','Brugge Bruges','51022','West-Vlaanderen',NULL,NULL,NULL,'a.auctor.non@lobortisrisusIn.com','1-456-767-4065','Brandon','Oneil',NULL),
@@ -82,14 +82,14 @@ VALUES
 	(67,NULL,NULL,'P.O. Box 164, 3172 Aliquam Street','Lo Prado','44767','Metropolitana de Santiago',NULL,NULL,NULL,'elit.Etiam@Phasellusdolorelit.ca','1-331-287-9611','Paul','Boyle',NULL),
 	(68,NULL,NULL,'239 Dolor St.','Okene','30608','Kogi',NULL,NULL,NULL,'dignissim@metusfacilisis.edu','1-155-655-1398','Farrah','Briggs',NULL),
 	(69,NULL,NULL,'P.O. Box 326, 4558 Interdum Rd.','Kirkland','42549','QC',NULL,NULL,NULL,'Suspendisse@turpis.net','1-728-616-4386','Jael','Moreno',NULL),
-	(70,NULL,NULL,'P.O. Box 533, 1732 Dapibus Avenue','Galway','4275','C',NULL,NULL,NULL,'adipiscing@dolor.com','1-338-372-0573','Warren','Wade',NULL),
+	(70,NULL,NULL,'P.O. Box 533, 1732 Dapibus Avenue','Galway','4275','C',NULL,NULL,NULL,'adipiscing@dolor.com','1-338-372-0573','Warren','Wade','YORK2'),
 	(71,NULL,NULL,'624-1012 Nunc Avenue','Bremerhaven','U51 7TD','Bremen',NULL,NULL,NULL,'vel.vulputate@mifringilla.ca','1-299-530-5815','Eleanor','Graham',NULL),
 	(72,NULL,NULL,'Ap #171-4073 Libero Avenue','Katsina','177430','Katsina',NULL,NULL,NULL,'a.malesuada@lobortis.co.uk','1-190-902-0171','Basil','Holloway',NULL),
 	(73,NULL,NULL,'7653 Justo. Rd.','Aartrijke','76369','West-Vlaanderen',NULL,NULL,NULL,'a.mi@facilisis.co.uk','1-128-276-5658','Derek','Webb',NULL),
 	(74,NULL,NULL,'Ap #885-3989 Fermentum St.','Nova Iguaçu','5002','RJ',NULL,NULL,NULL,'id.erat@at.net','1-198-905-2499','Zephania','Trevino',NULL),
 	(75,NULL,NULL,'4998 Ullamcorper, Rd.','Istanbul','678071','Ist',NULL,NULL,NULL,'Mauris.non@blanditcongue.net','1-505-420-4883','Thor','Valenzuela',NULL),
 	(76,NULL,NULL,'P.O. Box 808, 7501 Fermentum St.','Swan Hill','8542','VIC',NULL,NULL,NULL,'arcu.vel.quam@nisiMauris.co.uk','1-859-372-8445','Zachary','Blankenship',NULL),
-	(77,NULL,NULL,'7488 Eleifend Ave','Florenville','34353','LX',NULL,NULL,NULL,'a.tortor.Nunc@orciin.edu','1-608-430-9698','Rachel','Adkins',NULL),
+	(77,NULL,NULL,'7488 Eleifend Ave','Florenville','34353','LX',NULL,NULL,NULL,'a.tortor.Nunc@orciin.edu','1-608-430-9698','Rachel','Adkins','Charleston'),
 	(78,NULL,NULL,'Ap #371-5747 Posuere Avenue','Zierikzee','8384','Zeeland',NULL,NULL,NULL,'metus.sit@sem.co.uk','1-532-403-1077','Madeson','Franklin',NULL),
 	(79,NULL,NULL,'8053 Sem Road','Tarnów','69-249','Małopolskie',NULL,NULL,NULL,'tristique.pellentesque.tellus@convallis.edu','1-842-838-4673','Xena','Franco',NULL),
 	(80,NULL,NULL,'P.O. Box 771, 1152 Phasellus Rd.','Huissen','382997','Gelderland',NULL,NULL,NULL,'Phasellus.in.felis@duiCumsociis.edu','1-792-841-9572','Francesca','Stein',NULL),
@@ -105,7 +105,7 @@ VALUES
 	(90,NULL,NULL,'1323 Interdum. Street','Wellington','4515','North Island',NULL,NULL,NULL,'semper@ac.net','1-736-422-3228','Zephr','Miller',NULL),
 	(91,NULL,NULL,'Ap #241-2861 Et Av.','Providencia','382561','Metropolitana de Santiago',NULL,NULL,NULL,'venenatis.a.magna@vitaealiquameros.org','1-999-975-1326','Hall','Vaughn',NULL),
 	(92,NULL,NULL,'Ap #712-9646 Nunc Rd.','Devonport','3435','Tasmania',NULL,NULL,NULL,'amet@egestashendrerit.co.uk','1-389-943-7695','Iliana','Callahan',NULL),
-	(93,NULL,NULL,'340-7392 Gravida. Avenue','Stourbridge','36872','Worcestershire',NULL,NULL,NULL,'ligula@atfringillapurus.edu','1-812-122-3064','Lani','Rogers',NULL),
+	(93,NULL,NULL,'123 Test Street','Test City','12345','Worcestershire',NULL,NULL,NULL,'steve@gmail.com','1234567891','Steve','Rogers',NULL),
 	(94,NULL,NULL,'Ap #391-9309 Rhoncus. Street','Wellington','20968','North Island',NULL,NULL,NULL,'at.auctor@arcuCurabiturut.edu','1-854-830-4403','Wynne','Burton',NULL),
 	(95,NULL,NULL,'938-4168 Cum Ave','Sasaram','387781','BR',NULL,NULL,NULL,'malesuada.vel.venenatis@Donec.edu','1-679-484-6977','Levi','Vance',NULL),
 	(96,NULL,NULL,'P.O. Box 896, 2617 Dolor. Ave','Qutubullapur','P7W 8X9','Andhra Pradesh',NULL,NULL,NULL,'Nunc.sed.orci@luctus.co.uk','1-728-164-1119','Jasper','Mcintosh',NULL),
@@ -225,7 +225,7 @@ VALUES
 	(210,'Test','test','test','test','12345','test',1,'1231231234','1231231234','test@test.com','1231231234',NULL,'Test',NULL),
 	(211,'Test','test','test','test','12345','test',1,'1231231234','1231231234','test@test.com','1231231234',NULL,'Test',NULL),
 	(212,'Test','test','test','test','12345','test',1,'1231231234','1231231234','test@test.com','1231231234',NULL,'Test',NULL),
-	(213,NULL,NULL,'123 Test Street','Test City','12345','YORK',NULL,NULL,NULL,'pmatt42@gmail.com','1234567891','Steve','Rogers',NULL),
+	(213,NULL,NULL,'123 Test Street','Test City','12345','YORK',NULL,NULL,NULL,'steve@gmail.com','1234567891','Steve','Rogers',NULL),
 	(214,'Andrew','Debbie','1355 Lurecliff Pl','Fort Mill','29708','York',0,'','','moon.tyler@gmail.com','8037922216',NULL,'Moon',NULL),
 	(215,'Andrew','Debbie','1355 Lurecliff Pl','Fort Mill','29708','York',1,'','','','8037922216',NULL,'Moon',NULL),
 	(216,'','','','','','',1,'','','','',NULL,'',NULL),
@@ -355,7 +355,9 @@ CREATE TABLE `membership` (
   `highschool` int(11) DEFAULT NULL,
   `replacement_card` tinyint(1) DEFAULT NULL,
   `schea` tinyint(1) DEFAULT NULL,
+  `schea_sent` tinyint(1) DEFAULT '0',
   `enchanted_learning` tinyint(1) DEFAULT NULL,
+  `enchanted_learning_sent` tinyint(1) DEFAULT NULL,
   `expedited` tinyint(1) DEFAULT NULL,
   `initial_1` varchar(11) NOT NULL DEFAULT '',
   `initial_2` varchar(11) NOT NULL DEFAULT '',
@@ -373,41 +375,41 @@ CREATE TABLE `membership` (
 LOCK TABLES `membership` WRITE;
 /*!40000 ALTER TABLE `membership` DISABLE KEYS */;
 
-INSERT INTO `membership` (`id`, `family_id`, `type_id`, `highschool`, `replacement_card`, `schea`, `enchanted_learning`, `expedited`, `initial_1`, `initial_2`, `initial_3`, `initial_4`, `initial_5`, `initial_6`)
+INSERT INTO `membership` (`id`, `family_id`, `type_id`, `highschool`, `replacement_card`, `schea`, `schea_sent`, `enchanted_learning`, `enchanted_learning_sent`, `expedited`, `initial_1`, `initial_2`, `initial_3`, `initial_4`, `initial_5`, `initial_6`)
 VALUES
-	(1,1,1,0,1,1,1,1,'t','SR','SR','SR','t','t'),
-	(2,196,1,75,3,15,10,20,'TE','TE','TE','TE','TE','TE'),
-	(3,197,1,75,3,15,10,1,'TE','TE','TE','TE','TE','TE'),
-	(4,198,1,75,3,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(5,199,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(6,200,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(7,201,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(9,207,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(10,208,1,75,0,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(11,209,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(12,210,1,75,1,1,1,0,'TE','TE','TE','TE','TE','TE'),
-	(13,211,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(14,212,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(15,213,1,0,0,0,0,0,'t','','','','t','t'),
-	(16,214,1,150,1,1,0,0,'DM','DM','DM','DM','DM','DM'),
-	(17,215,1,150,1,1,1,1,'DM','DM','DM','DM','DM','DM'),
-	(18,216,1,0,1,0,0,0,'','','','','',''),
-	(19,217,1,75,1,0,0,0,'TE','TE','TE','TE','TE','TE'),
-	(20,218,1,75,1,1,1,1,'TE','TE','TE','TE','TE','TE'),
-	(21,223,1,0,1,1,1,1,'TE','TE','TE','TE','t','t'),
-	(22,224,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(23,225,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(24,226,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(25,227,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(26,228,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(27,229,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(28,230,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(29,231,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(30,232,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(31,233,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(32,234,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(33,235,1,0,1,1,1,1,'t','t','t','t','t','t'),
-	(34,236,1,0,1,1,1,1,'t','t','t','t','t','t');
+	(1,1,1,0,1,1,1,1,0,1,'t','SR','SR','SR','t','t'),
+	(2,196,1,75,3,15,1,10,0,20,'TE','TE','TE','TE','TE','TE'),
+	(3,197,1,75,3,15,1,10,0,1,'TE','TE','TE','TE','TE','TE'),
+	(4,198,1,75,3,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(5,199,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(6,200,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(7,201,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(9,207,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(10,208,1,75,0,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(11,209,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(12,210,1,75,1,1,1,1,0,0,'TE','TE','TE','TE','TE','TE'),
+	(13,211,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(14,212,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(15,213,1,0,0,0,1,0,0,0,'t','','','','t','t'),
+	(16,214,1,150,1,1,1,0,0,0,'DM','DM','DM','DM','DM','DM'),
+	(17,215,1,150,1,1,1,1,0,1,'DM','DM','DM','DM','DM','DM'),
+	(18,216,1,0,1,0,1,0,0,0,'','','','','',''),
+	(19,217,1,75,1,0,1,0,0,0,'TE','TE','TE','TE','TE','TE'),
+	(20,218,1,75,1,1,1,1,0,1,'TE','TE','TE','TE','TE','TE'),
+	(21,223,1,0,1,1,1,1,0,1,'TE','TE','TE','TE','t','t'),
+	(22,224,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(23,225,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(24,226,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(25,227,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(26,228,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(27,229,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(28,230,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(29,231,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(30,232,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(31,233,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(32,234,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(33,235,1,0,1,1,1,1,0,1,'t','t','t','t','t','t'),
+	(34,236,1,0,1,1,1,1,0,1,'t','t','t','t','t','t');
 
 /*!40000 ALTER TABLE `membership` ENABLE KEYS */;
 UNLOCK TABLES;

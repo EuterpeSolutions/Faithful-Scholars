@@ -1,31 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-12 documents btn-group">
+    <div class="col-md-12 endofyear btn-group">
       <div class="container">
         <div class="row">
-          <div class="col-md-12">
-            <h3>Documents</h3>
+          <div class="col-md-4">
+            <h3>Forms (Everyone)</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <a class="undecorated" href="/content/membership-letter.php">
+            <a class="undecorated" href="/member_site/?page=renewal">
               <div class="circle center">
-                Membership Letter
+                Renewal
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/content/dmv-letter.php">
+            <a class="undecorated" href="http://www.faithfulscholars.com/apply-online/">
               <div class="circle center">
-                DMV Letter
+                Join
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/content/secondary-school.php">
+            <a class="undecorated" href="/member_site/?page=end-of-year-compliance">
               <div class="circle center">
-                Secondary School Form
+                End of Year Compliance
               </div>
             </a>
           </div>
@@ -34,32 +34,34 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-md-12 endofyear btn-group">
+    <div class="col-md-12 documents btn-group">
       <div class="container">
         <div class="row">
-          <div class="col-md-4">
-            <h3>End of Year Forms</h3>
+          <div class="col-md-12">
+            <h3>Documents (High Schoolers Only)</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=renewal">
+            <a class="undecorated" href="/member_site/content/membership-letter.php">
               <div class="circle center">
-                Renewal
+                Membership Letter
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=end-of-year-compliance">
+            <a class="undecorated" href="/member_site/content/dmv-letter.php">
               <div class="circle center">
-                Mid Year Compliance
+                DMV Letter
               </div>
             </a>
           </div>
           <div class="col-md-4">
-            <a class="undecorated" href="/?page=end-of-year-compliance">
+            <a class="undecorated" href="/member_site/content/secondary-school.php">
               <div class="circle center">
-                End of Year Compliance
+                <div style="padding-top: 70px; line-height: 30px;">
+                  Secondary School Form (College / Dual Credit)
+                </div>
               </div>
             </a>
           </div>
