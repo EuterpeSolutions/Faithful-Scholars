@@ -23,7 +23,7 @@ if($result = mysqli_query($conn, $sql)){
 
 class myPDF extends FPDF {
   function header() {
-    $this->Image('../assets/faithfulscholarslogo.png',50,0,125); // Logo
+    $this->Image('../assets/faithfulscholarslogo.png',50,15,125); // Logo
     $this->SetFont('Times','B',12);   // Arial bold, size 15
     $this->SetY(50);    // set the cursor at Y position 5
     $this->Cell(80); // Move to the right
@@ -32,7 +32,7 @@ class myPDF extends FPDF {
   }
 
   function footer() {
-    $this->SetXY(0,-15); //set X and Y
+    $this->SetXY(0,-30); //set X and Y
     $this->SetFont('Times','', 12); //times, size 12
     $this->Cell(0,10,'1761 Ballard Lane Fort Mill, S.C. 29715  www.faithfulscholars.com  (803) 548-4428',0,0,'C');
   }
@@ -83,9 +83,9 @@ class myPDF extends FPDF {
     $this->SetXY(10,120);
     $this->Cell(20);
     $this->Cell(30,10,'To Whom It May Concern:',0,1);
-    $this->SetXY(35,132);
-    $this->Cell(30,10,$GLOBALS['name'].', ',0,1);
-    $this->SetXY(15,140);
+    $this->SetXY(30,132);
+    $this->Cell(30,10,$GLOBALS['name'].' '.$GLOBALS['last_name'],0,1);
+    $this->SetXY(10,140);
     $this->Cell(20);
     $this->MultiCell(140,10,'is a member in good standing of the South Carolina home school accountability association, Faithful Scholars.',0,1);
     $this->SetXY(10,170);
