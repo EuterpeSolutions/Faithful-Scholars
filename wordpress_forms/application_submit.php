@@ -110,21 +110,22 @@ if($new_hs == 'yes'){
   $new_hs = 0;
 }
 
-$family_insert_sql = "INSERT INTO family (last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new) VALUES ('$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs)";
+$family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
 $family_id = 0;
 if($con->query($family_insert_sql) === TRUE) {
   $family_id = mysqli_insert_id($con);
+} else {
+  echo mysqli_error();
 }
 
 $con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALUES
 ('$username','$p_salt','$password','$email',$family_id);" );
 
-$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
+$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
 $con->query($homeschool_insert_sql);
 
 $typeprice = 0;
 $membership = "";
-echo "type = " . $type . "<br>";
 if($type == "Kindergarten-Only"){
   $membership = $type;
   $type = 1;
@@ -170,7 +171,7 @@ $con->query($membership_insert_sql);
 
 for($i = 1; $i <= 9; $i++){
   if(isset(${"student_".$i})){
-    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', '${"student_".$i."_grade"}', '${"student_".$i."_age"}', '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}')";
+    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
     $con->query($student_insert_sql);
   }
 }
@@ -265,7 +266,7 @@ if(isset($_POST['Submit'])){
     <p> <?php echo $last_name?> Family,
     <p>Thank  you for joining Faithful Scholars; we look forward to serving your  family.  Below is a summary of what you have submitted to us. Please print a copy of this page to keep as a record of your membership until your membership packet arrives.  </p>
     <p> To complete your application, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. You may also pay by personal check, certified check, or money order.  Please mail payments to: Faithful Scholars, 1761 Ballard Lane, Fort Mill, SC 29715.  Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <?php if ($expedite == 20){ ?>
+    <?php if ($expedite == 1){ ?>
          <p>  You have chosen to expedite your application.  You are legal to homeschool as of the completion of submitting and paying for your application.  Your paperwork will be process, faxed and/or mailed out within 24 hours. </p>
          <? }
 		   else { ?>
