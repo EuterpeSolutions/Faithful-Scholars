@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.22)
 # Database: FaithfulScholars
-# Generation Time: 2018-07-01 20:22:02 +0000
+# Generation Time: 2018-07-01 20:38:15 +0000
 # ************************************************************
 
 
@@ -18,7 +18,7 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-
+USE db743020317;
 
 # Dump of table eoy
 # ------------------------------------------------------------
@@ -37,7 +37,7 @@ CREATE TABLE `eoy` (
   `initial_7` varchar(11) NOT NULL DEFAULT '',
   `submitted_worksheet` tinyint(1) NOT NULL,
   `dual_enrollment` tinyint(1) NOT NULL,
-  `last_updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `family_id` (`family_id`),
   CONSTRAINT `eoy_ibfk_1` FOREIGN KEY (`family_id`) REFERENCES `family` (`id`)
@@ -66,10 +66,19 @@ CREATE TABLE `family` (
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `district` varchar(255) DEFAULT NULL,
-  `last_updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `family` WRITE;
+/*!40000 ALTER TABLE `family` DISABLE KEYS */;
+
+INSERT INTO `family` (`id`, `father_name`, `mother_name`, `address`, `city`, `zip`, `county`, `new`, `mom_cell`, `dad_cell`, `email`, `phone`, `first_name`, `last_name`, `district`, `last_updated_at`)
+VALUES
+	(20,'test','test','123 Somewhere St','TestTown','12345','York',1,'','','admin@email.com','12312341234','test','test','','2018-07-01 16:37:47');
+
+/*!40000 ALTER TABLE `family` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table homeschool
@@ -89,12 +98,21 @@ CREATE TABLE `homeschool` (
   `referred_by` varchar(255) DEFAULT NULL,
   `school_district` varchar(255) DEFAULT NULL,
   `school_fax` varchar(255) DEFAULT NULL,
-  `last_updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `familyId` (`family_id`),
   CONSTRAINT `homeschool_ibfk_1` FOREIGN KEY (`family_id`) REFERENCES `family` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `homeschool` WRITE;
+/*!40000 ALTER TABLE `homeschool` DISABLE KEYS */;
+
+INSERT INTO `homeschool` (`id`, `family_id`, `school_start_date`, `school_end_date`, `new_homeschool`, `years_homeschooling`, `primary_instructor`, `removing_public_school`, `referred_by`, `school_district`, `school_fax`, `last_updated_at`)
+VALUES
+	(12,20,'test','test',1,2,'test','no','','','','2018-07-01 16:37:47');
+
+/*!40000 ALTER TABLE `homeschool` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table members
@@ -110,10 +128,19 @@ CREATE TABLE `members` (
   `email` varchar(60) DEFAULT '',
   `family_id` int(11) NOT NULL,
   `admin` int(1) DEFAULT '0',
-  `last_updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
+LOCK TABLES `members` WRITE;
+/*!40000 ALTER TABLE `members` DISABLE KEYS */;
+
+INSERT INTO `members` (`id`, `username`, `psalt`, `password`, `email`, `family_id`, `admin`, `last_updated_at`)
+VALUES
+	(20,'admin','3fe87a589cd6c017904496df91dcca6d1b7ee71e23ade72c84412e7aab8711f8','69cc80a0b52d37c83fd5a12936f9e7f9f5299ea6628bfbb79235e5ecbdd99b5e','admin@email.com',20,0,'2018-07-01 16:37:47');
+
+/*!40000 ALTER TABLE `members` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table membership
@@ -138,7 +165,7 @@ CREATE TABLE `membership` (
   `initial_4` varchar(11) NOT NULL DEFAULT '',
   `initial_5` varchar(11) NOT NULL DEFAULT '',
   `initial_6` varchar(11) NOT NULL DEFAULT '',
-  `last_updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `family_id` (`family_id`),
   KEY `type_id` (`type_id`),
@@ -146,6 +173,15 @@ CREATE TABLE `membership` (
   CONSTRAINT `membership_ibfk_2` FOREIGN KEY (`type_id`) REFERENCES `membership_types` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `membership` WRITE;
+/*!40000 ALTER TABLE `membership` DISABLE KEYS */;
+
+INSERT INTO `membership` (`id`, `family_id`, `type_id`, `highschool`, `replacement_card`, `schea`, `schea_sent`, `enchanted_learning`, `enchanted_learning_sent`, `expedited`, `initial_1`, `initial_2`, `initial_3`, `initial_4`, `initial_5`, `initial_6`, `last_updated_at`)
+VALUES
+	(69,20,3,150,1,1,0,1,NULL,1,'TE','TE','TE','TE','TE','TE','2018-07-01 16:37:47');
+
+/*!40000 ALTER TABLE `membership` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 # Dump of table membership_types
@@ -186,12 +222,22 @@ CREATE TABLE `student` (
   `age` int(11) NOT NULL DEFAULT '0',
   `birthday` varchar(11) NOT NULL DEFAULT '',
   `curriculum_desc` varchar(255) NOT NULL DEFAULT '',
-  `last_updated_at` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `last_updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `family_id` (`family_id`),
   CONSTRAINT `student_ibfk_1` FOREIGN KEY (`family_id`) REFERENCES `family` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+LOCK TABLES `student` WRITE;
+/*!40000 ALTER TABLE `student` DISABLE KEYS */;
+
+INSERT INTO `student` (`id`, `family_id`, `name`, `grade`, `age`, `birthday`, `curriculum_desc`, `last_updated_at`)
+VALUES
+	(18,20,'Test1',1,12,'12','12','2018-07-01 16:37:47'),
+	(19,20,'Test2',12,12,'12','12','2018-07-01 16:37:47');
+
+/*!40000 ALTER TABLE `student` ENABLE KEYS */;
+UNLOCK TABLES;
 
 
 
