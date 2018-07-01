@@ -16,17 +16,12 @@ $new_hs=$_POST["new_hs"];
 $end_date=$_POST["end_date"];
 $years_homeschooling=$_POST["years_homeschooling"];
 $primary_instructor=$_POST["primary_instructor"];
-// $instructor_education=$_POST["instructor_education"];
 $removing_ps=$_POST["removing_ps"];
 $referred_by=$_POST["referred_by"];
-// $school_name=$_POST["school_name"];
 $school_district=$_POST["school_district"];
 $school_fax=$_POST["school_fax"];
 $type=$_POST["type"];
 $hs_students=$_POST["hs_students"];
-// $hs_diploma=$_POST["hs_diploma"];
-// $hs_transcript=$_POST["hs_transcript"];
-// $consultations=$_POST["consultations"];
 $card="";
 if(isset($_POST["card"])){
   $card=$_POST["card"];
@@ -127,13 +122,21 @@ $con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALU
 $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
 $con->query($homeschool_insert_sql);
 
-
-if($type = "Kindergarten-Only"){
+$typeprice = 0;
+$membership = "";
+echo "type = " . $type . "<br>";
+if($type == "Kindergarten-Only"){
+  $membership = $type;
   $type = 1;
-} else if ($type = "Single-Student"){
+  $typeprice = 25;
+} else if ($type == "Single-Student"){
+  $membership = $type;
   $type = 2;
+  $typeprice = 35;
 } else {
+  $membership = "Multi-Student";
   $type = 3;
+  $typeprice = 60;
 }
 
 
@@ -174,22 +177,8 @@ for($i = 1; $i <= 9; $i++){
 
 mysqli_close($con);
 
-// if ($type == "Single-Student") {
-// $membership_cost = 35;
-// }
-// if ($type == "Multi-Student")
-// {
-// $membership_cost = 60;
-// }
-// if ($type == "Kindergarten-Only")
-// {
-// $membership_cost = 25;
-// }
-// $total = ($enchanted + $schea + $consultations + $hs_transcript + $hs_students + $hs_diploma + $membership_cost + $card + $expedite );
-//
-// if ($expedite == 20){
-// $warning=" -- Expedited Application";
-// }
+global $total;
+$total = ($schea * 15) + ($enchanted * 10) + ($expedite * 20) + $typeprice + $hs_students;
 ?>
 <?php
 /*
@@ -450,25 +439,16 @@ if(isset($_POST['Submit'])){
         <p><strong>Type of Membership: </strong></p>
         <ul>
           <p>
-            <?php echo $type ?>
+            <?php echo $membership ?>
           </p>
         </ul>
         <p><strong>Additions to your membership: </strong></p>
         <ul>
-          <p>High School Students $<?php echo $hs_students ?>
-          </p>
-          <p>High School Diploma $<?php echo $hs_diploma ?></p>
-
-          <p>High School Transcript $<?php echo $hs_transcript ?></p>
-
-          <p>Consultations $<?php echo $consultations ?></p>
-          <p>             Replacement
-            membership card $<?php echo $card?> </p>
-          <p>SCHEA discounted membership $<?php echo $schea ?></p>
-          <p>Enchanted Learning discounted membership $<?php echo $enchanted ?> </p>
+          <p>SCHEA discounted membership $<?php echo $schea * 15 ?></p>
+          <p>Enchanted Learning discounted membership $<?php echo $enchanted * 10?> </p>
           <p>
             Expedite
-            my Application Please $<?php echo $expedite ?></p>
+            my Application Please $<?php echo $expedite * 20?></p>
         </ul>
 
       </fieldset>
