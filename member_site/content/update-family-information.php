@@ -1,11 +1,6 @@
 <?php
-  $host="127.0.0.1"; // Host name
-  $username="root"; // Mysql username
-  $password="newpassword"; // Mysql password
-  $db_name="FaithfulScholars"; // Database name
-  $tbl_name="members"; // Table name
-
-  $con = mysqli_connect("$host", "$username", "$password", $db_name);
+  require_once "dbconfig.php";
+  $con = db_connect();
 
 
   global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district, $students;
@@ -24,6 +19,8 @@
       $county = $row["county"];
       $school_district = $row["district"];
     }
+  } else {
+    echo "mysql error";
   }
 
   $student_sql = "SELECT * FROM student WHERE family_id = " . $_SESSION['userid'] . ";";

@@ -16,17 +16,12 @@ $new_hs=$_POST["new_hs"];
 $end_date=$_POST["end_date"];
 $years_homeschooling=$_POST["years_homeschooling"];
 $primary_instructor=$_POST["primary_instructor"];
-// $instructor_education=$_POST["instructor_education"];
 $removing_ps=$_POST["removing_ps"];
 $referred_by=$_POST["referred_by"];
-// $school_name=$_POST["school_name"];
 $school_district=$_POST["school_district"];
 $school_fax=$_POST["school_fax"];
 $type=$_POST["type"];
 $hs_students=$_POST["hs_students"];
-// $hs_diploma=$_POST["hs_diploma"];
-// $hs_transcript=$_POST["hs_transcript"];
-// $consultations=$_POST["consultations"];
 $card="";
 if(isset($_POST["card"])){
   $card=$_POST["card"];
@@ -115,25 +110,34 @@ if($new_hs == 'yes'){
   $new_hs = 0;
 }
 
-$family_insert_sql = "INSERT INTO family (last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new) VALUES ('$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs)";
+$family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
 $family_id = 0;
 if($con->query($family_insert_sql) === TRUE) {
   $family_id = mysqli_insert_id($con);
+} else {
+  echo mysqli_error();
 }
 
-$con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALUES
-('$username','$p_salt','$password','$email',$family_id);" );
+$con->query( "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES
+($family_id,'$username','$p_salt','$password','$email',$family_id);" );
 
-$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
+$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
 $con->query($homeschool_insert_sql);
 
-
-if($type = "Kindergarten-Only"){
+$typeprice = 0;
+$membership = "";
+if($type == "Kindergarten-Only"){
+  $membership = $type;
   $type = 1;
-} else if ($type = "Single-Student"){
+  $typeprice = 25;
+} else if ($type == "Single-Student"){
+  $membership = $type;
   $type = 2;
+  $typeprice = 35;
 } else {
+  $membership = "Multi-Student";
   $type = 3;
+  $typeprice = 60;
 }
 
 
@@ -167,29 +171,15 @@ $con->query($membership_insert_sql);
 
 for($i = 1; $i <= 9; $i++){
   if(isset(${"student_".$i})){
-    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', '${"student_".$i."_grade"}', '${"student_".$i."_age"}', '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}')";
+    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
     $con->query($student_insert_sql);
   }
 }
 
 mysqli_close($con);
 
-// if ($type == "Single-Student") {
-// $membership_cost = 35;
-// }
-// if ($type == "Multi-Student")
-// {
-// $membership_cost = 60;
-// }
-// if ($type == "Kindergarten-Only")
-// {
-// $membership_cost = 25;
-// }
-// $total = ($enchanted + $schea + $consultations + $hs_transcript + $hs_students + $hs_diploma + $membership_cost + $card + $expedite );
-//
-// if ($expedite == 20){
-// $warning=" -- Expedited Application";
-// }
+global $total;
+$total = ($schea * 15) + ($enchanted * 10) + ($expedite * 20) + $typeprice + $hs_students;
 ?>
 <?php
 /*
@@ -276,7 +266,7 @@ if(isset($_POST['Submit'])){
     <p> <?php echo $last_name?> Family,
     <p>Thank  you for joining Faithful Scholars; we look forward to serving your  family.  Below is a summary of what you have submitted to us. Please print a copy of this page to keep as a record of your membership until your membership packet arrives.  </p>
     <p> To complete your application, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. You may also pay by personal check, certified check, or money order.  Please mail payments to: Faithful Scholars, 1761 Ballard Lane, Fort Mill, SC 29715.  Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <?php if ($expedite == 20){ ?>
+    <?php if ($expedite == 1){ ?>
          <p>  You have chosen to expedite your application.  You are legal to homeschool as of the completion of submitting and paying for your application.  Your paperwork will be process, faxed and/or mailed out within 24 hours. </p>
          <? }
 		   else { ?>
@@ -450,25 +440,16 @@ if(isset($_POST['Submit'])){
         <p><strong>Type of Membership: </strong></p>
         <ul>
           <p>
-            <?php echo $type ?>
+            <?php echo $membership ?>
           </p>
         </ul>
         <p><strong>Additions to your membership: </strong></p>
         <ul>
-          <p>High School Students $<?php echo $hs_students ?>
-          </p>
-          <p>High School Diploma $<?php echo $hs_diploma ?></p>
-
-          <p>High School Transcript $<?php echo $hs_transcript ?></p>
-
-          <p>Consultations $<?php echo $consultations ?></p>
-          <p>             Replacement
-            membership card $<?php echo $card?> </p>
-          <p>SCHEA discounted membership $<?php echo $schea ?></p>
-          <p>Enchanted Learning discounted membership $<?php echo $enchanted ?> </p>
+          <p>SCHEA discounted membership $<?php echo $schea * 15 ?></p>
+          <p>Enchanted Learning discounted membership $<?php echo $enchanted * 10?> </p>
           <p>
             Expedite
-            my Application Please $<?php echo $expedite ?></p>
+            my Application Please $<?php echo $expedite * 20?></p>
         </ul>
 
       </fieldset>
