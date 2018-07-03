@@ -1,5 +1,5 @@
 <?php
-require '../dbconfig.php';
+require_once 'dbconfig.php';
 
 //personal information
 $email = $_POST['email'];
@@ -36,7 +36,7 @@ $con = db_connect();
 
 // Compliance Information
 // SQL Queries //TODO: Replace with prepared statements after login is merged in
-$family_id = 1;
+$family_id = $_SESSION['userid'];
 $sql = "INSERT INTO eoy (family_id, initial_1, initial_2, initial_3, initial_4, initial_5,
   initial_6, initial_7, submitted_worksheet, dual_enrollment)
   VALUES('$family_id','$initial_1','$initial_2','$initial_3','$initial_4',

@@ -3,6 +3,17 @@
 
   $con = db_connect();
 
+
+  $check_sql = "SELECT count(id) as count from eoy WHERE family_id = ". $_SESSION['userid'] . " AND YEAR(last_updated_at) = YEAR(CURRENT_TIMESTAMP);";
+  if($result = mysqli_query($con, $check_sql)){
+    while($row = mysqli_fetch_array($result)){
+      echo 'COUNT' . $row['count'];
+      if($row['count'] == 0) {
+        header('Location: /member_site/?page=no-end-of-year');
+      }
+    }
+  }
+
   global $last_name, $first_name, $email, $phone, $address, $city, $zipcode, $county, $school_district, $students;
 
   $sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.family_id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '%". $_SESSION['uname']."%'";

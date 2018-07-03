@@ -72,13 +72,9 @@ if(isset($_POST["expedite"]) && $_POST["expedite"] == 1){
   $expedite = "0";
 }
 
-$host="127.0.0.1"; // Host name
-$username="root"; // Mysql username
-$password="newpassword"; // Mysql password
-$db_name="FaithfulScholars"; // Database name
-$tbl_name="members"; // Table name
+require_once "dbconfig.php";
 
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
+$con = db_connect();
 
 // Family Information
 $sql = "UPDATE family SET first_name = '$first_name', last_name = '$last_name', phone = '$phone', email = '$email', county = '$county', zip = '$zipcode', city = '$city', address = '$address' WHERE id =".$_SESSION['userid'].";";
