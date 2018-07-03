@@ -104,8 +104,10 @@
          echo "family_id ".$family_id."<br>";
          // Save student data
          for($i = 0; $i < 9; $i++){
-           if(isset($_POST["child".$i]) && $_POST["child".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
-             $current_name = $_POST["child".$i];
+           echo "SAVING THE CHILDREN!" . $_POST["name".$i];
+           if(isset($_POST["name".$i]) && $_POST["name".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
+
+             $current_name = $_POST["name".$i];
              $current_grade = $_POST["grade".$i];
              $current_birthday = $_POST["birthday".$i];
 
