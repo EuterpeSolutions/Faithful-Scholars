@@ -142,30 +142,30 @@ if($type == "Kindergarten-Only"){
 
 
 if(isset($schea)){
-  $schea = 1;
+  $schea_set = 1;
 } else {
-  $schea = 0;
+  $schea_set = 0;
 }
 
 if(isset($enchanted)){
-  $enchanted = 1;
+  $enchanted_set = 1;
 } else {
-  $enchanted = 0;
+  $enchanted_set = 0;
 }
 
 if(isset($card)){
-  $card = 1;
+  $card_set = 1;
 } else {
-  $card = 0;
+  $card_set = 0;
 }
 
 if(isset($expedite)){
-  $expedite = 1;
+  $expedite_set = 1;
 } else {
-  $expedite = 0;
+  $expedite_set = 0;
 }
 
-$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea, $enchanted, $expedite, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
+$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
 $con->query($membership_insert_sql);
 
 
@@ -179,7 +179,8 @@ for($i = 1; $i <= 9; $i++){
 mysqli_close($con);
 
 global $total;
-$total = ($schea * 15) + ($enchanted * 10) + ($expedite * 20) + $typeprice + $hs_students;
+
+$total = $schea + $enchanted + $expedite + $typeprice + $hs_students;
 ?>
 <?php
 /*
