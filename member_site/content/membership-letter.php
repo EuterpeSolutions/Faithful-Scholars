@@ -131,6 +131,7 @@ class myPDF extends FPDF {
   function CardTable() {
     $this->SetFont('Times','B', 11); //times, size 12
     $this->SetDash(5,5); //5mm on, 5mm off
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 20, 85, 25);
     $this->Text(38,15,'FAITHFUL SCHOLARS');
     $this->Text(45,20,'(803) 548-4428');
     $this->Text(35,25,'www.faithfulscholars.com');
@@ -138,6 +139,7 @@ class myPDF extends FPDF {
     $this->Text(25,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 75, 85, 25);
     $this->Text(38,70,'FAITHFUL SCHOLARS');
     $this->Text(45,75,'(803) 548-4428');
     $this->Text(35,80,'www.faithfulscholars.com');
@@ -145,6 +147,7 @@ class myPDF extends FPDF {
     $this->Text(25,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 130, 85, 25);
     $this->Text(38,125,'FAITHFUL SCHOLARS');
     $this->Text(45,130,'(803) 548-4428');
     $this->Text(35,135,'www.faithfulscholars.com');
@@ -152,6 +155,7 @@ class myPDF extends FPDF {
     $this->Text(25,160,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Cell(100,50,'',1,1);
     $this->SetY(175);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 185, 85, 25);
     $this->Text(38,180,'FAITHFUL SCHOLARS');
     $this->Text(45,185,'(803) 548-4428');
     $this->Text(35,190,'www.faithfulscholars.com');
@@ -165,6 +169,7 @@ class myPDF extends FPDF {
   function StudentCard($conn,$name,$birthday) {
     $this->SetFont('Times','B', 11); //times, size 12
     $this->SetDash(5,5); //5mm on, 5mm off
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 20, 85, 25);
     $this->MultiCell(100,8,'FAITHFUl SCHOLARS'."\n".'(803) 548-4428'."\n".'www.faithfulscholars.com'."\n"."\n".$name.", ".$birthday."\n".$GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"],1,'C');
   }
 }
