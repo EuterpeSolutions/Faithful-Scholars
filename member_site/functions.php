@@ -49,16 +49,18 @@ function pageContent()
 }
 
 // Displays child input boxes
-function childInput($name, $data = [], $num_child = 9)
+function childInput($name, $data = [], $start_tab_index = 1)
 {
+  $num_child = 9;
   $output = "";
   for($i = 1; $i <= $num_child; $i++) {
     $output .= '<div class="form-group">';
     $output .= '<label for="'.$name.$i.'">'.ucfirst($name).' '.$i.':&nbsp</label>';
+    $tab_offset = $start_tab_index + (($i-1)*3);
     if(isset($data[$i-1])){
       $output .= '<input id="'.$name.$i.'" value="'.$data[$i-1][$name].'" name="'.$name.$i.'"class="form-control">';
     }else{
-      $output .= '<input id="'.$name.$i.'" name="'.$name.$i.'"class="form-control">';
+      $output .= '<input tabindex="'.$tab_offset.'" id="'.$name.$i.'" name="'.$name.$i.'"class="form-control">';
     }
 
     $output .= '</div>';

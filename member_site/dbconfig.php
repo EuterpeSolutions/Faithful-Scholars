@@ -1,16 +1,17 @@
 <?php
-$host="127.0.0.1"; // Host name
-$username="root"; // Mysql username
-$password="newpassword"; // Mysql password
-$db_name="FaithfulScholars"; // Database name
+
 $tbl_name="members"; // Table name
 function db_connect(){
   global $host, $username, $password, $db_name;
-  $con = mysqli_connect($host, $username, $password, $db_name);
-  if(!$con)
-  {
-    die("cannot connect" . mysqli_connect_error());
-  }
+  $host_name = 'db743020317.db.1and1.com';
+$database = 'db743020317';
+$user_name = 'dbo743020317';
+$password = 'dkamsmdd9';
+$con = mysqli_connect($host_name, $user_name, $password, $database);
+
+if (mysqli_connect_errno()) {
+    die('<p>Failed to connect to MySQL: '.mysqli_connect_error().'</p>');
+}
   return $con;
 }
 
@@ -85,4 +86,29 @@ function db_user_query($selection,$myemail,$myusername)
   }
 
 }
+
+function checkSalt ($psalt) {
+  $con = db_connect();
+  $sql = "SELECT COUNT(id) FROM members WHERE psalt = '$psalt';";
+  if($stmt = $con->prepare($sql)){
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($count);
+    while($stmt->fetch())
+    {
+      if($count != 1){
+	return false;
+      }
+      return true;
+    }
+  }
+}
+
+
+
+
+
+
+
+
  ?>

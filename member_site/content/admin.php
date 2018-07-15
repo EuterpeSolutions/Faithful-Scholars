@@ -142,7 +142,18 @@
       <?php
 
       $con = db_connect();//mysqli_connect("$host", "$username", "$password", $db_name);
-      echo "<h5>Student Count by District</h5>";
+      
+      echo "<h5>Total Student Count: </h5>";
+      $sql="SELECT COUNT(id) as count FROM student;";
+      if($result = mysqli_query($con,$sql)){
+         if(mysqli_num_rows($result) > 0){
+	    while($row = mysqli_fetch_array($result)) {
+               echo "<h6>".$row['count']."</h6>";
+            }
+         }
+      }
+
+      echo "<br><h5>Student Count by District</h5>";
       $sql="SELECT COUNT(id) as count, district as district FROM family WHERE district IS NOT NULL GROUP BY district;";
       if($result = mysqli_query($con, $sql)){
          if(mysqli_num_rows($result) > 0){

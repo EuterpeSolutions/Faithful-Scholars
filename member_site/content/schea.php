@@ -20,7 +20,7 @@ class myPDF extends FPDF {
 
   function AddContent($name,$address,$email,$phone,$i) {
     $this->SetFont('Times','', 12);
-    $this->Cell(160,$i,$name.'  |  '.$address.'  |  '.$email.'  |  '.$phone,0,1,'L');
+    $this->Cell(160,5,$name.'  |  '.$address.'  |  '.$email.'  |  '.$phone,0,1,'L');
   }
 }
 $pdf = new myPDF();

@@ -1,3 +1,11 @@
+<?php
+  require_once 'dbconfig.php';
+  $a = checkSalt($_GET['q']);
+  if($a == null || !isset($a) || $a == 0 || $a == ''){
+    header('Location: http://faithfulscholars.com/member_site');
+    exit();
+  } 
+?>
 <table width="300" border="0" align="center" cellpadding="0" cellspacing="1" bgcolor="#CCCCCC">
 <tr>
 <form name="form1" method="post" action="resetpassword.php">

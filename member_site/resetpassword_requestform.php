@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -11,21 +11,21 @@
   <body>
     <div class="row outer-row">
       <div class="col-md-12">
-        <img class="logoimg" src="/assets/faithfulscholarslogo.png" alt="">
+        <img class="logoimg" src="/member_site/assets/faithfulscholarslogo.png" alt="">
         <header>
           <hr>
         </header>
         <div class="container">
           <div class="row">
             <div class="col-md-6 mx-auto">
-              <h3 class="text-center">Member Login</h3>
+              <h3 class="text-center">Reset Password</h3>
               <p>Welcome to the membership login for Faithful Scholars. Please enter your membership login credentials below to access the members only area.
             </div>
           </div>
           <br>
           <div class="row">
             <div class="col-md-4 mx-auto">
-              <form class="" name="form1" method="post" action="checklogin.php">
+              <form class="" name="form1" method="post" action="/member_site/resetpasswordrequest.php">
                 <div class="form-group">
                   <label class="left" for="username">Email:</label>
                   <input class="form-control" name="myemail" type="text" id="myemail">

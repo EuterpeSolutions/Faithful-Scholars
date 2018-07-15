@@ -1,11 +1,14 @@
 <?php
-  $host="127.0.0.1"; // Host name
-  $username="root"; // Mysql username
-  $password="newpassword"; // Mysql password
-  $db_name="FaithfulScholars"; // Database name
-  $tbl_name="members"; // Table name
+  $host_name = 'db743020317.db.1and1.com';
+  $database = 'db743020317';
+  $user_name = 'dbo743020317';
+  $password = 'dkamsmdd9';
+  $con = mysqli_connect($host_name, $user_name, $password, $database);
 
-  $con = mysqli_connect("$host", "$username", "$password", $db_name);
+  if (mysqli_connect_errno()) {
+    die('<p>Failed to connect to MySQL: '.mysqli_connect_error().'</p>');
+  }
+
   $last_name = $_POST["edit"];
 
 
