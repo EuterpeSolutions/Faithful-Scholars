@@ -87,8 +87,8 @@ $curriculum_student8=$_POST["curriculum_student8"];
 
 
 // Connect to server and select databse.
-require 'dbconfig.php';
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
+require '../member_site/dbconfig.php';
+$con = db_connect(); 
 if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
@@ -181,6 +181,151 @@ mysqli_close($con);
 global $total;
 
 $total = $schea + $enchanted + $expedite + $typeprice + $hs_students;
+
+// Send Email
+$message = "
+<html><head><link rel='stylesheet' type='text/css' href='http://www.faithfulscholars.com/stylesheet.css'>
+<body>
+<fieldset><legend> Family Information </legend>
+    <table width='700' border='0'>
+            <tr> <td><label for='last_name'>Last Name</label></td>
+              <td>$last_name </td>
+              <td><label for='new_fs'>New to Faithful Scholars?</label></td>
+              <td> $new_hs </td></tr>
+            <tr><td><label for='Father2'>Fathers Name </label>'</td>
+              <td> $father  </td>
+              <td><label for='phone2'>Phone</label></td>
+              <td> $phone </td></tr>
+            <tr><td><label for='mother'>Mother's Name</label></td>
+              <td> $mother </td>
+              <td><label>Cell Phone (Mom)</label></td>
+              <td> $cell_phone_mom  </td></tr>
+            <tr><td><label for='address'>Address</label></td>
+              <td> $address </td>
+              <td><label>Cell Phone (Dad)</label></td>
+              <td> $cell_phone_dad  </td> </tr>
+            <tr> <td><label for='city'>City</label></td>
+              <td> $city  </td>
+              <td><label>Email Address</label></td>
+              <td> $email  </td></tr>
+            <tr> <td><label for='zip'>Zip</label></td>
+              <td> $zip  </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr><tr> <td><label for='county'>County</label></td>
+              <td> $county  </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td> </tr> </table><p>&nbsp;</p></fieldset>
+        <fieldset><legend> Homeschool Information </legend>
+          <table width='700' border='0'>
+            <tr> <td><label for='start_date'>School Year Start Date</label></td>
+              <td> $start_date  </td>
+              <td><label>New to Homeschooling?</label></td>
+              <td> $new_hs  </td></tr>
+            <tr> <td><label for='end_date'>End of Year Date</label></td>
+              <td> $end_date  </td>
+              <td><label>Years of homeschooling</label></td>
+              <td> $years_homeschoooling  </td> </tr>
+            <tr><td><label for='primary_instructor'>Primary Instructor</label></td>
+              <td> $primary_instructor  </td>
+              <td><label></label></td>
+              <td>   </td></tr>
+            <tr> <td><label for='instructor_education'>Level of Education</label></td>
+              <td> $instructor_education  </td>
+              <td><label>Removing a child from SC Public School?</label></td>
+              <td> $removing_ps  </td> </tr>
+            <tr><td><label for='referred_by'>Referred By</label></td>
+              <td> $referred_by  </td>
+              <td><label>If yes, school name:</label></td>
+              <td> $school_name  </td></tr>
+            <tr> <td><label for='school_district'>School District</label></td>
+              <td> $school_district  </td>
+              <td><label>If yes, school fax #:</label></td>
+              <td> $school_fax  </td></tr> </table>
+          <p>&nbsp;</p> </fieldset></body></html>
+     <fieldset><legend> Student Information </legend>
+          <table width='600' border='1' cellpadding='3' cellspacing='0'>
+            <tr> <td>Student Name</td>
+              <td>Grade</td>
+              <td>Age</td>
+              <td>Birthdate (M / D / Y)</td>
+              <td>Briefly Describe Curriculum</td></tr>
+            <tr><td>$student_1</td>
+              <td> $student_1_grade  </td>
+              <td> $student_1_age  </td>
+              <td> $student_1_birthdate  </td>
+              <td> $curriculum_student1 </td>
+            </tr>
+            <tr> <td>$student_2</td>
+              <td> $student_2_grade  </td>
+              <td> $student_2_age  </td>
+              <td> $student_2_birthdate  </td>
+               <td> $curriculum_student2 </td></tr>
+            <tr><td>$student_3</td>
+              <td> $student_3_grade  </td>
+              <td> $student_3_age  </td>
+              <td> $student_3_birthdate  </td>
+              <td> $curriculum_student3 </td> </tr>
+            <tr><td>$student_4</td>
+              <td> $student_4_grade  </td>
+              <td> $student_4_age  </td>
+              <td> $student_4_birthdate  </td>
+               <td> $curriculum_student4 </td></tr>
+            <tr><td>$student_5</td>
+              <td> $student_5_grade  </td>
+              <td> $student_5_age  </td>
+              <td> $student_5_birthdate  </td>
+              <td> $curriculum_student5 </td></tr>
+            <tr> <td>$student_6</td>
+              <td> $student_6_grade  </td>
+              <td> $student_6_age  </td>
+              <td> $student_6_birthdate  </td>
+               <td> $curriculum_student6 </td></tr>
+            <tr> <td>$student_7</td>
+              <td> $student_7_grade  </td>
+              <td> $student_7_age  </td>
+              <td> $student_7_birthdate  </td>
+               <td> $curriculum_student7</td></tr>
+            <tr><td>$student_8</td>
+              <td> $student_8_grade  </td>
+              <td> $student_8_age  </td>
+              <td> $student_8_birthdate  </td>
+              <td> $curriculum_student8 </td> </tr> </table><p>&nbsp;</p> </fieldset>
+        <fieldset><legend> Membership Information </legend>
+          <p><strong>Type of Membership: </strong></p>
+          <ul><p> $type  </p> </ul>
+          <p><strong>Additions to your membership: </strong></p>
+          <ul><p>High School Students $ $hs_students  </p>
+            <p>High School Diploma $ $hs_diploma  </p>
+            <p>High School Transcript $ $hs_transcript  </p>
+            <p>Consultations $ $consultations  </p>
+            <p>             Replacement membership card $ $card  </p>
+            <p>SCHEA discounted membership $ $schea  </p>
+            <p>Enchanted Learning discounted membership $ $enchanted   </p>
+            <p>Expedite my Application Please $ $expedite  </p></ul>
+              <h2><strong><u>INITIAL APPLICABLE BOXES FOR APPLICATION  PROCESS TO BE COMPLETED</u></strong></h2>
+  <p>$certify_curriculum I have included each child&rsquo;s curriculum plan for this year.</p>
+  <p>$certify_diploma I have a copy of my diploma or certificate on file at  home.</p>
+  <p>$certify_hs_transcript (if applicable)I have sent/faxed a copy of my <em><strong>high school</strong></em> students transcripts. </p>
+  <p>$certify_hs_gpa  (if applicable) I understand that I am expected to submit my <em><strong>high school</strong></em> student&rsquo;s GPA by June 1st or he/she will be assigned a  2.0 GPA for purposes of scholarship ranking (once grades are submitted, the student's actual GPA will replace the 2.0).</p>
+  <p>$certify_laws    I have read and understood the homeschool  laws of <a href='legal.html'>SC section 59-65-47</a> and agree to abide by them, maintaining and make  available all&nbsp;legally required home school records for review  by a member of Faithful Scholars and/or the State Board of Education.</p>
+  <p>$certify_bylaws    I have read, and agree to comply with all of  the <a href='bylaws.html'>Bylaws and Expectations</a> as set forth by Faithful Scholars.<br />
+  </p></fieldset></body></html>
+";
+
+// set the to and from for the e-mail
+    $to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
+    $from    = "katie@faithfulscholars.com";
+
+    $subject = "Online Application Form for $last_name  $warning";
+$headers = "From: $from \r\n";
+$headers .= "Reply-To: $from \r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+$ok = @mail($to, $subject, $message, $headers);
+
+
 ?>
 <?php
 /*
