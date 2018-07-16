@@ -9,7 +9,7 @@ $email = db_user_query('email',$myemail, '');
 //Generate reset link
 if($email == $myemail){
   $uniqidStr = db_user_query('salt',$myemail,'');
-  $resetPassLink = 'www.faithfulscholars.com/member_site/resetpassword_form.php?q='.$uniqidStr;
+  $resetPassLink = 'http://www.faithfulscholars.com/member_site/resetpassword_form.php?q='.$uniqidStr;
 
   //setting up Email
   $to = $myemail;

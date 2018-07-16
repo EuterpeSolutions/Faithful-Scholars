@@ -27,7 +27,7 @@ $pdf = new myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('P','Letter',0);
 
-$sql = "SELECT CONCAT(f.first_name, ' ', f.last_name) as name, CONCAT(f.address, ' ', f.city, ' ', f.zip, ' ', f.county) as address, f.email, f.phone FROM family as f JOIN membership as m ON f.id = m.family_id WHERE m.schea_sent = 0;";
+$sql = "SELECT CONCAT(f.first_name, ' ', f.last_name) as name, CONCAT(f.address, ' ', f.city, ' ', f.zip, ' ', f.county) as address, f.email, f.phone FROM family as f JOIN membership as m ON f.id = m.family_id WHERE m.schea = 1 AND m.schea_sent = 0;";
 if($result = mysqli_query($con, $sql)){
   $i = 1;
   while($row = mysqli_fetch_array($result)){
