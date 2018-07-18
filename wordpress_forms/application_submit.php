@@ -16,17 +16,12 @@ $new_hs=$_POST["new_hs"];
 $end_date=$_POST["end_date"];
 $years_homeschooling=$_POST["years_homeschooling"];
 $primary_instructor=$_POST["primary_instructor"];
-// $instructor_education=$_POST["instructor_education"];
 $removing_ps=$_POST["removing_ps"];
 $referred_by=$_POST["referred_by"];
-// $school_name=$_POST["school_name"];
 $school_district=$_POST["school_district"];
 $school_fax=$_POST["school_fax"];
 $type=$_POST["type"];
 $hs_students=$_POST["hs_students"];
-// $hs_diploma=$_POST["hs_diploma"];
-// $hs_transcript=$_POST["hs_transcript"];
-// $consultations=$_POST["consultations"];
 $card="";
 if(isset($_POST["card"])){
   $card=$_POST["card"];
@@ -92,8 +87,8 @@ $curriculum_student8=$_POST["curriculum_student8"];
 
 
 // Connect to server and select databse.
-require 'dbconfig.php';
-$con = mysqli_connect("$host", "$username", "$password", $db_name);
+require '../member_site/dbconfig.php';
+$con = db_connect();
 if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
@@ -115,81 +110,227 @@ if($new_hs == 'yes'){
   $new_hs = 0;
 }
 
-$family_insert_sql = "INSERT INTO family (last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new) VALUES ('$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs)";
+$family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
 $family_id = 0;
 if($con->query($family_insert_sql) === TRUE) {
   $family_id = mysqli_insert_id($con);
+} else {
+  echo mysqli_error();
 }
 
-$con->query( "INSERT INTO members (username,psalt,password,email,family_id) VALUES
-('$username','$p_salt','$password','$email',$family_id);" );
+$con->query( "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES
+($family_id,'$username','$p_salt','$password','$email',$family_id);" );
 
-$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax')";
+$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
 $con->query($homeschool_insert_sql);
 
-
-if($type = "Kindergarten-Only"){
+$typeprice = 0;
+$membership = "";
+if($type == "Kindergarten-Only"){
+  $membership = $type;
   $type = 1;
-} else if ($type = "Single-Student"){
+  $typeprice = 25;
+} else if ($type == "Single-Student"){
+  $membership = $type;
   $type = 2;
+  $typeprice = 35;
 } else {
+  $membership = "Multi-Student";
   $type = 3;
+  $typeprice = 60;
 }
 
 
 if(isset($schea)){
-  $schea = 1;
+  $schea_set = 1;
 } else {
-  $schea = 0;
+  $schea_set = 0;
 }
 
 if(isset($enchanted)){
-  $enchanted = 1;
+  $enchanted_set = 1;
 } else {
-  $enchanted = 0;
+  $enchanted_set = 0;
 }
 
 if(isset($card)){
-  $card = 1;
+  $card_set = 1;
 } else {
-  $card = 0;
+  $card_set = 0;
 }
 
 if(isset($expedite)){
-  $expedite = 1;
+  $expedite_set = 1;
 } else {
-  $expedite = 0;
+  $expedite_set = 0;
 }
 
-$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea, $enchanted, $expedite, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
+$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
 $con->query($membership_insert_sql);
 
 
 for($i = 1; $i <= 9; $i++){
   if(isset(${"student_".$i})){
-    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', '${"student_".$i."_grade"}', '${"student_".$i."_age"}', '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}')";
+    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
     $con->query($student_insert_sql);
   }
 }
 
 mysqli_close($con);
 
-// if ($type == "Single-Student") {
-// $membership_cost = 35;
-// }
-// if ($type == "Multi-Student")
-// {
-// $membership_cost = 60;
-// }
-// if ($type == "Kindergarten-Only")
-// {
-// $membership_cost = 25;
-// }
-// $total = ($enchanted + $schea + $consultations + $hs_transcript + $hs_students + $hs_diploma + $membership_cost + $card + $expedite );
-//
-// if ($expedite == 20){
-// $warning=" -- Expedited Application";
-// }
+global $total;
+
+$total = $schea + $enchanted + $expedite + $typeprice + $hs_students;
+
+// Send Email
+$message = "
+<html><head><link rel='stylesheet' type='text/css' href='http://www.faithfulscholars.com/stylesheet.css'>
+<body>
+<fieldset><legend> Family Information </legend>
+    <table width='700' border='0'>
+            <tr> <td><label for='last_name'>Last Name</label></td>
+              <td>$last_name </td>
+              <td><label for='new_fs'>New to Faithful Scholars?</label></td>
+              <td> $new_hs </td></tr>
+            <tr><td><label for='Father2'>Fathers Name </label>'</td>
+              <td> $father  </td>
+              <td><label for='phone2'>Phone</label></td>
+              <td> $phone </td></tr>
+            <tr><td><label for='mother'>Mother's Name</label></td>
+              <td> $mother </td>
+              <td><label>Cell Phone (Mom)</label></td>
+              <td> $cell_phone_mom  </td></tr>
+            <tr><td><label for='address'>Address</label></td>
+              <td> $address </td>
+              <td><label>Cell Phone (Dad)</label></td>
+              <td> $cell_phone_dad  </td> </tr>
+            <tr> <td><label for='city'>City</label></td>
+              <td> $city  </td>
+              <td><label>Email Address</label></td>
+              <td> $email  </td></tr>
+            <tr> <td><label for='zip'>Zip</label></td>
+              <td> $zip  </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td>
+            </tr><tr> <td><label for='county'>County</label></td>
+              <td> $county  </td>
+              <td>&nbsp;</td>
+              <td>&nbsp;</td> </tr> </table><p>&nbsp;</p></fieldset>
+        <fieldset><legend> Homeschool Information </legend>
+          <table width='700' border='0'>
+            <tr> <td><label for='start_date'>School Year Start Date</label></td>
+              <td> $start_date  </td>
+              <td><label>New to Homeschooling?</label></td>
+              <td> $new_hs  </td></tr>
+            <tr> <td><label for='end_date'>End of Year Date</label></td>
+              <td> $end_date  </td>
+              <td><label>Years of homeschooling</label></td>
+              <td> $years_homeschoooling  </td> </tr>
+            <tr><td><label for='primary_instructor'>Primary Instructor</label></td>
+              <td> $primary_instructor  </td>
+              <td><label></label></td>
+              <td>   </td></tr>
+            <tr> <td><label for='instructor_education'>Level of Education</label></td>
+              <td> $instructor_education  </td>
+              <td><label>Removing a child from SC Public School?</label></td>
+              <td> $removing_ps  </td> </tr>
+            <tr><td><label for='referred_by'>Referred By</label></td>
+              <td> $referred_by  </td>
+              <td><label>If yes, school name:</label></td>
+              <td> $school_name  </td></tr>
+            <tr> <td><label for='school_district'>School District</label></td>
+              <td> $school_district  </td>
+              <td><label>If yes, school fax #:</label></td>
+              <td> $school_fax  </td></tr> </table>
+          <p>&nbsp;</p> </fieldset></body></html>
+     <fieldset><legend> Student Information </legend>
+          <table width='600' border='1' cellpadding='3' cellspacing='0'>
+            <tr> <td>Student Name</td>
+              <td>Grade</td>
+              <td>Age</td>
+              <td>Birthdate (M / D / Y)</td>
+              <td>Briefly Describe Curriculum</td></tr>
+            <tr><td>$student_1</td>
+              <td> $student_1_grade  </td>
+              <td> $student_1_age  </td>
+              <td> $student_1_birthdate  </td>
+              <td> $curriculum_student1 </td>
+            </tr>
+            <tr> <td>$student_2</td>
+              <td> $student_2_grade  </td>
+              <td> $student_2_age  </td>
+              <td> $student_2_birthdate  </td>
+               <td> $curriculum_student2 </td></tr>
+            <tr><td>$student_3</td>
+              <td> $student_3_grade  </td>
+              <td> $student_3_age  </td>
+              <td> $student_3_birthdate  </td>
+              <td> $curriculum_student3 </td> </tr>
+            <tr><td>$student_4</td>
+              <td> $student_4_grade  </td>
+              <td> $student_4_age  </td>
+              <td> $student_4_birthdate  </td>
+               <td> $curriculum_student4 </td></tr>
+            <tr><td>$student_5</td>
+              <td> $student_5_grade  </td>
+              <td> $student_5_age  </td>
+              <td> $student_5_birthdate  </td>
+              <td> $curriculum_student5 </td></tr>
+            <tr> <td>$student_6</td>
+              <td> $student_6_grade  </td>
+              <td> $student_6_age  </td>
+              <td> $student_6_birthdate  </td>
+               <td> $curriculum_student6 </td></tr>
+            <tr> <td>$student_7</td>
+              <td> $student_7_grade  </td>
+              <td> $student_7_age  </td>
+              <td> $student_7_birthdate  </td>
+               <td> $curriculum_student7</td></tr>
+            <tr><td>$student_8</td>
+              <td> $student_8_grade  </td>
+              <td> $student_8_age  </td>
+              <td> $student_8_birthdate  </td>
+              <td> $curriculum_student8 </td> </tr> </table><p>&nbsp;</p> </fieldset>
+        <fieldset><legend> Membership Information </legend>
+          <p><strong>Type of Membership: </strong></p>
+          <ul><p> $type  </p> </ul>
+          <p><strong>Additions to your membership: </strong></p>
+          <ul><p>High School Students $ $hs_students  </p>
+            <p>High School Diploma $ $hs_diploma  </p>
+            <p>High School Transcript $ $hs_transcript  </p>
+            <p>Consultations $ $consultations  </p>
+            <p>             Replacement membership card $ $card  </p>
+            <p>SCHEA discounted membership $ $schea  </p>
+            <p>Enchanted Learning discounted membership $ $enchanted   </p>
+            <p>Expedite my Application Please $ $expedite  </p></ul>
+              <h2><strong><u>INITIAL APPLICABLE BOXES FOR APPLICATION  PROCESS TO BE COMPLETED</u></strong></h2>
+  <p>$certify_curriculum I have included each child&rsquo;s curriculum plan for this year.</p>
+  <p>$certify_diploma I have a copy of my diploma or certificate on file at  home.</p>
+  <p>$certify_hs_transcript (if applicable)I have sent/faxed a copy of my <em><strong>high school</strong></em> students transcripts. </p>
+  <p>$certify_hs_gpa  (if applicable) I understand that I am expected to submit my <em><strong>high school</strong></em> student&rsquo;s GPA by June 1st or he/she will be assigned a  2.0 GPA for purposes of scholarship ranking (once grades are submitted, the student's actual GPA will replace the 2.0).</p>
+  <p>$certify_laws    I have read and understood the homeschool  laws of <a href='legal.html'>SC section 59-65-47</a> and agree to abide by them, maintaining and make  available all&nbsp;legally required home school records for review  by a member of Faithful Scholars and/or the State Board of Education.</p>
+  <p>$certify_bylaws    I have read, and agree to comply with all of  the <a href='bylaws.html'>Bylaws and Expectations</a> as set forth by Faithful Scholars.<br />
+  </p></fieldset></body></html>
+";
+
+// set the to and from for the e-mail
+    $to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
+    $from    = "katie@faithfulscholars.com";
+    $subject = "";
+    if(isset($expedite)) {
+      $subject = "EXPEDITED APPLICATION - Online Application Form for $last_name  $warning";
+    } else {
+      $subject = "Online Application Form for $last_name  $warning";
+    }
+
+$headers = "From: $from \r\n";
+$headers .= "Reply-To: $from \r\n";
+$headers .= "MIME-Version: 1.0\r\n";
+$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+
+$ok = @mail($to, $subject, $message, $headers);
+
+
 ?>
 <?php
 /*
@@ -276,7 +417,7 @@ if(isset($_POST['Submit'])){
     <p> <?php echo $last_name?> Family,
     <p>Thank  you for joining Faithful Scholars; we look forward to serving your  family.  Below is a summary of what you have submitted to us. Please print a copy of this page to keep as a record of your membership until your membership packet arrives.  </p>
     <p> To complete your application, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. You may also pay by personal check, certified check, or money order.  Please mail payments to: Faithful Scholars, 1761 Ballard Lane, Fort Mill, SC 29715.  Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <?php if ($expedite == 20){ ?>
+    <?php if ($expedite == 1){ ?>
          <p>  You have chosen to expedite your application.  You are legal to homeschool as of the completion of submitting and paying for your application.  Your paperwork will be process, faxed and/or mailed out within 24 hours. </p>
          <? }
 		   else { ?>
@@ -450,25 +591,16 @@ if(isset($_POST['Submit'])){
         <p><strong>Type of Membership: </strong></p>
         <ul>
           <p>
-            <?php echo $type ?>
+            <?php echo $membership ?>
           </p>
         </ul>
         <p><strong>Additions to your membership: </strong></p>
         <ul>
-          <p>High School Students $<?php echo $hs_students ?>
-          </p>
-          <p>High School Diploma $<?php echo $hs_diploma ?></p>
-
-          <p>High School Transcript $<?php echo $hs_transcript ?></p>
-
-          <p>Consultations $<?php echo $consultations ?></p>
-          <p>             Replacement
-            membership card $<?php echo $card?> </p>
-          <p>SCHEA discounted membership $<?php echo $schea ?></p>
-          <p>Enchanted Learning discounted membership $<?php echo $enchanted ?> </p>
+          <p>SCHEA discounted membership $<?php echo $schea * 15 ?></p>
+          <p>Enchanted Learning discounted membership $<?php echo $enchanted * 10?> </p>
           <p>
             Expedite
-            my Application Please $<?php echo $expedite ?></p>
+            my Application Please $<?php echo $expedite * 20?></p>
         </ul>
 
       </fieldset>

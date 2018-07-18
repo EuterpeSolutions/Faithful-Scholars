@@ -85,15 +85,15 @@ footer {
 
 /* Documents section of the dashboard */
 .documents {
-  background-image: url('assets/document-background.png');
+  background-image: url('/member_site/assets/document-background.png');
 }
 /* End of Year section of the dashboard */
 .endofyear {
-  background-image: url('assets/end-year-background.png');
+  background-image: url('/member_site/assets/end-year-background.png');
 }
 /* Transcripts section of the dashboard */
 .transcripts {
-  background-image: url('assets/transcript-background.png');
+  background-image: url('/member_site/assets/transcript-background.png');
 }
 
 /* Admin Dashboard */

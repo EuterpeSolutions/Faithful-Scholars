@@ -34,10 +34,10 @@ if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
     $grade = $row["grade"];
+    $age = $row["age"];
     $family_id = $row["family_id"];
   }
 }
-
 
 class myPDF extends FPDF {
   function header() {
@@ -102,30 +102,21 @@ class myPDF extends FPDF {
     $intMonth = (int)$month;
 
     $this->Cell(30,10,date('Y')." - ".date('Y', strtotime('+1 year')),0,1);
-
-    if($intMonth >= 8 and $intMonth <=12) {
-      $schoolYear = $currentYear;
-      $semester = "Fall";
-      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
-
-    } else if ($intMonth >=1 and $intMonth <=5) {
-
-      $schoolYear = $currentYear;
-      $semester = "Spring";
-      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
-
-    } else {
-      $schoolYear = $currentYear;
-      $semester = "Summer";
-      //$this->Cell(30,10,$semester." ".$schoolYear,0,1);
-    }
     $this->SetFont('Times','B', 12);
     $this->SetY(155);
     $this->Cell(20);
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(62,155);
-    $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name']." , ".$GLOBALS['grade'],0,1);
+    $sql2 = "SELECT * FROM student as s JOIN members as m ON s.family_id = m.id WHERE username LIKE '".$_SESSION['uname']."%'";
+    if($result2 = mysqli_query($conn, $sql2)){
+      while($row = mysqli_fetch_array($result2)){
+        $name = $row["name"];
+        $grade = $row["grade"];
+        $this->SetX(62);
+        $this->Cell(30,10,$name." ".$GLOBALS['last_name']." , ".$grade,0,1);
+      }
+    }
     $this->SetFont('Times','B', 12);
     $this->Image('../assets/kate-signature.png',142,175,50); // Logo
     $this->Line(135,195,195,195);
@@ -137,8 +128,10 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'katie@faithfulscholars.com',0,1);
   }
 
-  function header2Table() {
+  function CardTable() {
     $this->SetFont('Times','B', 11); //times, size 12
+    $this->SetDash(5,5); //5mm on, 5mm off
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 20, 85, 25);
     $this->Text(38,15,'FAITHFUL SCHOLARS');
     $this->Text(45,20,'(803) 548-4428');
     $this->Text(35,25,'www.faithfulscholars.com');
@@ -147,6 +140,7 @@ class myPDF extends FPDF {
     $this->Text(53,55,date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 75, 85, 25);
     $this->Text(38,70,'FAITHFUL SCHOLARS');
     $this->Text(45,75,'(803) 548-4428');
     $this->Text(35,80,'www.faithfulscholars.com');
@@ -155,6 +149,7 @@ class myPDF extends FPDF {
     $this->Text(53,110,date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 130, 85, 25);
     $this->Text(38,125,'FAITHFUL SCHOLARS');
     $this->Text(45,130,'(803) 548-4428');
     $this->Text(35,135,'www.faithfulscholars.com');
@@ -163,6 +158,7 @@ class myPDF extends FPDF {
     $this->Text(53,165,date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(175);
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 185, 85, 25);
     $this->Text(38,180,'FAITHFUL SCHOLARS');
     $this->Text(45,185,'(803) 548-4428');
     $this->Text(35,190,'www.faithfulscholars.com');
@@ -174,14 +170,31 @@ class myPDF extends FPDF {
     $this->MultiCell(0,15,'Laminating Options: Laminating machine, self-sealing laminating pouches, clear packing tape, or synthetic paper. Please print out and cut. You must obtain a new membership card each year.');
   }
 
+  function StudentCard($conn,$name,$birthday) {
+    $this->SetFont('Times','B', 11); //times, size 12
+    $this->SetDash(5,5); //5mm on, 5mm off
+    $this->Image('../assets/faithfulscholarscardbg.png', 15, 20, 85, 25);
+    $this->MultiCell(100,8,'FAITHFUl SCHOLARS'."\n".'(803) 548-4428'."\n".'www.faithfulscholars.com'."\n"."\n".$name.", ".$birthday."\n".$GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"],1,'C');
+  }
 }
 $pdf = new myPDF();
 $pdf->AliasNbPages();
 $pdf->AddPage('P','Letter',0);
 $pdf->headerTable($conn);
 $pdf->AddPage('P','Letter',0);
-$pdf->header2Table();
+$pdf->CardTable();
+$pdf->AddPage('P','Letter',0);
+$sql2 = "SELECT * FROM student as s JOIN members as m ON s.family_id = m.id WHERE username LIKE '".$_SESSION['uname']."%'";
+if($result2 = mysqli_query($conn, $sql2)){
+  while($row = mysqli_fetch_array($result2)){
+    $name = $row["name"];
+    $birthday = $row["birthday"];
+    $age = $row["age"];
+    if($age > 14) {
+      $pdf->StudentCard($conn,$name,$birthday);
+    }
+  }
+}
 $pdf->Output();
-
 $conn->close();
 ?>

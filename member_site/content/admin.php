@@ -104,8 +104,9 @@
          echo "family_id ".$family_id."<br>";
          // Save student data
          for($i = 0; $i < 9; $i++){
-           if(isset($_POST["child".$i]) && $_POST["child".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
-             $current_name = $_POST["child".$i];
+           if(isset($_POST["name".$i]) && $_POST["name".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
+
+             $current_name = $_POST["name".$i];
              $current_grade = $_POST["grade".$i];
              $current_birthday = $_POST["birthday".$i];
 
@@ -141,7 +142,18 @@
       <?php
 
       $con = db_connect();//mysqli_connect("$host", "$username", "$password", $db_name);
-      echo "<h5>Student Count by District</h5>";
+      
+      echo "<h5>Total Student Count: </h5>";
+      $sql="SELECT COUNT(id) as count FROM student;";
+      if($result = mysqli_query($con,$sql)){
+         if(mysqli_num_rows($result) > 0){
+	    while($row = mysqli_fetch_array($result)) {
+               echo "<h6>".$row['count']."</h6>";
+            }
+         }
+      }
+
+      echo "<br><h5>Student Count by District</h5>";
       $sql="SELECT COUNT(id) as count, district as district FROM family WHERE district IS NOT NULL GROUP BY district;";
       if($result = mysqli_query($con, $sql)){
          if(mysqli_num_rows($result) > 0){

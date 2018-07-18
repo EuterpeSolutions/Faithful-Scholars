@@ -1,17 +1,5 @@
 <?php
 require "fpdf.php";
-$servername = "localhost";
-$username = "root";
-$password = "password";
-$dbname = "testdata";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 class myPDF extends FPDF {
   function header() {
@@ -55,11 +43,16 @@ class myPDF extends FPDF {
   }
 }
 $pdf = new myPDF();
-$pdf->AliasNbPages();
-$pdf->AddPage('L','A4',0);
-$pdf->headerTable();
-$pdf->viewTable($conn);
-$pdf->Output();
+$pdf->AddPage();
 
-$conn->close();
+$pdf->Image('../../member_site/assets/arrow.png', 5, 5, 20, 20);
+$pdf->SetFont('Arial', 'B', 23);
+
+$name = "{$forename} {$surname}";
+
+$pdf->Text(500, 457, $name);
+
+$pdf->Text(500, 1268, date('jS F Y'), $row['when']);
+
+$pdf->Output();
 ?>

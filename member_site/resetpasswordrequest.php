@@ -1,5 +1,5 @@
 <?php
-require '../dbconfig.php';
+require_once 'dbconfig.php';
 ob_start();
 $myemail=$_POST['myemail'];
 // Connect to server and select databse.
@@ -8,8 +8,8 @@ $con = db_connect();
 $email = db_user_query('email',$myemail, '');
 //Generate reset link
 if($email == $myemail){
-  $uniqidStr = md5(uniqid(mt_rand()));;
-  $resetPassLink = 'LINK TO RESET FORM SHOULD GO TO RESETPASWORD_FORM'.$uniqidStr;
+  $uniqidStr = db_user_query('salt',$myemail,'');
+  $resetPassLink = 'http://www.faithfulscholars.com/member_site/resetpassword_form.php?q='.$uniqidStr;
 
   //setting up Email
   $to = $myemail;

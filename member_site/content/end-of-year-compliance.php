@@ -1,4 +1,4 @@
-<form class="form-horizontal" action="/content/end-of-year-compliance-action.php" method="post">
+<form class="form-horizontal" action="/member_site/?page=end-of-year-compliance-action" method="post">
   <fieldset>
     <legend> End of Year Compliance </legend>
     <h4>Please initial each box to certify your compliance with the following:</h4>

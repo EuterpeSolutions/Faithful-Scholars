@@ -4,29 +4,35 @@
       <div class="container">
         <div class="row">
           <div class="col-md-4">
-            <h3>Forms (Everyone)</h3>
+            <h3>Forms</h3>
           </div>
         </div>
         <div class="row">
           <div class="col-md-4">
             <a class="undecorated" href="/member_site/?page=renewal">
               <div class="circle center">
-                Renewal
+                <div style="padding-top: 70px; line-height: 30px;">
+                  Returning Member Renewal
+                </div>
               </div>
             </a>
           </div>
           <div class="col-md-4">
             <a class="undecorated" href="http://www.faithfulscholars.com/apply-online/">
               <div class="circle center">
-                Join
+                <div style="padding-top: 70px; line-height: 30px;">
+                  New to Faithful Scholars <br> Join
+		</div> 
               </div>
             </a>
           </div>
           <div class="col-md-4">
             <a class="undecorated" href="/member_site/?page=end-of-year-compliance">
               <div class="circle center">
-                End of Year Compliance
-              </div>
+                <div style="padding-top: 70px; line-height: 30px;">
+                  End of Year Compliance<br> (At End of 180 Days) 
+                </div>
+	      </div>
             </a>
           </div>
         </div>
@@ -38,7 +44,7 @@
       <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <h3>Documents (High Schoolers Only)</h3>
+            <h3>Documents</h3>
           </div>
         </div>
         <div class="row">
