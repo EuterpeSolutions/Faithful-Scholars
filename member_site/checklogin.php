@@ -30,6 +30,7 @@ session_start();
 $_SESSION['pwd'] = $salted_hash;
 $_SESSION['uname'] = $myusername;
 $_SESSION['userid'] = $id;
+$_SESSION['adminproxyid'] = -1;
 run();
 
 }

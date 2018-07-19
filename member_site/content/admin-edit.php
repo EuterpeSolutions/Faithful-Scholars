@@ -1,18 +1,16 @@
 <?php
-  $host_name = 'db743020317.db.1and1.com';
-  $database = 'db743020317';
-  $user_name = 'dbo743020317';
-  $password = 'dkamsmdd9';
-  $con = mysqli_connect($host_name, $user_name, $password, $database);
+session_start();
+  require_once 'dbconfig.php';
+  $con = db_connect();
 
   if (mysqli_connect_errno()) {
     die('<p>Failed to connect to MySQL: '.mysqli_connect_error().'</p>');
   }
+  $selected_id = $_POST["selected_id"];
 
-  $last_name = $_POST["edit"];
+  $_SESSION['adminproxyid'] = $_POST['selected_id'];
 
-
-  $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name = '$last_name'";
+  $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE id = ". $selected_id . ";";
   $last_name = "";
   $first_name = "";
   $phone = "";
@@ -40,7 +38,7 @@
   $student_grade = [];
   $student_birthday = [];
 
-  $student_sql = "SELECT name, grade, birthday FROM student WHERE family_id = ".$family_id;
+  $student_sql = "SELECT name, grade, birthday FROM student WHERE family_id = ". $selected_id;
   if($student_result = mysqli_query($con, $student_sql)){
     $count = 0;
     while($row = mysqli_fetch_array($student_result)){
@@ -50,7 +48,7 @@
     }
   }
   global $students;
-  $student_sql = "SELECT * FROM student WHERE family_id = " . $_SESSION['userid'] . ";";
+  $student_sql = "SELECT * FROM student WHERE family_id = " . $selected_id . ";";
   $students = array();
   if($student_result = mysqli_query($con, $student_sql)){
     while($row = mysqli_fetch_array($student_result)){
@@ -60,10 +58,27 @@
 ?>
 <form class="form-horizontal" method="post" action="?page=admin">
   <fieldset>
-    <legend> Membership Renewal </legend>
       <div class="container">
         <div class="row">
-          <input type="text" class="form-control" value="<?php echo $last_name;?>" name="original_last_name">
+          <div class="col-md-12">
+            <h4>User Documents</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4">
+            <a href="/member_site/content/membership-letter.php">Membership Letter</a>
+          </div>
+          <div class="col-md-4">
+            <a href="/member_site/content/dmv-letter.php">DMV Letter</a>
+          </div>
+          <div class="col-md-4">
+            <a href="/member_site/content/secondary-school.php">Secondary School</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>User Edit</h4>
+          </div>
           <div class="col-md-6">
             <div class="form-group">
               <label for="last_name">Last Name:</label>

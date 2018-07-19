@@ -12,7 +12,12 @@ if ($conn->connect_error) {
 
 session_start();
 
-$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '".$_SESSION['uname']."%'";
+$userid = $_SESSION['userid'];
+if(isset($_SESSION['adminproxyid']) && $_SESSION['adminproxyid'] != -1){
+  $userid = $_SESSION['adminproxyid'];
+}
+
+$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ". $userid .";";
 if($result = mysqli_query($conn, $sql)){
   while($row = mysqli_fetch_array($result)){
     $last_name = $row["last_name"];
@@ -29,7 +34,7 @@ if($result = mysqli_query($conn, $sql)){
   }
 }
 
-$sql2 = "SELECT * FROM student as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '".$_SESSION['uname']."%'";
+$sql2 = "SELECT * FROM student as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ".$userid . ";";
 if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
@@ -108,7 +113,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(62,155);
-    $sql2 = "SELECT * FROM student as s JOIN members as m ON s.family_id = m.id WHERE username LIKE '".$_SESSION['uname']."%'";
+    $sql2 = "SELECT name, grade FROM student WHERE family_id = ". $userid .";";
     if($result2 = mysqli_query($conn, $sql2)){
       while($row = mysqli_fetch_array($result2)){
         $name = $row["name"];
@@ -166,7 +171,7 @@ $pdf->headerTable($conn);
 $pdf->AddPage('P','Letter',0);
 $pdf->CardTable();
 $pdf->AddPage('P','Letter',0);
-$sql2 = "SELECT * FROM student as s JOIN members as m ON s.family_id = m.id WHERE username LIKE '".$_SESSION['uname']."%'";
+$sql2 = "SELECT name, birthday, age FROM student WHERE family_id = ". $userid .";";
 if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
