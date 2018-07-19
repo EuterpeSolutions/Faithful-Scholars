@@ -16,32 +16,32 @@ $county = $_POST['county'];
 $extra_information = $_POST['extra_information'];
 $curriculum_desc = $_POST['curriculum_desc'];
 
-// Children
-$child1=$_POST["child1"];
+// nameren
+$name1=$_POST["name1"];
 $grade1=$_POST["grade1"];
 $birthdate1=$_POST["birthday1"];
-$child2=$_POST["child2"];
+$name2=$_POST["name2"];
 $grade2=$_POST["grade2"];
 $birthdate2=$_POST["birthday2"];
-$child3=$_POST["child3"];
+$name3=$_POST["name3"];
 $grade3=$_POST["grade3"];
 $birthdate3=$_POST["birthday3"];
-$child4=$_POST["child4"];
+$name4=$_POST["name4"];
 $grade4=$_POST["grade4"];
 $birthdate4=$_POST["birthday4"];
-$child5=$_POST["child5"];
+$name5=$_POST["name5"];
 $grade5=$_POST["grade5"];
 $birthdate5=$_POST["birthday5"];
-$child6=$_POST["child6"];
+$name6=$_POST["name6"];
 $grade6=$_POST["grade6"];
 $birthdate6=$_POST["birthday6"];
-$child7=$_POST["child7"];
+$name7=$_POST["name7"];
 $grade7=$_POST["grade7"];
 $birthdate7=$_POST["birthday7"];
-$child8=$_POST["child8"];
+$name8=$_POST["name8"];
 $grade8=$_POST["grade8"];
 $birthdate8=$_POST["birthday8"];
-$child9=$_POST["child9"];
+$name9=$_POST["name9"];
 $grade9=$_POST["grade9"];
 $birthdate9=$_POST["birthday9"];
 
@@ -79,16 +79,15 @@ $con = db_connect();
 // Family Information
 $sql = "UPDATE family SET first_name = '$first_name', last_name = '$last_name', phone = '$phone', email = '$email', county = '$county', zip = '$zipcode', city = '$city', address = '$address' WHERE id =".$_SESSION['userid'].";";
 $insert_id = 0;
-$con->query($sql);
-
+if(!($con->query($sql) == true)){
+  echo "Error2: " . $sql . "</br>" . $con->error;
+}
+$sql_delete_students = "DELETE FROM student WHERE family_id = " . $_SESSION['userid'] . ";";
+$con->query($sql_delete_students);
 // Student Information
 for($i = 1; $i < 9; $i++){
-  if(${"child" . $i} != ''){
-    $sql_student = "UPDATE student
-                    SET family_id = $insert_id
-
-    INSERT INTO student (family_id, name, grade, birthday)
-                    VALUES ('$insert_id','${"child" . $i}','${"grade" . $i}','${"birthdate" . $i}')";
+  if(${"name" . $i} != ''){
+    $sql_student = "INSERT INTO student (family_id, name, grade, birthday) VALUES ('" . $_SESSION['userid'] . "','${"name" . $i}','${"grade" . $i}','${"birthdate" . $i}')";
     if ($con->query($sql_student) === TRUE) {
     } else {
       echo "Error: " . $sql . "<br>" . $con->error;
