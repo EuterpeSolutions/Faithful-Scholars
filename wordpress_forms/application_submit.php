@@ -88,7 +88,7 @@ $curriculum_student8=$_POST["curriculum_student8"];
 
 // Connect to server and select databse.
 require '../member_site/dbconfig.php';
-$con = db_connect(); 
+$con = db_connect();
 if(!$con)
 {
   die("cannot connect" . mysqli_connect_error());
@@ -316,8 +316,13 @@ $message = "
 // set the to and from for the e-mail
     $to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
     $from    = "katie@faithfulscholars.com";
+    $subject = "";
+    if(isset($expedite)) {
+      $subject = "EXPEDITED APPLICATION - Online Application Form for $last_name  $warning";
+    } else {
+      $subject = "Online Application Form for $last_name  $warning";
+    }
 
-    $subject = "Online Application Form for $last_name  $warning";
 $headers = "From: $from \r\n";
 $headers .= "Reply-To: $from \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
