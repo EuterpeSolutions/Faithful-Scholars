@@ -137,7 +137,7 @@ class myPDF extends FPDF {
     $this->Text(35,25,'www.faithfulscholars.com');
     $this->Text(40,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
     $this->Text(25,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
-    $this->Text(53,55,date('Y'));
+    $this->Text(33,55,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
     $this->Image('../assets/faithfulscholarscardbg.png', 15, 75, 85, 25);
@@ -146,27 +146,9 @@ class myPDF extends FPDF {
     $this->Text(35,80,'www.faithfulscholars.com');
     $this->Text(40,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
     $this->Text(25,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
-    $this->Text(53,110,date('Y'));
+    $this->Text(33,110,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
-    $this->Image('../assets/faithfulscholarscardbg.png', 15, 130, 85, 25);
-    $this->Text(38,125,'FAITHFUL SCHOLARS');
-    $this->Text(45,130,'(803) 548-4428');
-    $this->Text(35,135,'www.faithfulscholars.com');
-    $this->Text(40,155,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
-    $this->Text(25,160,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
-    $this->Text(53,165,date('Y'));
-    $this->Cell(100,50,'',1,1);
-    $this->SetY(175);
-    $this->Image('../assets/faithfulscholarscardbg.png', 15, 185, 85, 25);
-    $this->Text(38,180,'FAITHFUL SCHOLARS');
-    $this->Text(45,185,'(803) 548-4428');
-    $this->Text(35,190,'www.faithfulscholars.com');
-    $this->Text(40,210,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
-    $this->Text(25,215,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
-    $this->Text(53,220,date('Y'));
-    $this->Cell(100,50,'',1,1);
-    $this->SetXY(140,60);
     $this->MultiCell(0,15,'Laminating Options: Laminating machine, self-sealing laminating pouches, clear packing tape, or synthetic paper. Please print out and cut. You must obtain a new membership card each year.');
   }
 
@@ -174,7 +156,7 @@ class myPDF extends FPDF {
     $this->SetFont('Times','B', 11); //times, size 12
     $this->SetDash(5,5); //5mm on, 5mm off
     $this->Image('../assets/faithfulscholarscardbg.png', 15, 20, 85, 25);
-    $this->MultiCell(100,8,'FAITHFUl SCHOLARS'."\n".'(803) 548-4428'."\n".'www.faithfulscholars.com'."\n"."\n".$name.", ".$birthday."\n".$GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"],1,'C');
+    $this->MultiCell(100,8,'FAITHFUl SCHOLARS'."\n".'(803) 548-4428'."\n".'www.faithfulscholars.com'."\n"."\n".$name.", ".$birthday."\n".$GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]. "\n" . 'STUDENT ' . date('Y'),1,'C');
   }
 }
 $pdf = new myPDF();

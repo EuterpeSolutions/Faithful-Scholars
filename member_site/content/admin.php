@@ -33,9 +33,9 @@
          $search_value = $_POST["search"];
          $sql = "";
          if($search_value != ''){
-           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%'";
+           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%' ORDER BY last_name ASC";
          } else {
-           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family";
+           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family ORDER BY last_name ASC";
          }
 
 
@@ -142,7 +142,7 @@
       <?php
 
       $con = db_connect();//mysqli_connect("$host", "$username", "$password", $db_name);
-      
+
       echo "<h5>Total Student Count: </h5>";
       $sql="SELECT COUNT(id) as count FROM student;";
       if($result = mysqli_query($con,$sql)){
