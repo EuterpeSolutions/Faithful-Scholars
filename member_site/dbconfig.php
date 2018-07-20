@@ -3,10 +3,12 @@
 $tbl_name="members"; // Table name
 function db_connect(){
   global $host, $username, $password, $db_name;
-  $host_name = 'db743020317.db.1and1.com';
-$database = 'db743020317';
-$user_name = 'dbo743020317';
-$password = 'dkamsmdd9';
+  $host_name="127.0.0.1"; // Host name
+  $user_name="root"; // Mysql username
+  $password="newpassword"; // Mysql password
+  $database="FaithfulScholars"; // Database name
+  $tbl_name="members"; // Table name
+
 $con = mysqli_connect($host_name, $user_name, $password, $database);
 
 if (mysqli_connect_errno()) {

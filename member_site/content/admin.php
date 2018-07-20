@@ -88,7 +88,7 @@
          $city = $_POST["city"];
 
 
-         $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE last_name = '$original_last_name'";
+         $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE id = '$original_last_name'";
 
          $con->query($save_sql);
 

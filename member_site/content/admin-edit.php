@@ -81,6 +81,7 @@ session_start();
           </div>
           <div class="col-md-6">
             <div class="form-group">
+              <input type="hidden" name="original_last_name" id="original_last_name" value="<?php echo $selected_id?>">
               <label for="last_name">Last Name:</label>
               <input type="last_name" class="form-control" value="<?php echo htmlspecialchars($last_name)?>" name="last_name" id="last_name" placeholder="Enter name">
             </div>
