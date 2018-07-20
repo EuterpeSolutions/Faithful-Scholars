@@ -33,9 +33,9 @@
          $search_value = $_POST["search"];
          $sql = "";
          if($search_value != ''){
-           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%' ORDER BY last_name ASC";
+           $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%' ORDER BY last_name ASC";
          } else {
-           $sql="SELECT first_name, last_name, phone, email, address, city, zip, county FROM family ORDER BY last_name ASC";
+           $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family ORDER BY last_name ASC";
          }
 
 
@@ -60,7 +60,7 @@
                          echo "<td>" . $row['email'] . "</td>";
                          echo "<td>" . $row['address'] . "</td>";
                          echo "<td>" . $row['city'] . "</td>";
-                         echo "<td><input type='submit' name='edit' value='". $row['last_name'] . "' class='btn btn-success'></td>";
+                         echo "<td><input type='submit' name='selected_id' value='". $row['id'] . "' class='btn btn-success'></td>";
                      echo "</tr>";
                  }
                  echo "</table>";
@@ -88,7 +88,7 @@
          $city = $_POST["city"];
 
 
-         $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE last_name = '$original_last_name'";
+         $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE id = '$original_last_name'";
 
          $con->query($save_sql);
 

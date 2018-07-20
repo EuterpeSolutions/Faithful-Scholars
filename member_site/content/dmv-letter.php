@@ -7,7 +7,13 @@ $conn = db_connect();
 
 session_start();
 
-$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE username LIKE '".$_SESSION['uname']."%'";
+$userid = $_SESSION['userid'];
+if(isset($_SESSION['adminproxyid']) && $_SESSION['adminproxyid'] != -1){
+  $userid = $_SESSION['adminproxyid'];
+}
+
+
+$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ". $userid .";";
 if($result = mysqli_query($conn, $sql)){
   while($row = mysqli_fetch_array($result)){
     $last_name = $row["last_name"];
@@ -103,7 +109,7 @@ class myPDF extends FPDF {
 $pdf = new myPDF();
 $pdf->AliasNbPages();
 
-$sql2 = "SELECT * FROM student as s JOIN members as m ON s.family_id = m.id WHERE username LIKE '".$_SESSION['uname']."%'";
+$sql2 = "SELECT * FROM student as s JOIN family as f ON s.family_id = f.id WHERE f.id  = " . $userid . ";";
 if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
@@ -114,7 +120,9 @@ if($result2 = mysqli_query($conn, $sql2)){
   }
 }
 
+
 $pdf->Output();
 
+unset($_SESSION['adminproxyid']);
 $conn->close();
 ?>
