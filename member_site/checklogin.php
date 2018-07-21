@@ -18,21 +18,26 @@ $id = 0;
 $id = db_user_query('id', '', $myusername);
 $p = db_user_query('password', '', $myusername);
 $p_salt = db_user_query('salt', '', $myusername);
+$approved = db_user_query('approved', '', $myusername);
 $site_salt="faithfulscholarsalt";
 $salted_hash = hash('sha256',$mypassword.$site_salt.$p_salt);
 
 //If pwds match
 if($p==$salted_hash){
-$p = "";
-require 'config.php';
-require 'functions.php';
-session_start();
-$_SESSION['pwd'] = $salted_hash;
-$_SESSION['uname'] = $myusername;
-$_SESSION['userid'] = $id;
-$_SESSION['adminproxyid'] = -1;
-run();
+  $p = "";
+  require 'config.php';
+  require 'functions.php';
+  session_start();
+  $_SESSION['pwd'] = $salted_hash;
+  $_SESSION['uname'] = $myusername;
+  $_SESSION['userid'] = $id;
+  $_SESSION['adminproxyid'] = -1;
 
+  if($approved == 0){
+    runUnApproved();
+  }else {
+    run();
+  }
 }
 else {
   echo "The username or password was incorrect";

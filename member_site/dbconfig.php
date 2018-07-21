@@ -42,9 +42,9 @@ function db_user_query($selection,$myemail,$myusername)
   $con = db_connect();
   global $tbl_name;
   if($myemail != '')
-    $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE email='$myemail'";
+    $sql="SELECT id,password,username,psalt,email,approved FROM $tbl_name WHERE email='$myemail'";
   else if($myusername != '')
-    $sql="SELECT id,password,username,psalt,email FROM $tbl_name WHERE username='$myusername'";
+    $sql="SELECT id,password,username,psalt,email,approved FROM $tbl_name WHERE username='$myusername'";
   else {
     echo 'No key input';
     return '';
@@ -53,7 +53,7 @@ function db_user_query($selection,$myemail,$myusername)
   {
     $stmt->execute();
     $stmt->store_result();
-    $stmt->bind_result($col1, $col2, $col3, $col4, $col5);
+    $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6);
     while($stmt->fetch())
     {
       $id = $col1;
@@ -61,6 +61,7 @@ function db_user_query($selection,$myemail,$myusername)
       $username = $col3;
       $p_salt = $col4;
       $email = $col5;
+      $approved = $col6;
     }
   }
   else {
@@ -81,6 +82,9 @@ function db_user_query($selection,$myemail,$myusername)
       break;
     case 'email':
       return $email;
+      break;
+    case 'approved':
+      return $approved;
       break;
     default:
       echo 'Did not select a category';

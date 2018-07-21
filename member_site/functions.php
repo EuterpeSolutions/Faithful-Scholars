@@ -94,5 +94,8 @@ function run()
   include config('template_path').'/template.php';
 }
 
-
+function runUnApproved()
+{
+  include 'unapproved.php';
+}
 ?>

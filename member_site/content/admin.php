@@ -33,9 +33,9 @@
          $search_value = $_POST["search"];
          $sql = "";
          if($search_value != ''){
-           $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE last_name LIKE '%$search_value%' OR first_name LIKE '%$search_value%' ORDER BY last_name ASC";
+           $sql="SELECT family.id, first_name, last_name, phone, family.email, address, city, zip, county, approved FROM family JOIN members ON family.id = members.family_id WHERE family.last_name LIKE '%$search_value%' OR family.first_name LIKE '%$search_value%' ORDER BY family.last_name ASC";
          } else {
-           $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family ORDER BY last_name ASC";
+           $sql="SELECT family.id, first_name, last_name, phone, family.email, address, city, zip, county, approved FROM family JOIN members ON family.id = members.family_id ORDER BY members.approved ASC, family.last_name ASC";
          }
 
 
@@ -50,6 +50,7 @@
                          echo "<th>Email</th>";
                          echo "<th>Address</th>";
                          echo "<th>City</th>";
+                         echo "<th>Paid?</th>";
                          echo "<th>Edit</th>";
                      echo "</tr>";
                  while($row = mysqli_fetch_array($result)){
@@ -60,6 +61,13 @@
                          echo "<td>" . $row['email'] . "</td>";
                          echo "<td>" . $row['address'] . "</td>";
                          echo "<td>" . $row['city'] . "</td>";
+                         echo "<td>";
+                         if($row['approved'] == 1){
+                           echo "Yes";
+                         }else {
+                           echo "<div style='color: white; background-color: red; padding: 5px;'>No</div>";
+                         }
+                         echo "</td>";
                          echo "<td><input type='submit' name='selected_id' value='". $row['id'] . "' class='btn btn-success'></td>";
                      echo "</tr>";
                  }
