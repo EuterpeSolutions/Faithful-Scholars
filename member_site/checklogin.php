@@ -28,14 +28,14 @@ if($p==$salted_hash){
   require 'config.php';
   require 'functions.php';
   session_start();
-  $_SESSION['pwd'] = $salted_hash;
-  $_SESSION['uname'] = $myusername;
-  $_SESSION['userid'] = $id;
-  $_SESSION['adminproxyid'] = -1;
-
   if($approved == 0){
+    $_SESSION['approved'] = 1;
     runUnApproved();
   }else {
+    $_SESSION['pwd'] = $salted_hash;
+    $_SESSION['uname'] = $myusername;
+    $_SESSION['userid'] = $id;
+    $_SESSION['adminproxyid'] = -1;
     run();
   }
 }
