@@ -1,0 +1,1 @@
+DELETE FROM family WHERE id = <INSERT_ID>

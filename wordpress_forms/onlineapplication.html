@@ -16,7 +16,7 @@
           <td><label for="username"> Username </label></td>
           <td><input type="text" name="username" id="username" required/></td>
           <td><label for="email"> Email </label></td>
-          <td><input type="text" name="email" id="email_member_login"/></td>
+          <td><input type="text" name="login_email" id="email_member_login" required/></td>
           <td><label for="password"> Password </label></td>
           <td><input type="password" name="password" id="password" required/></td>
         </tr>
@@ -38,13 +38,13 @@
         <tr>
           <td><label for="Father2">Father</label>
             's Name          </td>
-          <td><input type="text" name="father" id="father" /></td>
+          <td><input type="text" name="father" id="father" required/></td>
           <td><label for="phone2">Phone</label></td>
-          <td><input type="text" name="phone" id="phone2" /></td>
+          <td><input type="text" name="phone" id="phone2"/></td>
           </tr>
         <tr>
           <td><label for="mother">Mother's Name</label></td>
-          <td><input type="text" name="mother" id="mother" /></td>
+          <td><input type="text" name="mother" id="mother" required/></td>
           <td><label>Cell Phone (Mom)</label></td>
           <td><input type="text" name="cell_phone_mom" id="cell_phone_mom" /></td>
           </tr>
@@ -81,7 +81,7 @@
       <table width="750" border="0">
         <tr>
           <td><label for="start_date"> School  Start Date <span data-tip="You can start / end your K-8 school year at any point.  You just need to make sure you cover 180 school days."  class="help"> [?] </span></label></td>
-          <td><input name="start_date" type="text" id="start_date"  required/></td>
+          <td><input name="start_date" type="text" id="start_date" required/></td>
           <td><label>New to Homeschooling?</label></td>
           <td><select name="new_hs" id="new_hs" >
             <option value="yes">Yes</option>
@@ -95,8 +95,8 @@
           <td><input name="years_homeschooling" type="text" id="years_homeschooling"  size="5" maxlength="5" required/></td>
           </tr>
         <tr>
-          <td><label for="primary_instructor">Primary Instructor</label></td>
-          <td><input name="primary_instructor" type="text" id="primary_instructor"  /></td>
+          <td><label for="primary_instructor">Primary Instructor (First Name Only)</label></td>
+          <td><input name="primary_instructor" type="text" id="primary_instructor"  required/></td>
           <td>&nbsp;</td>
           <td>&nbsp;</td>
           </tr>
@@ -121,7 +121,7 @@
           </tr>
         <tr>
           <td><label for="school_district"><a href="http://ed.sc.gov/schools" target="_blank">School District</a></label></td>
-          <td><input name="school_district" type="text" id="school_district"  /></td>
+          <td><input name="school_district" type="text" id="school_district"  required/></td>
           <td><label>If yes, <a href="http://ed.sc.gov/schools" target="_blank">school fax #</a>: <span data-tip="Required if expediting your application."  class="help"> [?] </span></label></td>
           <td><input name="school_fax" type="text" id="school_fax"  /></td>
           </tr>
@@ -200,7 +200,7 @@
       <legend> Membership Information </legend>
       <p><strong>Type of Membership: </strong></p>
       <ul>
-        <p> <input name="type" id="type" value="Kindergarten-Only" type="radio" required/>
+        <p> <input name="type" id="type" value="Kindergarten-Only" type="radio" checked required/>
           Kindergarten only membership $25/year</p>
         <p>
           <input name="type" id="type2" value="Single-Student" type="radio" />
@@ -244,10 +244,10 @@
         <input name="certify_diploma" type="text" id="certify_diploma" size="5" maxlength="5" required/>
         &nbsp;I have &nbsp;a copy of my diploma or certificate on file at  home.</p>
       <p>
-        <input name="certify_hs_transcript" type="text" id="certify_hs_transcript" size="5" maxlength="5" required/>
+        <input name="certify_hs_transcript" type="text" id="certify_hs_transcript" size="5" maxlength="5"/>
         (if applicable)&nbsp; I have sent/faxed a copy of my <em><strong>high school</strong></em> students transcripts. </p>
       <p>
-        <input name="certify_hs_gpa" type="text" id="certify_hs_gpa" size="5" maxlength="5" required/>
+        <input name="certify_hs_gpa" type="text" id="certify_hs_gpa" size="5" maxlength="5"/>
         (if applicable) I understand that I am expected to submit my <em><strong>high school</strong></em> student&rsquo;s grades by June 10th or he/she may be ineligible for the SC Palmetto Fellows, Life, and Hope scholarships.</p>
       <p>
         <input name="certify_laws" type="text" id="certify_laws" size="5" maxlength="5" required/>

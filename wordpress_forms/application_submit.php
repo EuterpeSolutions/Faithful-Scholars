@@ -100,9 +100,6 @@ $email=mysqli_real_escape_string($con,$_POST["email"]);
 $site_salt = "faithfulscholarsalt";
 $p_salt = hash('sha256',$zip.$phone);
 $password = hash('sha256',$password.$site_salt.$p_salt);
-//Sql connection
-
-
 
 if($new_hs == 'yes'){
   $new_hs = 1;
@@ -121,6 +118,7 @@ if($con->query($family_insert_sql) === TRUE) {
 $con->query( "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES
 ($family_id,'$username','$p_salt','$password','$email',$family_id);" );
 
+echo "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
 $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
 $con->query($homeschool_insert_sql);
 
@@ -164,8 +162,8 @@ if(isset($expedite)){
 } else {
   $expedite_set = 0;
 }
-
-$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
+echo "INSERT INTO membership(family_id, type_id, highschool, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
+$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, $type, $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
 $con->query($membership_insert_sql);
 
 
