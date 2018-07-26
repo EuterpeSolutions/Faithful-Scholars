@@ -32,7 +32,7 @@
   }
 ?>
 
-<form class="form-horizontal" method="post" action="?page=renewal-action">
+<form class="form-horizontal" method="post" action="?page=update-family-information-action">
   <fieldset>
     <legend></legend>
       <div class="container">

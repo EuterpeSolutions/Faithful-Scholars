@@ -1,89 +1,83 @@
  <?php
-$last_name=$_POST["last_name"];
-$new_fs=$_POST["new_fs"];
-$father=$_POST["father"];
-$mother=$_POST["mother"];
-$address=$_POST["address"];
-$city=$_POST["city"];
-$zip=$_POST["zip"];
-$county=$_POST["county"];
-$phone=$_POST["phone"];
-$cell_phone_mom=$_POST["cell_phone_mom"];
-$cell_phone_dad=$_POST["cell_phone_dad"];
-$email=$_POST["email"];
-$start_date=$_POST["start_date"];
-$new_hs=$_POST["new_hs"];
-$end_date=$_POST["end_date"];
-$years_homeschooling=$_POST["years_homeschooling"];
-$primary_instructor=$_POST["primary_instructor"];
-$removing_ps=$_POST["removing_ps"];
-$referred_by=$_POST["referred_by"];
-$school_district=$_POST["school_district"];
-$school_fax=$_POST["school_fax"];
-$type=$_POST["type"];
-$hs_students=$_POST["hs_students"];
-$card="";
-if(isset($_POST["card"])){
-  $card=$_POST["card"];
-}
-$schea="";
-if(isset($_POST["schea"])){
-  $schea=$_POST["schea"];
-}
-$enchanted="";
-if(isset($_POST["enchanted"])){
-  $enchanted=$_POST["enchanted"];
-}
-$expedite="";
-if(isset($_POST["expedite"])){
-  $expedite=$_POST["expedite"];
-}
-$certify_curriculum=$_POST["certify_curriculum"];
-$certify_diploma=$_POST["certify_diploma"];
-$certify_hs_transcript=$_POST["certify_hs_transcript"];
-$certify_hs_gpa=$_POST["certify_hs_gpa"];
-$certify_laws=$_POST["certify_laws"];
-$certify_bylaws=$_POST["certify_bylaws"];
-$student_1=$_POST["student_1"];
-$student_1_grade=$_POST["student_1_grade"];
-$student_1_age=$_POST["student_1_age"];
-$student_1_birthdate=$_POST["student_1_birthdate"];
-$student_2=$_POST["student_2"];
-$student_2_grade=$_POST["student_2_grade"];
-$student_2_age=$_POST["student_2_age"];
-$student_2_birthdate=$_POST["student_2_birthdate"];
-$student_3=$_POST["student_3"];
-$student_3_grade=$_POST["student_3_grade"];
-$student_3_age=$_POST["student_3_age"];
-$student_3_birthdate=$_POST["student_3_birthdate"];
-$student_4=$_POST["student_4"];
-$student_4_grade=$_POST["student_4_grade"];
-$student_4_age=$_POST["student_4_age"];
-$student_4_birthdate=$_POST["student_4_birthdate"];
-$student_5=$_POST["student_5"];
-$student_5_grade=$_POST["student_5_grade"];
-$student_5_age=$_POST["student_5_age"];
-$student_5_birthdate=$_POST["student_5_birthdate"];
-$student_6=$_POST["student_6"];
-$student_6_grade=$_POST["student_6_grade"];
-$student_6_age=$_POST["student_6_age"];
-$student_6_birthdate=$_POST["student_6_birthdate"];
-$student_7=$_POST["student_7"];
-$student_7_grade=$_POST["student_7_grade"];
-$student_7_age=$_POST["student_7_age"];
-$student_7_birthdate=$_POST["student_7_birthdate"];
-$student_8=$_POST["student_8"];
-$student_8_grade=$_POST["student_8_grade"];
-$student_8_age=$_POST["student_8_age"];
-$student_8_birthdate=$_POST["student_8_birthdate"];
-$curriculum_student1=$_POST["curriculum_student1"];
-$curriculum_student2=$_POST["curriculum_student2"];
-$curriculum_student3=$_POST["curriculum_student3"];
-$curriculum_student4=$_POST["curriculum_student4"];
-$curriculum_student5=$_POST["curriculum_student5"];
-$curriculum_student6=$_POST["curriculum_student6"];
-$curriculum_student7=$_POST["curriculum_student7"];
-$curriculum_student8=$_POST["curriculum_student8"];
+ function checkPostParams($param) {
+   if(isset($_POST[$param])){
+     return $_POST[$param];
+   } else {
+     return "";
+   }
+ }
+$last_name=checkPostParams("last_name");
+$new_fs=checkPostParams("new_fs");
+$father=checkPostParams("father");
+$mother=checkPostParams("mother");
+$address=checkPostParams("address");
+$city=checkPostParams("city");
+$zip=checkPostParams("zip");
+$county=checkPostParams("county");
+$phone=checkPostParams("phone");
+$cell_phone_mom=checkPostParams("cell_phone_mom");
+$cell_phone_dad=checkPostParams("cell_phone_dad");
+$email=checkPostParams("email");
+$start_date=checkPostParams("start_date");
+$new_hs=checkPostParams("new_hs");
+$end_date=checkPostParams("end_date");
+$years_homeschooling=checkPostParams("years_homeschooling");
+$primary_instructor=checkPostParams("primary_instructor");
+$removing_ps=checkPostParams("removing_ps");
+$referred_by=checkPostParams("referred_by");
+$school_district=checkPostParams("school_district");
+$school_fax=checkPostParams("school_fax");
+$type=checkPostParams("type");
+$hs_students=checkPostParams("hs_students");
+$schea=checkPostParams("schea");
+$enchanted=checkPostParams("enchanted");
+$expedite=checkPostParams("expedite");
+$certify_curriculum=checkPostParams("certify_curriculum");
+$certify_diploma=checkPostParams("certify_diploma");
+$certify_hs_transcript=checkPostParams("certify_hs_transcript");
+$certify_hs_gpa=checkPostParams("certify_hs_gpa");
+$certify_laws=checkPostParams("certify_laws");
+$certify_bylaws=checkPostParams("certify_bylaws");
+$student_1=checkPostParams("student_1");
+$student_1_grade=checkPostParams("student_1_grade");
+$student_1_age=checkPostParams("student_1_age");
+$student_1_birthdate=checkPostParams("student_1_birthdate");
+$student_2=checkPostParams("student_2");
+$student_2_grade=checkPostParams("student_2_grade");
+$student_2_age=checkPostParams("student_2_age");
+$student_2_birthdate=checkPostParams("student_2_birthdate");
+$student_3=checkPostParams("student_3");
+$student_3_grade=checkPostParams("student_3_grade");
+$student_3_age=checkPostParams("student_3_age");
+$student_3_birthdate=checkPostParams("student_3_birthdate");
+$student_4=checkPostParams("student_4");
+$student_4_grade=checkPostParams("student_4_grade");
+$student_4_age=checkPostParams("student_4_age");
+$student_4_birthdate=checkPostParams("student_4_birthdate");
+$student_5=checkPostParams("student_5");
+$student_5_grade=checkPostParams("student_5_grade");
+$student_5_age=checkPostParams("student_5_age");
+$student_5_birthdate=checkPostParams("student_5_birthdate");
+$student_6=checkPostParams("student_6");
+$student_6_grade=checkPostParams("student_6_grade");
+$student_6_age=checkPostParams("student_6_age");
+$student_6_birthdate=checkPostParams("student_6_birthdate");
+$student_7=checkPostParams("student_7");
+$student_7_grade=checkPostParams("student_7_grade");
+$student_7_age=checkPostParams("student_7_age");
+$student_7_birthdate=checkPostParams("student_7_birthdate");
+$student_8=checkPostParams("student_8");
+$student_8_grade=checkPostParams("student_8_grade");
+$student_8_age=checkPostParams("student_8_age");
+$student_8_birthdate=checkPostParams("student_8_birthdate");
+$curriculum_student1=checkPostParams("curriculum_student1");
+$curriculum_student2=checkPostParams("curriculum_student2");
+$curriculum_student3=checkPostParams("curriculum_student3");
+$curriculum_student4=checkPostParams("curriculum_student4");
+$curriculum_student5=checkPostParams("curriculum_student5");
+$curriculum_student6=checkPostParams("curriculum_student6");
+$curriculum_student7=checkPostParams("curriculum_student7");
+$curriculum_student8=checkPostParams("curriculum_student8");
 
 
 // Connect to server and select databse.
@@ -100,29 +94,12 @@ $email=mysqli_real_escape_string($con,$_POST["email"]);
 $site_salt = "faithfulscholarsalt";
 $p_salt = hash('sha256',$zip.$phone);
 $password = hash('sha256',$password.$site_salt.$p_salt);
-//Sql connection
-
-
 
 if($new_hs == 'yes'){
   $new_hs = 1;
 } else {
   $new_hs = 0;
 }
-
-$family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
-$family_id = 0;
-if($con->query($family_insert_sql) === TRUE) {
-  $family_id = mysqli_insert_id($con);
-} else {
-  echo mysqli_error();
-}
-
-$con->query( "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES
-($family_id,'$username','$p_salt','$password','$email',$family_id);" );
-
-$homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
-$con->query($homeschool_insert_sql);
 
 $typeprice = 0;
 $membership = "";
@@ -165,24 +142,61 @@ if(isset($expedite)){
   $expedite_set = 0;
 }
 
-$membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, replacement_card, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, '$type', $hs_students, $card, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
-$con->query($membership_insert_sql);
 
+$family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
+$family_id = 0;
+if($con->query($family_insert_sql) === TRUE) {
+  $family_id = mysqli_insert_id($con);
 
-for($i = 1; $i <= 9; $i++){
-  if(isset(${"student_".$i})){
-    $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
-    $con->query($student_insert_sql);
+  $member_insert_sql = "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES ($family_id,'$username','$p_salt','$password','$email',$family_id);";
+  if($con->query($member_insert_sql) === TRUE) {}
+  else {
+    echo mysqli_error();
   }
+  $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
+  if($con->query($homeschool_insert_sql) === TRUE) {}
+  else {
+    echo mysqli_error();
+  }
+
+  $membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, $type, $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
+  if($con->query($membership_insert_sql) === TRUE) {}
+  else {
+    echo mysqli_error();
+  }
+
+
+  for($i = 1; $i <= 9; $i++){
+    if(isset(${"student_".$i})){
+      $student_insert_sql = "INSERT INTO student (family_id, name, grade, age, birthday, curriculum_desc)VALUES ($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
+      $con->query($student_insert_sql);
+    }
+  }
+
+} else {
+  echo mysqli_error();
 }
+
+
 
 mysqli_close($con);
 
 global $total;
+try{
+  if(isset($schea) && isset($enchanted) && isset($expedite)){
+    $total = $schea + $enchanted + $expedite + $typeprice + $hs_students;
+  }else {
+    $total = $typeprice + $hs_students;
+  }
 
-$total = $schea + $enchanted + $expedite + $typeprice + $hs_students;
+} catch (Exception $e) {
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+}
 
-// Send Email
+
+/*
+*
+*/
 $message = "
 <html><head><link rel='stylesheet' type='text/css' href='http://www.faithfulscholars.com/stylesheet.css'>
 <body>
@@ -314,14 +328,14 @@ $message = "
 ";
 
 // set the to and from for the e-mail
-    $to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
-    $from    = "katie@faithfulscholars.com";
-    $subject = "";
-    if(isset($expedite)) {
-      $subject = "EXPEDITED APPLICATION - Online Application Form for $last_name  $warning";
-    } else {
-      $subject = "Online Application Form for $last_name  $warning";
-    }
+$to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
+$from    = "katie@faithfulscholars.com";
+$subject = "";
+if(isset($expedite)) {
+  $subject = "EXPEDITED APPLICATION - Online Application Form for $last_name  $warning";
+} else {
+  $subject = "Online Application Form for $last_name  $warning";
+}
 
 $headers = "From: $from \r\n";
 $headers .= "Reply-To: $from \r\n";
@@ -330,9 +344,6 @@ $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
 $ok = @mail($to, $subject, $message, $headers);
 
-
-?>
-<?php
 /*
 * MailChimp Implementation
 */
@@ -413,16 +424,12 @@ if(isset($_POST['Submit'])){
 
 <body>
 
-    <h2>Thank you for applying for membership with Faithful Scholars! </h2>
+    <h2>Thank you! </h2>
     <p> <?php echo $last_name?> Family,
-    <p>Thank  you for joining Faithful Scholars; we look forward to serving your  family.  Below is a summary of what you have submitted to us. Please print a copy of this page to keep as a record of your membership until your membership packet arrives.  </p>
-    <p> To complete your application, please click the "Pay Now" button to pay securely online through PayPal.  You do not have to have a PayPal account, and you can pay with any credit card. You may also pay by personal check, certified check, or money order.  Please mail payments to: Faithful Scholars, 1761 Ballard Lane, Fort Mill, SC 29715.  Your total payment to Faithful Scholars for this year will be $ <? echo $total ?>.</p>
-    <?php if ($expedite == 1){ ?>
-         <p>  You have chosen to expedite your application.  You are legal to homeschool as of the completion of submitting and paying for your application.  Your paperwork will be process, faxed and/or mailed out within 24 hours. </p>
-         <? }
-		   else { ?>
-         <p>&nbsp; It will take us 3 to 30 days to fully process your paperwork  including mailouts.&nbsp; You are legal to homeschool as of the completion  of submitting/paying for your application.&nbsp; If there are any problems  with your application you will be notified within 7 days.&nbsp; If you need  your paperwork fully processed before this time, please hit the back arrow and re-submit your applicaton with expedited application option checked for an additional $20--which will have it processed,  faxed and/or mailed out within 24 hours.&nbsp;&nbsp;      </p>
-         <?php } ?>
+    <p>Thank you for joining our wonderful group of Faithful Scholars, 3rd Option Accountability Association.
+      We look forward to serving your family with the goals of guiding and educating you in your administrative
+      duties while supporting and encouraging you as you teach.  As of the moment of payment, you became a
+      legal SC homeschooler. Your application will be reviewed and processed within the week. </p>
     <p>If you have any questions or comments about your application, please <a href="contact.html">contact us!</a></p>
     <div align="center">
       <p>
@@ -596,14 +603,20 @@ if(isset($_POST['Submit'])){
         </ul>
         <p><strong>Additions to your membership: </strong></p>
         <ul>
-          <p>SCHEA discounted membership $<?php echo $schea * 15 ?></p>
-          <p>Enchanted Learning discounted membership $<?php echo $enchanted * 10?> </p>
-          <p>
-            Expedite
-            my Application Please $<?php echo $expedite * 20?></p>
+          <?php
+            if(isset($schea) && $schea != ""){
+              echo "<p>SCHEA discounted membership $" . $schea . "</p>";
+            }
+
+            if(isset($enchanted) && $enchanted != ""){
+              echo "<p>Enchanted Learning discounted membership $" . $enchanted . "</p>";
+            }
+
+            if(isset($expedite) && $expedite != ""){
+              echo "<p>Expedite my Application $" . $expedite . "</p>";
+            }
+          ?>
         </ul>
-
       </fieldset>
-
 </body>
 </html>

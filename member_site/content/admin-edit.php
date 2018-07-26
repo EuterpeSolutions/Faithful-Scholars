@@ -55,7 +55,39 @@ session_start();
       array_push($students, $row);
     }
   }
+
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['approved_btn']))
+  {
+      func($_POST['approved_btn']);
+  }
+  function func($id)
+  {
+      $con = db_connect();
+      $update_sql = "UPDATE members SET approved = 1 WHERE family_id = $id";
+      $con->query($update_sql);
+      echo "Marked as paid!";
+  }
 ?>
+<div class="container">
+  <div class="col-md-12">
+    <form action="?page=admin-edit" method="post">
+      <?php
+        $con = db_connect();
+        $sql_check = "SELECT approved FROM members WHERE family_id = $selected_id";
+        if($check_result = mysqli_query($con, $sql_check)){
+          while($row = mysqli_fetch_array($check_result)){
+            if($row['approved'] == 0){
+              echo "<button class='btn btn-danger' name='approved_btn' value='$selected_id'>Mark as Paid</button>";
+            } else {
+              echo "<p>Marked as paid!</p>";
+            }
+          }
+        }
+      ?>
+    </form>
+  </div>
+</div>
+
 <form class="form-horizontal" method="post" action="?page=admin">
   <fieldset>
       <div class="container">
@@ -66,19 +98,23 @@ session_start();
         </div>
         <div class="row">
           <div class="col-md-4">
-            <a href="/member_site/content/membership-letter.php">Membership Letter</a>
+            <a href="/member_site/content/membership-letter.php" target="_blank">Membership Letter</a>
           </div>
           <div class="col-md-4">
-            <a href="/member_site/content/dmv-letter.php">DMV Letter</a>
+            <a href="/member_site/content/dmv-letter.php" target="_blank">DMV Letter</a>
           </div>
           <div class="col-md-4">
-            <a href="/member_site/content/secondary-school.php">Secondary School</a>
+            <a href="/member_site/content/secondary-school.php" target="_blank">Secondary School</a>
           </div>
         </div>
+        <br><br>
         <div class="row">
           <div class="col-md-12">
             <h4>User Edit</h4>
           </div>
+        </div>
+        <br>
+        <div class="row">
           <div class="col-md-6">
             <div class="form-group">
               <input type="hidden" name="original_last_name" id="original_last_name" value="<?php echo $selected_id?>">
