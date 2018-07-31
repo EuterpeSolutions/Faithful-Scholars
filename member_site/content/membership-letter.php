@@ -113,13 +113,13 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(62,155);
-    $sql2 = "SELECT name, grade FROM student WHERE family_id = ". $userid .";";
+    $sql2 = "SELECT name, grade FROM student WHERE family_id = ". $_SESSION["userid"] .";";
     if($result2 = mysqli_query($conn, $sql2)){
       while($row = mysqli_fetch_array($result2)){
         $name = $row["name"];
         $grade = $row["grade"];
         $this->SetX(62);
-        $this->Cell(30,10,$name." ".$GLOBALS['last_name']." , ".$grade,0,1);
+        $this->Cell(30,10,$name." ".$GLOBALS['last_name'].", ".$grade,0,1);
       }
     }
     $this->SetFont('Times','B', 12);
