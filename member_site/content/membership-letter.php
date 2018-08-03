@@ -119,7 +119,7 @@ class myPDF extends FPDF {
         $name = $row["name"];
         $grade = $row["grade"];
         $this->SetX(62);
-        $this->Cell(30,10,$name." ".$GLOBALS['last_name'].", ".$grade,0,1);
+        $this->Cell(30,10,$name.", ".$grade,0,1);
       }
     }
     $this->SetFont('Times','B', 12);
@@ -140,8 +140,13 @@ class myPDF extends FPDF {
     $this->Text(38,15,'FAITHFUL SCHOLARS');
     $this->Text(45,20,'(803) 548-4428');
     $this->Text(35,25,'www.faithfulscholars.com');
-    $this->Text(40,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
-    $this->Text(25,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
+    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
+      $this->Text(30,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    } else {
+      $this->Text(40,45,strtoupper($GLOBALS["mother_name"]));
+    }
+
+    $this->Text(15,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Text(33,55,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
@@ -149,8 +154,12 @@ class myPDF extends FPDF {
     $this->Text(38,70,'FAITHFUL SCHOLARS');
     $this->Text(45,75,'(803) 548-4428');
     $this->Text(35,80,'www.faithfulscholars.com');
-    $this->Text(40,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
-    $this->Text(25,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
+    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
+      $this->Text(30,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+    } else {
+      $this->Text(40,100,strtoupper($GLOBALS["mother_name"]));
+    }
+    $this->Text(15,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
     $this->Text(33,110,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
