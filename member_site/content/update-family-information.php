@@ -104,13 +104,18 @@
         <hr>
         <div class="row">
           <div class="col-md-6">
-            <?php echo childInput('name', $students)?>
+            <?php echo childInput('name', $students, 0, count($students))?>
           </div>
           <div class="col-md-2">
-            <?php echo childInput('grade', $students)?>
+            <?php echo childInput('grade', $students, 0, count($students))?>
           </div>
           <div class="col-md-4">
-            <?php echo childInput('birthday', $students)?>
+            <?php echo childInput('birthday', $students, 0, count($students))?>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p>* If you need to add another student please send an email to katie@faithfulscholars.com with the students name, age, birthday, and curriculum.</p>
           </div>
         </div>
         <div class="row">
