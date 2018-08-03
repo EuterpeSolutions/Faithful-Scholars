@@ -107,11 +107,15 @@ class myPDF extends FPDF {
 
   }
 }
-$pdf = new myPDF();
-$pdf->AliasNbPages();
-
 $sql2 = "SELECT * FROM student WHERE family_id = " . $userid . ";";
 if($result2 = mysqli_query($conn, $sql2)){
+  if($result2->num_rows <= 0){
+    header("Location:member_site/?page=error");
+  }
+
+  $pdf = new myPDF();
+  $pdf->AliasNbPages();
+
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
     $grade = $row["grade"];
@@ -119,6 +123,7 @@ if($result2 = mysqli_query($conn, $sql2)){
     $pdf->AddPage('P','Letter',0);
     $pdf->headerTable($name,$grade,$birthday);
   }
+  $pdf->Output();
 }
 
 $pdf->Output();
