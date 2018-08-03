@@ -34,7 +34,7 @@ if($result = mysqli_query($conn, $sql)){
   }
 }
 
-$sql2 = "SELECT * FROM student as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ".$userid . ";";
+$sql2 = "SELECT * FROM student WHERE family_id = ".$userid . " ORDER BY age DESC;";
 if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
@@ -113,7 +113,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Student, Grade:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(62,155);
-    $sql2 = "SELECT name, grade FROM student WHERE family_id = ". $userid .";";
+    $sql2 = "SELECT name, grade FROM student WHERE family_id = ". $userid ." ORDER BY age DESC;";
     if($result2 = mysqli_query($conn, $sql2)){
       while($row = mysqli_fetch_array($result2)){
         $name = $row["name"];
@@ -180,7 +180,7 @@ $pdf->headerTable($conn, $userid);
 $pdf->AddPage('P','Letter',0);
 $pdf->CardTable();
 $pdf->AddPage('P','Letter',0);
-$sql2 = "SELECT name, birthday, age FROM student WHERE family_id = ". $userid .";";
+$sql2 = "SELECT name, birthday, age FROM student WHERE family_id = ". $userid ." ORDER BY age DESC;";
 if($result2 = mysqli_query($conn, $sql2)){
   while($row = mysqli_fetch_array($result2)){
     $name = $row["name"];
