@@ -51,7 +51,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Student:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(47,85);
-    $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name'],0,1);
+    $this->Cell(30,10,$GLOBALS['name'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(95);
     $this->Cell(20);
@@ -91,7 +91,7 @@ class myPDF extends FPDF {
     $this->Cell(20);
     $this->Cell(30,10,'To Whom It May Concern:',0,1);
     $this->SetXY(30,132);
-    $this->Cell(30,10,$$GLOBALS['name'].' '.$GLOBALS['last_name'],0,1);
+    $this->Cell(30,10,$GLOBALS['name'],0,1);
     $this->SetXY(10,140);
     $this->Cell(20);
     $this->MultiCell(140,10,'is a member in good standing of the home school accountability association Faithful Scholars, and as such has permission to attend classes at York Tech and/or any secondary school.',0,1);
