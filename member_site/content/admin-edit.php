@@ -9,8 +9,6 @@ session_start();
   $selected_id = $_POST["selected_id"];
 
   $_SESSION['adminproxyid'] = $_POST['selected_id'];
-  print_r($_SESSION);
-
   $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE id = ". $selected_id . ";";
   $last_name = "";
   $first_name = "";
