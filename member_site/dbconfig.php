@@ -103,7 +103,7 @@ function checkSalt ($psalt) {
     while($stmt->fetch())
     {
       if($count != 1){
-	return false;
+	        return false;
       }
       return true;
     }

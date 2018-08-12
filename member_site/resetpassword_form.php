@@ -1,10 +1,11 @@
 <?php
   require_once 'dbconfig.php';
   $a = checkSalt($_GET['q']);
+  echo $a;
   if($a == null || !isset($a) || $a == 0 || $a == ''){
     header('Location: http://faithfulscholars.com/member_site');
     exit();
-  } 
+  }
 ?>
 <!DOCTYPE html>
 <html>

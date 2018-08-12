@@ -22,7 +22,7 @@
               <div class="circle center">
                 <div style="padding-top: 70px; line-height: 30px;">
                   New to Faithful Scholars <br> Join
-		</div> 
+		</div>
               </div>
             </a>
           </div>
@@ -30,7 +30,7 @@
             <a class="undecorated" href="/member_site/?page=end-of-year-compliance">
               <div class="circle center">
                 <div style="padding-top: 70px; line-height: 30px;">
-                  End of Year Compliance<br> (At End of 180 Days) 
+                  End of Year Compliance<br> (At End of 180 Days)
                 </div>
 	      </div>
             </a>

@@ -1,11 +1,17 @@
 <?php
 require "fpdf.php";
+require "../functions.php";
 require "../dbconfig.php";
+session_start();
+$check = checkLogin($_SESSION['userid']);
+if($check == 0){
+  readfile('../login.html');
+}
 
 // Create connection
 $conn = db_connect();
 
-session_start();
+
 
 $userid = $_SESSION['userid'];
 if(isset($_SESSION['adminproxyid']) && $_SESSION['adminproxyid'] != -1){

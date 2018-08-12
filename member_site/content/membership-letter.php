@@ -1,6 +1,12 @@
 <?php
 require "fpdf.php";
 require "../dbconfig.php";
+require "../functions.php";
+session_start();
+$check = checkLogin($_SESSION['userid']);
+if($check == 0){
+  readfile('../login.html');
+}
 
 // Create connection
 $conn = db_connect();
@@ -9,8 +15,6 @@ $conn = db_connect();
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
-
-session_start();
 
 global $userid;
 $userid = $_SESSION['userid'];
