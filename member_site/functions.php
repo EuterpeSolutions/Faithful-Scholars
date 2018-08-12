@@ -87,28 +87,6 @@ function generateSchoolDisctrict($selected_district){
   }
 }
 
-function checkLogin($userid){
-  $con = db_connect();
-  $sql = "SELECT approved FROM members WHERE family_id = " . $userid . ";";
-  if($stmt = $con->prepare($sql))
-  {
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($count);
-    while($stmt->fetch()){
-      $approved_value = $approved;
-    }
-  }
-  // Check if a user is logged in
-if($approved_value = 1 && isset($_SESSION['userid']) && isset($_SESSION['pwd'])){
-    // If they are logged in then run the template / function files to fill out the app
-    return 1;
-  } else {
-    // If not logged in then render the login file
-    return 0;
-  }
-}
-
 // Starts everything and displays the template
 function run()
 {

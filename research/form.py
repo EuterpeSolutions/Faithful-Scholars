@@ -33,6 +33,11 @@ def test_join_form():
     br["student_1_age"] = "13"
     br["student_1_birthdate"] = "10/10/03"
     br["curriculum_student1"] = "Some smart stuff"
+    br["student_2"] = "test2_kid"
+    br["student_2_grade"] = "3"
+    br["student_2_age"] = "15"
+    br["student_2_birthdate"] = "12/12/12"
+    br["curriculum_student2"] = "Some smart stuffsss"
     br.find_control("schea").items[0].selected=True
     br.find_control("enchanted").items[0].selected=False
     br.find_control("expedite").items[0].selected=False

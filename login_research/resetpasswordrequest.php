@@ -1,5 +1,5 @@
 <?php
-require '../dbconfig.php';
+require_once '../dbconfig.php';
 ob_start();
 $host="localhost"; // Host name
 $username="root"; // Mysql username

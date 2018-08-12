@@ -1,5 +1,5 @@
 <?php
-require 'dbconfig.php';
+require_once 'dbconfig.php';
 ob_start();
 
 // Connect to server and select databse.

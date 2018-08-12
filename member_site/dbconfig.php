@@ -19,18 +19,14 @@ if (mysqli_connect_errno()) {
 
 function isAdmin($username) {
   $con = db_connect();
-  $sql = "SELECT COUNT(id) as count FROM members WHERE admin = 1 AND username LIKE '%$username%'";
-  if($stmt = $con->prepare($sql))
-  {
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($count);
-    while($stmt->fetch()){
-      if($count > 0){
-        return true;
-      } else {
-        return false;
-      }
+
+  $result = mysqli_query($con, "CALL checkAdmin('$username')") or die("Query fail: " . mysqli_error());
+
+  while($row = mysqli_fetch_array($result)){
+    if($row['count'] > 0){
+      return true;
+    }else{
+      return false;
     }
   }
   return false;
@@ -40,33 +36,17 @@ function isAdmin($username) {
 function db_user_query($selection,$myemail,$myusername)
 {
   $con = db_connect();
-  global $tbl_name;
-  if($myemail != '')
-    $sql="SELECT id,password,username,psalt,email,approved FROM $tbl_name WHERE email='$myemail'";
-  else if($myusername != '')
-    $sql="SELECT id,password,username,psalt,email,approved FROM $tbl_name WHERE username='$myusername'";
-  else {
-    echo 'No key input';
-    return '';
+
+  $result = mysqli_query($con, "CALL userQuery('$myemail','$myusername')") or die("Query fail: " . mysqli_error);
+  while($row = mysqli_fetch_array($result)){
+    $id = $row['id'];
+    $p = $row['password'];
+    $username = $row['username'];
+    $p_salt = $row['psalt'];
+    $email = $row['email'];
+    $approved = $row['approved'];
   }
-  if($stmt = $con->prepare($sql))
-  {
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($col1, $col2, $col3, $col4, $col5, $col6);
-    while($stmt->fetch())
-    {
-      $id = $col1;
-      $p = $col2;
-      $username = $col3;
-      $p_salt = $col4;
-      $email = $col5;
-      $approved = $col6;
-    }
-  }
-  else {
-    echo 'db connection errror';
-  }
+
   switch ($selection) {
     case 'id':
       return $id;
@@ -95,26 +75,36 @@ function db_user_query($selection,$myemail,$myusername)
 
 function checkSalt ($psalt) {
   $con = db_connect();
-  $sql = "SELECT COUNT(id) FROM members WHERE psalt = '$psalt';";
-  if($stmt = $con->prepare($sql)){
-    $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($count);
-    while($stmt->fetch())
-    {
-      if($count != 1){
-	        return false;
-      }
-      return true;
+
+  $result = mysqli_query($con, "CALL checkSalt('$psalt')") or die("Query error: " . mysqli_error());
+
+  while( $row = mysqli_fetch_array($result)){
+    if($row['count'] != 1){
+      return false;
     }
+    return true;
   }
 }
 
-
-
-
-
-
-
-
- ?>
+function checkLogin($userid){
+  $con = db_connect();
+  $sql = "SELECT approved FROM members WHERE family_id = " . $userid . ";";
+  if($stmt = $con->prepare($sql))
+  {
+    $stmt->execute();
+    $stmt->store_result();
+    $stmt->bind_result($count);
+    while($stmt->fetch()){
+      $approved_value = $approved;
+    }
+  }
+  // Check if a user is logged in
+  if($approved_value = 1 && isset($_SESSION['userid']) && isset($_SESSION['pwd'])){
+    // If they are logged in then run the template / function files to fill out the app
+    return 1;
+  } else {
+    // If not logged in then render the login file
+    return 0;
+  }
+}
+?>
