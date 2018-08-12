@@ -147,28 +147,6 @@ while($row = mysqli_fetch_array($result)){
   $family_id = $row['new_family_id'];
 }
 mysqli_close($con);
-// $family_insert_sql = "INSERT INTO family (first_name, last_name, father_name, mother_name, address, city, zip, county, phone, mom_cell, dad_cell, email, new, district) VALUES ('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district')";
-//
-// if($con->query($family_insert_sql) === TRUE) {
-//   $family_id = mysqli_insert_id($con);
-//
-//   $member_insert_sql = "INSERT INTO members (id, username,psalt,password,email,family_id) VALUES ($family_id,'$username','$p_salt','$password','$email',$family_id);";
-//   if($con->query($member_insert_sql) === TRUE) {}
-//   else {
-//     echo mysqli_error();
-//   }
-//   $homeschool_insert_sql = "INSERT INTO homeschool(family_id, school_start_date, school_end_date, new_homeschool, years_homeschooling, primary_instructor, removing_public_school, referred_by, school_district, school_fax) VALUES ($family_id, '$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax');";
-//   if($con->query($homeschool_insert_sql) === TRUE) {}
-//   else {
-//     echo mysqli_error();
-//   }
-//
-//   $membership_insert_sql = "INSERT INTO membership(family_id, type_id, highschool, schea, enchanted_learning, expedited, initial_1, initial_2, initial_3, initial_4, initial_5, initial_6) VALUES ($family_id, $type, $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws')";
-//   if($con->query($membership_insert_sql) === TRUE) {}
-//   else {
-//     echo mysqli_error();
-//   }
-
 
 for($i = 1; $i <= 9; $i++){
   if(isset(${"student_".$i})){
@@ -180,12 +158,6 @@ for($i = 1; $i <= 9; $i++){
     }
   }
 }
-
-// } else {
-//   echo mysqli_error();
-// }
-
-
 
 mysqli_close($con);
 
