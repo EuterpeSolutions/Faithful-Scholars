@@ -141,10 +141,19 @@ if(isset($expedite)){
 } else {
   $expedite_set = 0;
 }
+
 $family_id = 0;
-$result = mysqli_query($con, "CALL insertUser('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district','$username','$p_salt','$password','$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax', $type, $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws');") or die("Invalid insert " . mysqli_error($con));
+$user_sql = "CALL insertUser('$primary_instructor','$last_name', '$father', '$mother', '$address', '$city', '$zip', '$county', '$phone', '$cell_phone_mom', '$cell_phone_dad', '$email', $new_hs, '$school_district','$username','$p_salt','$password','$start_date', '$end_date', $new_hs, $years_homeschooling, '$primary_instructor', '$removing_ps', '$referred_by', '$school_district', '$school_fax', $type, $hs_students, $schea_set, $enchanted_set, $expedite_set, '$certify_curriculum', '$certify_diploma', '$certify_hs_transcript', '$certify_hs_gpa', '$certify_laws', '$certify_bylaws');";
+
+$result = mysqli_query($con, $user_sql) or die("Invalid insert " . mysqli_error($con));
 while($row = mysqli_fetch_array($result)){
-  $family_id = $row['new_family_id'];
+  if(isset($row['MYSQL_ERROR'])){
+    echo "An unexpected error has occurred during submission. Please try again later and if you continue to see this error email katie@faithfulscholars.com with the error code 'app1'.";
+  }
+  if(isset($row['new_family_id'])){
+    $family_id = $row['new_family_id'];
+  }
+
 }
 mysqli_close($con);
 
@@ -153,8 +162,12 @@ for($i = 1; $i <= 9; $i++){
     $con = db_connect();
     $sql = "CALL insertStudent($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
     $result = mysqli_query($con, $sql);
-    while($row = mysqli_fetch_array($result)){
-      echo $row['MYSQL_ERROR'];
+    if($result){
+      while($row = mysqli_fetch_array($result)){
+        if(isset($row['MYSQL_ERROR'])){
+          echo "An unexpected error has occurred during submission. Please try again later and if you continue to see this error email katie@faithfulscholars.com with the error code 'app2'.";
+        }
+      }
     }
   }
 }
