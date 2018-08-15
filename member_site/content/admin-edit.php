@@ -6,10 +6,11 @@ session_start();
   if (mysqli_connect_errno()) {
     die('<p>Failed to connect to MySQL: '.mysqli_connect_error().'</p>');
   }
+  global $selected_id;
   $selected_id = $_POST["selected_id"];
 
   $_SESSION['adminproxyid'] = $_POST['selected_id'];
-  $sql="SELECT id, first_name, last_name, phone, email, address, city, zip, county FROM family WHERE id = ". $selected_id . ";";
+  $sql="SELECT family.id, first_name, last_name, phone, family.email, address, city, zip, county, username FROM family JOIN members ON family.id = members.family_id WHERE family.id = ". $selected_id . ";";
   $last_name = "";
   $first_name = "";
   $phone = "";
@@ -17,6 +18,7 @@ session_start();
   $address = "";
   $zipcode = "";
   $city = "";
+  $username = "";
 
   $family_id = 0;
 
@@ -30,6 +32,7 @@ session_start();
       $address = $row["address"];
       $zipcode = $row["zip"];
       $city = $row["city"];
+      $username = $row["username"];
     }
   }
 
@@ -59,12 +62,21 @@ session_start();
   {
       func($_POST['approved_btn']);
   }
+  if($_SERVER['REQUEST_METHOD'] == "POST" and isset($_POST['delete_btn']))
+  {
+      deleteFunc($_POST['delete_btn']);
+  }
   function func($id)
   {
       $con = db_connect();
       $update_sql = "UPDATE members SET approved = 1 WHERE family_id = $id";
       $con->query($update_sql);
       echo "Marked as paid!";
+  }
+  function deleteFunc($id){
+      $con = db_connect();
+      $update_sql = "DELETE FROM family WHERE id = $id";
+      $con->query($update_sql);
   }
 ?>
 <div class="container">
@@ -116,6 +128,10 @@ session_start();
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
+              <label for="username_field">Username:</label>
+              <p><?php echo htmlspecialchars($username)?></p>
+            </div>
+            <div class="form-group">
               <input type="hidden" name="original_last_name" id="original_last_name" value="<?php echo $selected_id?>">
               <label for="last_name">Last Name:</label>
               <input type="last_name" class="form-control" value="<?php echo htmlspecialchars($last_name)?>" name="last_name" id="last_name" placeholder="Enter name">
@@ -166,12 +182,19 @@ session_start();
       </div>
     </fieldset>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-6">
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <input class="btn btn-success" type="submit" name="submit" value="Submit" />
           </div>
         </div>
       </div>
+      <div class="col-md-6">
+
+      </div>
     </div>
+  </form>
+  <form action="?page=admin-edit" method="post">
+    <button onclick="return confirm('Are you sure that you sent off the SCHEA information? This action cannot be undone.')" class='btn btn-danger' name='delete_btn' value='<?php global $selected_id; echo $selected_id; ?>' style="float:right;">Delete User </button><br><br>
+    <p style="float:right;">(Warning this actioncannot be undone)</p>
   </form>
