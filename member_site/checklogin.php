@@ -32,11 +32,13 @@ if($p==$salted_hash){
     $_SESSION['approved'] = 1;
     runUnApproved();
   }else {
-    ini_set('session.cookie_domain', '.faithfulscholars.com');
     $_SESSION['pwd'] = $salted_hash;
     $_SESSION['uname'] = $myusername;
     $_SESSION['userid'] = $id;
     $_SESSION['adminproxyid'] = -1;
+
+    setcookie('loggedin', 'yes', time()+3600*4, '/', '.faithfulscholars.com');
+
     run();
   }
 }
