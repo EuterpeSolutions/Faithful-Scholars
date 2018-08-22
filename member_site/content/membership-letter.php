@@ -75,7 +75,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Name: ',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(45,70);
-    $this->Cell(30,10,$GLOBALS['father_name']." and ". $GLOBALS['mother_name']." ".$GLOBALS['last_name'],0,1);
+    $this->Cell(30,10,$GLOBALS['father_name']." and ". $GLOBALS['mother_name']." ".$GLOBALS['address'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(85);
     $this->Cell(20);
@@ -145,12 +145,12 @@ class myPDF extends FPDF {
     $this->Text(45,20,'(803) 548-4428');
     $this->Text(35,25,'www.faithfulscholars.com');
     if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
-      $this->Text(30,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+      $this->Text(30,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     } else {
-      $this->Text(40,45,strtoupper($GLOBALS["mother_name"]));
+      $this->Text(40,45,strtoupper($GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     }
 
-    $this->Text(15,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
+    $this->Text(30,50,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zipcode"]));
     $this->Text(33,55,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(65);
@@ -159,11 +159,11 @@ class myPDF extends FPDF {
     $this->Text(45,75,'(803) 548-4428');
     $this->Text(35,80,'www.faithfulscholars.com');
     if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
-      $this->Text(30,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"]));
+      $this->Text(30,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     } else {
-      $this->Text(40,100,strtoupper($GLOBALS["mother_name"]));
+      $this->Text(40,100,strtoupper($GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     }
-    $this->Text(15,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zip"]));
+    $this->Text(30,105,strtoupper($GLOBALS["address"]." ".$GLOBALS["city"]." SC ".$GLOBALS["zipcode"]));
     $this->Text(33,110,'TEACHER / PARENT ' . date('Y'));
     $this->Cell(100,50,'',1,1);
     $this->SetY(120);
