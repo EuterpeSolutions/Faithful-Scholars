@@ -2,7 +2,7 @@
 require "fpdf.php";
 require '../functions.php';
 require_once "../dbconfig.php";
-session_start();m
+session_start();
 $check = checkLogin($_SESSION['userid']);
 if($check == 0){
   readfile('../login.html');
