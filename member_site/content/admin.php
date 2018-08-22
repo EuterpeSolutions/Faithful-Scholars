@@ -125,7 +125,7 @@
                if(mysqli_num_rows($result) == 1){
                  // student record already exists so update it
                  while($row = mysqli_fetch_array($result)){
-                   $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = '.$current_grade.', birthday = "'.$current_birthday.'" WHERE id = '.$row["id"];
+                   $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = "'.$current_grade.'", birthday = "'.$current_birthday.'" WHERE id = '.$row["id"];
                    $con->query($update_sql);
                  }
                } else {

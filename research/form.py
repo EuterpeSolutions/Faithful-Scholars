@@ -12,12 +12,12 @@ br.addheaders = [("User-agent", "Mozilla/5.0")]
 def test_join_form():
     formbot = br.open("http://localhost:4000/wordpress_forms/onlineapplication.html")
     br.select_form(nr=0)
-    br["username"] = "admin"
+    br["username"] = "test"
     br["login_email"] = "test@test.com"
     br["password"] = "1234"
-    br["last_name"] = "test"
+    br["last_name"] = "tests"
     br["phone"] = "1231231234"
-    br["mother"] = "mother_name"
+    br["mother"] = "mother_names"
     br["city"] = "somewhere town"
     br["email"] = "test@test.com"
     br["zip"] = "12345"
@@ -28,7 +28,7 @@ def test_join_form():
     br["primary_instructor"] = "mother_name"
     br["school_district"] = "somedistrict"
     br["student_1"] = "test_kid"
-    br["student_1_grade"] = "1"
+    br["student_1_grade"] = "K"
     br["student_1_age"] = "10"
     br["student_1_birthdate"] = "10/10/03"
     br["curriculum_student1"] = "Some smart stuff"

@@ -160,7 +160,7 @@ mysqli_close($con);
 for($i = 1; $i <= 9; $i++){
   if(isset(${"student_".$i})){
     $con = db_connect();
-    $sql = "CALL insertStudent($family_id, '${"student_".$i}', ${"student_".$i."_grade"}, ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
+    $sql = "CALL insertStudent($family_id, '${"student_".$i}', '${"student_".$i."_grade"}', ${"student_".$i."_age"}, '${"student_".$i."_birthdate"}', '${"curriculum_student".$i}');";
     $result = mysqli_query($con, $sql);
     if($result){
       while($row = mysqli_fetch_array($result)){
