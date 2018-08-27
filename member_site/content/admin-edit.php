@@ -10,15 +10,18 @@ session_start();
   $selected_id = $_POST["selected_id"];
 
   $_SESSION['adminproxyid'] = $_POST['selected_id'];
-  $sql="SELECT family.id, first_name, last_name, phone, family.email, address, city, zip, county, username FROM family JOIN members ON family.id = members.family_id WHERE family.id = ". $selected_id . ";";
+  $sql="SELECT family.id, mother_name, father_name, first_name, last_name, district, phone, family.email, address, city, zip, county, username FROM family JOIN members ON family.id = members.family_id WHERE family.id = ". $selected_id . ";";
   $last_name = "";
   $first_name = "";
   $phone = "";
   $email = "";
   $address = "";
   $zipcode = "";
+  $district = "";
   $city = "";
   $username = "";
+  $mother_name = "";
+  $father_name = "";
 
   $family_id = 0;
 
@@ -27,10 +30,13 @@ session_start();
       $family_id = $row["id"];
       $last_name = $row["last_name"];
       $first_name = $row["first_name"];
+      $mother_name = $row["mother_name"];
+      $father_name = $row["father_name"];
       $phone = $row["phone"];
       $email = $row["email"];
       $address = $row["address"];
       $zipcode = $row["zip"];
+      $district = $row["district"];
       $city = $row["city"];
       $username = $row["username"];
     }
@@ -126,7 +132,7 @@ session_start();
         </div>
         <br>
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-6" style="margin-top:9px;">
             <div class="form-group">
               <label for="username_field">Username:</label>
               <p><?php echo htmlspecialchars($username)?></p>
@@ -155,10 +161,21 @@ session_start();
               <input type="first_name" class="form-control" value="<?php echo htmlspecialchars($first_name)?>"name="first_name" id="first_name" placeholder="Enter name">
             </div>
             <div class="form-group">
+              <label for="mother_name">Mothers Name:</label>
+              <input type="mother_name" class="form-control" value="<?php echo htmlspecialchars($mother_name)?>"name="mother_name" id="mother_name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
+              <label for="father_name">Fathers Name:</label>
+              <input type="father_name" class="form-control" value="<?php echo htmlspecialchars($father_name)?>"name="father_name" id="father_name" placeholder="Enter name">
+            </div>
+            <div class="form-group">
               <label for="email">E-mail:</label>
               <input type="email" class="form-control" value="<?php echo htmlspecialchars($email)?>"name="email" id="email" placeholder="Enter name">
             </div>
-            <div class="form-group"><label for=""></label><br><br><label for=""></label></div>
+            <div class="form-group">
+              <label for="district">District:</label>
+              <input type="district" class="form-control" value="<?php echo htmlspecialchars($district)?>"name="district" id="district" placeholder="Enter district" >
+            </div>
             <div class="form-group">
               <label for="city">City:</label>
               <input type="city" class="form-control" value="<?php echo htmlspecialchars($city)?>"name="city" id="city" placeholder="Enter city" >

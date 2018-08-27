@@ -89,6 +89,9 @@
          $original_last_name = $_POST["original_last_name"];
          $last_name = $_POST["last_name"];
          $first_name = $_POST["first_name"];
+         $father_name = $_POST["father_name"];
+         $district = $_POST["district"];
+         $mother_name = $_POST["mother_name"];
          $phone = $_POST["phone"];
          $email = $_POST["email"];
          $address = $_POST["address"];
@@ -96,7 +99,7 @@
          $city = $_POST["city"];
 
 
-         $save_sql = "UPDATE family SET last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE id = '$original_last_name'";
+         $save_sql = "UPDATE family SET father_name = '$father_name', mother_name = '$mother_name', district = '$district', last_name = '$last_name', first_name = '$first_name', phone = '$phone', email = '$email', address='$address', zip = '$zipcode', city = '$city' WHERE id = '$original_last_name'";
 
          $con->query($save_sql);
 
