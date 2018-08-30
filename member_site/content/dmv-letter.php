@@ -55,7 +55,7 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Student:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(47,70);
-    $this->Cell(30,10,$GLOBALS['name']." ".$GLOBALS['last_name'],0,1);
+    $this->Cell(30,10,$GLOBALS['name'],0,1);
     $this->SetFont('Times','B', 12);
     $this->SetY(80);
     $this->Cell(20);
