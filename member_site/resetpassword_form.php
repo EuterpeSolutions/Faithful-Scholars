@@ -1,11 +1,11 @@
 <?php
-  require_once 'dbconfig.php';
-  $a = checkSalt($_GET['q']);
-  echo $a;
-  if($a == null || !isset($a) || $a == 0 || $a == ''){
-    header('Location: http://faithfulscholars.com/member_site');
-    exit();
-  }
+  // require_once 'dbconfig.php';
+  // $a = checkSalt($_GET['q']);
+  // echo $a;
+  // if($a == null || !isset($a) || $a == 0 || $a == ''){
+  //   header('Location: http://faithfulscholars.com/member_site');
+  //   exit();
+  // }
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +28,7 @@
           <div class="row">
             <div class="col-md-6 mx-auto">
               <h3 class="text-center">Password Reset</h3>
-              <p>Welcome to the membership login for Faithful Scholars. Please enter your membership login credentials below to access the members only area.
+              <p>Please enter your new password below.
             </div>
           </div>
           <br>

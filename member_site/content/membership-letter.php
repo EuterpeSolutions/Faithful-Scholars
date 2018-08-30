@@ -75,7 +75,12 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'Name: ',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(45,70);
-    $this->Cell(30,10,$GLOBALS['father_name']." and ". $GLOBALS['mother_name']." ".$GLOBALS['last_name'],0,1);
+    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != "" && $GLOBALS["father_name"] != "na" && $GLOBALS["father_name"] != "NA" && $GLOBALS["father_name"] != "N/A" && $GLOBALS["father_name"] != "deceased")
+    {
+      $this->Cell(30,10,$GLOBALS['father_name']." and ". $GLOBALS['mother_name']." ".$GLOBALS['last_name'],0,1);
+    } else {
+      $this->Cell(30,10,$GLOBALS['mother_name']." ".$GLOBALS['father_name'],0,1);
+    }
     $this->SetFont('Times','B', 12);
     $this->SetY(85);
     $this->Cell(20);
@@ -144,7 +149,7 @@ class myPDF extends FPDF {
     $this->Text(38,15,'FAITHFUL SCHOLARS');
     $this->Text(45,20,'(803) 548-4428');
     $this->Text(35,25,'www.faithfulscholars.com');
-    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
+    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != "" && $GLOBALS["father_name"] != "na" && $GLOBALS["father_name"] != "NA" && $GLOBALS["father_name"] != "N/A" && $GLOBALS["father_name"] != "deceased"){
       $this->Text(30,45,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     } else {
       $this->Text(40,45,strtoupper($GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
@@ -158,7 +163,7 @@ class myPDF extends FPDF {
     $this->Text(38,70,'FAITHFUL SCHOLARS');
     $this->Text(45,75,'(803) 548-4428');
     $this->Text(35,80,'www.faithfulscholars.com');
-    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != ""){
+    if(isset($GLOBALS["father_name"]) && $GLOBALS["father_name"] != "" && $GLOBALS["father_name"] != "na" && $GLOBALS["father_name"] != "NA" && $GLOBALS["father_name"] != "N/A" && $GLOBALS["father_name"] != "deceased"){
       $this->Text(30,100,strtoupper($GLOBALS["father_name"]." and ".$GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));
     } else {
       $this->Text(40,100,strtoupper($GLOBALS["mother_name"] . " " . $GLOBALS["last_name"]));

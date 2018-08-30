@@ -324,7 +324,8 @@ $message = "
 $to      = "katie@faithfulscholars.com, forms@faithfulscholars.com";
 $from    = "katie@faithfulscholars.com";
 $subject = "";
-if(isset($expedite)) {
+
+if(isset($expedite) || $expedite != "") {
   $subject = "EXPEDITED APPLICATION - Online Application Form for $last_name  $warning";
 } else {
   $subject = "Online Application Form for $last_name  $warning";

@@ -1,7 +1,7 @@
 <?php
 require "fpdf.php";
 require "../functions.php";
-require "../dbconfig.php";
+require_once "../dbconfig.php";
 session_start();
 $check = checkLogin($_SESSION['userid']);
 if($check == 0){

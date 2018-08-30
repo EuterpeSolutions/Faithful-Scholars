@@ -28,10 +28,16 @@ if($p==$salted_hash){
   require 'config.php';
   require 'functions.php';
   session_start();
+
+  echo $_GET['redirect'];
+  if(isset($_GET['redirect'])){
+    header('Location: https://' . $_GET['redirect']);
+  }
+
   if($approved == 0){
     $_SESSION['approved'] = 1;
     runUnApproved();
-  }else {
+  } else {
     $_SESSION['pwd'] = $salted_hash;
     $_SESSION['uname'] = $myusername;
     $_SESSION['userid'] = $id;
@@ -41,8 +47,7 @@ if($p==$salted_hash){
 
     run();
   }
-}
-else {
+} else {
   echo "The username or password was incorrect";
 }
 

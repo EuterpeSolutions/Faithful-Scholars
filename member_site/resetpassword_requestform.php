@@ -29,7 +29,7 @@ CTYPE html>
           <div class="row">
             <div class="col-md-6 mx-auto">
               <h3 class="text-center">Reset Password</h3>
-              <p>Welcome to the membership login for Faithful Scholars. Please enter your membership login credentials below to access the members only area.
+              <p>Please enter your email below to request a password reset link be sent to you.</p>
             </div>
           </div>
           <br>
