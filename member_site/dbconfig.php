@@ -95,7 +95,9 @@ function checkLogin($userid){
     $stmt->store_result();
     $stmt->bind_result($count);
     while($stmt->fetch()){
-      $approved_value = $approved;
+      if(isset($approved)){
+        $approved_value = $approved;
+      }
     }
   }
   // Check if a user is logged in

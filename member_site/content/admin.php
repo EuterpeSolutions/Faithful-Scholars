@@ -115,27 +115,24 @@
          echo "family_id ".$family_id."<br>";
          // Save student data
          for($i = 0; $i < 9; $i++){
-           if(isset($_POST["name".$i]) && $_POST["name".$i] != "" && isset($_POST["grade".$i]) && isset($_POST["birthday".$i])){
+           if(isset($_POST["name".$i])
+              && $_POST["name".$i] != ""
+              && isset($_POST["grade".$i])
+              && isset($_POST["birthday".$i])) {
 
              $current_name = $_POST["name".$i];
              $current_grade = $_POST["grade".$i];
              $current_birthday = $_POST["birthday".$i];
 
-             $check_sql = 'SELECT id FROM student WHERE family_id = "'.$family_id.'" AND name = "'.$current_name.'"';
-
-             if($result = mysqli_query($con, $check_sql)) {
-
-               if(mysqli_num_rows($result) == 1){
-                 // student record already exists so update it
-                 while($row = mysqli_fetch_array($result)){
-                   $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = "'.$current_grade.'", birthday = "'.$current_birthday.'" WHERE id = '.$row["id"];
-                   $con->query($update_sql);
-                 }
-               } else {
-                 // Student record does not exist to create interface
-                 $insert_sql = "INSERT INTO student (family_id,name,grade,birthday) VALUES($family_id,'$current_name',$current_grade,'$current_birthday')";
-                 $con->query($insert_sql);
-               }
+             if(isset($_POST["student_".$i."_id"])) {
+               $student_id = $_POST["student_" . $i . "_id"];
+               // student record already exists so update it
+               $update_sql = 'UPDATE student SET name = "'.$current_name.'", grade = "'.$current_grade.'", birthday = "'.$current_birthday.'" WHERE id = ' . $student_id;
+               $con->query($update_sql);
+             } else {
+               // Student record does not exist to create interface
+               $insert_sql = "INSERT INTO student (family_id,name,grade,birthday) VALUES($family_id,'$current_name','$current_grade','$current_birthday')";
+               $con->query($insert_sql);
              }
            }
          }

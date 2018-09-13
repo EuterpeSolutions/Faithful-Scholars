@@ -42,14 +42,16 @@ session_start();
     }
   }
 
+  $student_id = [];
   $student_name = [];
   $student_grade = [];
   $student_birthday = [];
 
-  $student_sql = "SELECT name, grade, birthday FROM student WHERE family_id = ". $selected_id;
+  $student_sql = "SELECT id, name, grade, birthday FROM student WHERE family_id = ". $selected_id;
   if($student_result = mysqli_query($con, $student_sql)){
     $count = 0;
     while($row = mysqli_fetch_array($student_result)){
+      $student_id[$count] = $row["id"];
       $student_name[$count] = $row["name"];
       $student_grade[$count] = $row["grade"];
       $student_birthday[$count] = $row["birthday"];
@@ -61,6 +63,7 @@ session_start();
   if($student_result = mysqli_query($con, $student_sql)){
     while($row = mysqli_fetch_array($student_result)){
       array_push($students, $row);
+
     }
   }
 

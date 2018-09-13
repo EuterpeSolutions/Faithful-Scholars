@@ -58,9 +58,14 @@ function childInput($name, $data = [], $start_tab_index = 1, $num_child = 9)
     $tab_offset = $start_tab_index + (($i-1)*3);
     if(isset($data[$i-1])){
       $output .= '<input id="'.$name.$i.'" value="'.$data[$i-1][$name].'" name="'.$name.$i.'"class="form-control">';
+      if(isset($data[$i-1]["id"])){
+        $output .= '<input type="hidden" id="student_'. $i . '_id" value="'. $data[$i-1]["id"] .'" name = "student_'. $i . '_id"/>';
+      }
     }else{
       $output .= '<input tabindex="'.$tab_offset.'" id="'.$name.$i.'" name="'.$name.$i.'"class="form-control">';
     }
+
+
 
     $output .= '</div>';
   }
