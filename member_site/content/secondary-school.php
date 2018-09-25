@@ -126,8 +126,10 @@ if($result2 = mysqli_query($conn, $sql2)){
     $name = $row["name"];
     $grade = $row["grade"];
     $birthday = $row["birthday"];
-    $pdf->AddPage('P','Letter',0);
-    $pdf->headerTable($name,$grade,$birthday);
+    if($grade >= 10){
+      $pdf->AddPage('P','Letter',0);
+      $pdf->headerTable($name,$grade,$birthday);
+    }
   }
   $pdf->Output();
 }
