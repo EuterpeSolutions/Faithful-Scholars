@@ -38,13 +38,13 @@
         <tr>
           <td><label for="Father2">Father</label>
             's Name          </td>
-          <td><input type="text" name="father" id="father" required/></td>
+          <td><input type="text" name="father" id="father"/></td>
           <td><label for="phone2">Phone</label></td>
           <td><input type="text" name="phone" id="phone2"/></td>
           </tr>
         <tr>
           <td><label for="mother">Mother's Name</label></td>
-          <td><input type="text" name="mother" id="mother" required/></td>
+          <td><input type="text" name="mother" id="mother"/></td>
           <td><label>Cell Phone (Mom)</label></td>
           <td><input type="text" name="cell_phone_mom" id="cell_phone_mom" /></td>
           </tr>
@@ -120,7 +120,9 @@
           <td><input name="school_name" type="text" id="school_name"  /></td>
           </tr>
         <tr>
-          <td><label for="school_district"><a href="http://ed.sc.gov/schools" target="_blank">School District</a></label></td>
+          <td><select tabindex="8" class="form-control" name="county" id="county" required>
+            b
+          </select></td>
           <td><input name="school_district" type="text" id="school_district"  required/></td>
           <td><label>If yes, <a href="http://ed.sc.gov/schools" target="_blank">School Email</a>: <span data-tip="Required if expediting your application."  class="help"> [?] </span></label></td>
           <td><input name="school_fax" type="text" id="school_fax"  /></td>
