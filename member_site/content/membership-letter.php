@@ -21,7 +21,7 @@ $userid = $_SESSION['userid'];
 if(isset($_SESSION['adminproxyid']) && $_SESSION['adminproxyid'] != -1){
   $userid = $_SESSION['adminproxyid'];
 }
-$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ". $userid .";";
+$sql = "SELECT * FROM family as f JOIN members as m ON f.id = m.family_id JOIN homeschool as h ON h.family_id = f.id WHERE f.id = ". $userid .";";
 if($result = mysqli_query($conn, $sql)){
   while($row = mysqli_fetch_array($result)){
     $last_name = $row["last_name"];
