@@ -39,7 +39,7 @@ function db_user_query($selection,$myemail,$myusername)
 
   $result = mysqli_query($con, "CALL userQuery('$myemail','$myusername')") or die("Query fail: " . mysqli_error);
   while($row = mysqli_fetch_array($result)){
-    $id = $row['id'];
+    $id = $row['family_id'];
     $p = $row['password'];
     $username = $row['username'];
     $p_salt = $row['psalt'];
