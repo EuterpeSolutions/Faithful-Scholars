@@ -2,6 +2,7 @@
 require "fpdf.php";
 require "../dbconfig.php";
 require "../functions.php";
+
 session_start();
 $check = checkLogin($_SESSION['userid']);
 if($check == 0){
@@ -115,7 +116,11 @@ class myPDF extends FPDF {
     $currentYear = $now->format('Y');
     $intMonth = (int)$month;
 
-    $this->Cell(30,10,date('Y')." - ".date('Y', strtotime('+1 year')),0,1);
+    if($month >=1 and $month <=5) {
+      $this->Cell(30,10,date('Y', strtotime('-1 year'))." - ".date('Y'),0,1);
+    } else {
+      $this->Cell(30,10,date('Y')." - ".date('Y', strtotime('+1 year')),0,1);
+    }
     $this->SetFont('Times','B', 12);
     $this->SetY(155);
     $this->Cell(20);

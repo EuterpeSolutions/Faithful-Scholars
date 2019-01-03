@@ -91,7 +91,15 @@ class myPDF extends FPDF {
     $this->Cell(30,10,'School Year:',0,1);
     $this->SetFont('Times','', 12);
     $this->SetXY(120,103);
-    $this->Cell(30,10,date('Y', strtotime('+0 year'))."-".date('Y', strtotime('+1 year')),0,1);
+
+    $now = new \DateTime('now');
+    $month = $now->format('n');
+
+    if($month >=1 and $month <=5) {
+      $this->Cell(30,10,date('Y', strtotime('-1 year'))." - ".date('Y'),0,1);
+    } else {
+      $this->Cell(30,10,date('Y')." - ".date('Y', strtotime('+1 year')),0,1);
+    }
     $this->SetFont('Times','', 12); //times, size 12
     $this->SetXY(10,120);
     $this->Cell(20);
