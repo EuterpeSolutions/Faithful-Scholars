@@ -162,7 +162,7 @@
       }
 
       echo "<br><h5>Student Count by District</h5>";
-      $sql="SELECT COUNT(id) as count, district as district FROM family WHERE district IS NOT NULL GROUP BY district;";
+      $sql="SELECT COUNT(s.id) as count, district as district FROM family f JOIN student s on f.id = s.family_id WHERE district IS NOT NULL GROUP BY district;";
       if($result = mysqli_query($con, $sql)){
          if(mysqli_num_rows($result) > 0){
              echo "<form class='' action='?page=admin-edit' method='post'>";
