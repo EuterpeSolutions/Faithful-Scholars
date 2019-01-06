@@ -23,7 +23,7 @@ $districtArray = array();
 $countIndex = 0;
 $countArray = array();
 while($row = mysqli_fetch_assoc($result)){
-  if(isset($districtArray[$index - 1]) && $districtArray[$index - 1] != $row['district']){
+  if($districtArray[$index - 1] != $row['district']){
     $districtArray[$index] = $row['district'];
     $index++;
   }
@@ -62,7 +62,6 @@ function addTotalPage($pdf, $districtArray, $countArray){
   $pdf->Cell($Cell_Size,$Cell_Size, 'Total');
 
   // Districts
-
   $gradeTotalArray = array();
 
   $pdf->SetX($X_Left_Margin);
