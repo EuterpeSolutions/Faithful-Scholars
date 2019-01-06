@@ -11,13 +11,111 @@ if($check == 0){
 // Create connection
 $conn = db_connect();
 
+$pdf = new FPDF();
+$pdf->SetFont('Arial', '', 11);
+
+
+$result = mysqli_query($conn, "SELECT DISTINCT f.district, count(1) as count, s.grade FROM family f JOIN student s ON f.id = s.family_id GROUP BY district, s.grade;");
+
+$index = 0;
+$districtArray = array();
+
+$countIndex = 0;
+$countArray = array();
+while($row = mysqli_fetch_assoc($result)){
+  if(isset($districtArray[$index - 1]) && $districtArray[$index - 1] != $row['district']){
+    $districtArray[$index] = $row['district'];
+    $index++;
+  }
+  $d = $row['district'];
+  $g = $row['grade'];
+
+  $countArray[$d][$g] = $row['count'];
+}
+
+addTotalPage($pdf, $districtArray, $countArray);
+
+function addTotalPage($pdf, $districtArray, $countArray){
+  $pdf->AddPage();
+
+  $X_Multiplier = 10;
+  $Y_Row_Multiplier = 5;
+  $X_Left_Table_Margin = 45;
+  $X_Left_Margin = 10;
+  $Y_Top_Margin = 15;
+  $Y_Bottom_Margin = 265;
+  $Cell_Size = 5;
+
+  // District Label
+  $pdf->SetY($Y_Top_Margin);
+  $pdf->SetX($X_Left_Margin);
+  $pdf->Cell($Cell_Size,$Cell_Size, 'Districts');
+
+  // Grade
+  for($i = 0; $i <= 12; $i++){
+    $pdf->SetX($i * $X_Multiplier + $X_Left_Table_Margin);
+    $pdf->Cell($Cell_Size,$Cell_Size, $i);
+  }
+
+  // Right Total
+  $pdf->SetX((12 * $X_Multiplier + $X_Left_Table_Margin) + $X_Multiplier);
+  $pdf->Cell($Cell_Size,$Cell_Size, 'Total');
+
+  // Districts
+
+  $gradeTotalArray = array();
+
+  $pdf->SetX($X_Left_Margin);
+  foreach($districtArray as $i => $value){
+    // District Name
+    $pdf->SetY(25 + ($i * $Y_Row_Multiplier));
+    $pdf->Cell($Cell_Size,$Cell_Size, $districtArray[$i]);
+
+    // Grade Counts
+    $pdf->SetY(25 + ($i * $Y_Row_Multiplier));
+    $count = 0;
+    $rowTotal = 0;
+    foreach($countArray[$districtArray[$i]] as $k => $value){
+      $pdf->SetX($k * $X_Multiplier + $X_Left_Table_Margin);
+      $pdf->Cell($Cell_Size,$Cell_Size, $countArray[$districtArray[$i]][$k]);
+
+      $rowTotal = $rowTotal + $countArray[$districtArray[$i]][$k];
+
+      $gradeTotalArray[$k] = $gradeTotalArray[$k] + $countArray[$districtArray[$i]][$k];
+    }
+
+    // Row Total
+    $pdf->SetX((12 * $X_Multiplier + $X_Left_Table_Margin) + $X_Multiplier);
+    $pdf->Cell($Cell_Size,$Cell_Size, $rowTotal);
+
+    $gradeTotalArray[13] = $gradeTotalArray[13] + $rowTotal;
+  }
+
+  // Bottom Total
+  $pdf->SetY($Y_Bottom_Margin);
+  $pdf->SetX($X_Left_Margin + 21);
+  $pdf->Cell($Cell_Size,$Cell_Size, 'Total');
+
+  // Grade Totals
+  foreach($gradeTotalArray as $j => $value){
+    $pdf->SetX($j * $X_Multiplier + $X_Left_Table_Margin);
+    $pdf->Cell($Cell_Size,$Cell_Size, $gradeTotalArray[$j]);
+  }
+
+  // Date
+  $pdf->SetY($Y_Bottom_Margin + $Y_Row_Multiplier);
+  $pdf->SetX($X_Left_Margin);
+
+  $now = new \DateTime('now');
+
+  $pdf->Cell($Cell_Size,$Cell_Size, $now->format('F d, Y'));
+}
+
 $result = mysqli_query($conn, "SELECT COUNT(s.id) as count, grade, district FROM family f JOIN student s ON f.id = s.family_id WHERE district IS NOT NULL GROUP BY district, grade ORDER BY district, grade + 0;");
 $number_of_records = mysqli_num_rows($result);
 
 $column_count = "";
 $column_grade = "";
-
-$pdf = new FPDF();
 
 if($row = mysqli_fetch_assoc($result)){
   $previous_district = $row['district'];
