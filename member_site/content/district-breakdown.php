@@ -144,20 +144,32 @@ $conn->close();
 function addPage($pdf, $column_count, $column_grade, $district){
   $pdf->AddPage();
 
-  $Y_Fields_Name_position = 40;
-  $Y_Table_Position = 45;
+  $Y_Top_Margin = 65;
+  $Y_Row_Height = 5;
+  $Y_Table_Header_Position = $Y_Top_Margin + 25;
+  $Y_Enrollment_Label = $Y_Table_Header_Position - (4 * $Y_Row_Height);
+  $Y_Num_Students_Label = $Y_Table_Header_Position - (2 * $Y_Row_Height);
+  $Y_Table_Position = $Y_Table_Header_Position + $Y_Row_Height;
+  $Y_Fax_Label = $Y_Top_Margin + 100;
+  $Y_Bottom_Margin = 270;
+
   $X_Margin_Position = 25;
 
   $pdf->SetFillColor(232,232,232);
   $pdf->SetFont('Arial', 'B', 12);
-  $pdf->SetY(15);
+
+  $pdf->Image('../assets/faithfulscholarslogo.png', 50,10,125); // Logo
+
+  $pdf->SetY($Y_Enrollment_Label);
   $pdf->SetX($X_Margin_Position - 1);
   $pdf->Cell(120,5, '2018-2019 ENROLLMENT FOR FAITHFUL SCHOLARS');
-  $pdf->SetY(33);
+
+  $pdf->SetY($Y_Num_Students_Label);
   $pdf->SetX($X_Margin_Position - 1);
   $pdf->Cell(120,5, 'NUMBER OF STUDENTS FROM ' . $district . ' DISTRICT:');
   $pdf->SetFont('Arial', 'B', 12);
-  $pdf->SetY($Y_Fields_Name_position);
+
+  $pdf->SetY($Y_Table_Header_Position);
   $pdf->SetX($X_Margin_Position);
   $pdf->Cell(60,5,'Grade',1,0,'L',1);
   $pdf->SetX($X_Margin_Position + 60);
@@ -172,15 +184,20 @@ function addPage($pdf, $column_count, $column_grade, $district){
   $pdf->SetX($X_Margin_Position + 60);
   $pdf->MultiCell(60,5,$column_count,1);
 
-  $pdf->SetY(155);
+  $pdf->SetY($Y_Fax_Label);
   $pdf->SetX($X_Margin_Position);
   $pdf->Cell(120, 5, 'FAX FROM: Kate Bach, Faithful Scholars');
-  $pdf->SetY(160);
+  $pdf->SetY($Y_Fax_Label + $Y_Row_Height);
   $pdf->SetX($X_Margin_Position + 24);
   $pdf->Cell(120, 5, '803-802-7664 fax');
-  $pdf->SetY(165);
+  $pdf->SetY($Y_Fax_Label + (2 * $Y_Row_Height));
   $pdf->SetX($X_Margin_Position + 24);
   $pdf->Cell(120, 5, '803-548-4428 phone');
+
+  $pdf->SetY($Y_Bottom_Margin);
+  $pdf->SetX($X_Margin_Position);
+  $pdf->SetFont('Arial', '', 9);
+  $pdf->Cell(120, 5, '1761 Ballard Lane Fort Mill, SC 29715  (803)-548-4428 fax (803)-802-7446 www.faithfulscholars.com');
 }
 
 
