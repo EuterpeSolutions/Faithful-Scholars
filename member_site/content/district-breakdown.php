@@ -33,7 +33,11 @@ while($row = mysqli_fetch_assoc($result)){
   $countArray[$d][$g] = $row['count'];
 }
 
-addTotalPage($pdf, $districtArray, $countArray);
+$splitArray = array_chunk($districtArray, 47, false);
+foreach($splitArray as $q => $value){
+  addTotalPage($pdf, $splitArray[$q], $countArray);
+}
+// addTotalPage($pdf, $districtArray, $countArray);
 
 function addTotalPage($pdf, $districtArray, $countArray){
   $pdf->AddPage();
